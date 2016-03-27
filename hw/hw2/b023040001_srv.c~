@@ -1,0 +1,13 @@
+#include <sys/socket.h>
+#include <netinet/in.h>
+//IPPROTO_TCP is defined in <netinet/in.h>
+int run_srv(){
+	int fd = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP );
+	struct sockaddr_in srv;
+	
+}
+
+int main(){
+
+	return 0;
+}

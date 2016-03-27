@@ -1,0 +1,6 @@
+all: srv cli
+
+srv: b023040001_srv.c
+	gcc -c b023040001_srv.c
+cli: b023040001_cli.c
+	gcc -c b023040001_cli.c
