@@ -1,0 +1,1639 @@
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 localhost:ipp           *:*                     LISTEN     
+tcp        0      0 *:http                  *:*                     LISTEN     
+tcp        0      0 cube-All-Series:domain  *:*                     LISTEN     
+tcp        1      0 192.168.0.154:56368     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60035     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56694     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60089     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56350     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56501     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56568     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59505     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60170     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59780     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60065     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56717     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59625     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56333     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59732     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59906     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59709     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56742     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60086     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56506     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56549     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59691     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56703     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56540     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60278     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59648     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60001     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56863     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56757     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56485     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:42471     barbadine.canonica:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60229     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56183     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59858     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:49574     productsearch.ubu:https CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56079     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59726     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56877     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59895     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56200     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56392     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59832     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60050     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60273     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56808     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59583     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60052     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56696     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59929     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56718     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59529     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60225     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59743     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56799     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59782     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56154     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56311     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59883     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56659     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59905     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60264     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60020     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59795     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59714     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60379     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59600     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60197     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59811     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56719     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56208     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56202     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56397     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60320     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56012     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59702     backoo.canonical.c:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60376     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60137     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59728     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60004     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60211     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56296     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56218     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60175     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56737     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59725     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56637     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59613     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60322     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56315     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56798     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56800     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56860     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59538     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56529     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60057     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56205     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56673     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56165     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56322     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56740     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60228     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56656     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56590     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60289     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56818     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59814     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60023     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56164     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59671     productsearch.ubu:https CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59554     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56405     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60215     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59740     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59857     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59586     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56712     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56201     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56251     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56732     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59821     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56532     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59972     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56747     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59851     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56487     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59581     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56604     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56856     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59531     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56577     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59739     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56239     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56591     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56077     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56561     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56774     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60117     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59551     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59730     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56177     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56168     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56247     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59639     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60198     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59952     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60334     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59761     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60259     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59745     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60349     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59974     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56231     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59785     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59891     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59679     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56138     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56878     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56312     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60355     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60296     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59738     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60369     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59994     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59672     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56180     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59565     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60351     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59510     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60155     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59996     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56764     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59966     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59919     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56804     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56121     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56229     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56027     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56675     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59962     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59888     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56141     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56833     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56303     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56785     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59988     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59843     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56286     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56509     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56820     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56528     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59894     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56513     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56822     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59690     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60202     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56586     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56669     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60232     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59514     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59507     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60173     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56250     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56548     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56273     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60070     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56700     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56781     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56643     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60378     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59695     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56778     myapps.developer.u:http CLOSE_WAIT 
+tcp        0      0 192.168.0.154:34072     23-227-171-51-cust:9000 ESTABLISHED
+tcp        1      0 192.168.0.154:59763     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60336     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60246     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59921     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56847     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56253     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56595     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59942     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56679     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59433     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59540     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59941     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59969     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56241     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59775     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56304     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59950     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59635     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56318     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56418     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59627     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60146     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56772     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59508     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56363     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56580     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60356     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56575     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56017     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59784     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60343     myapps.developer.u:http CLOSE_WAIT 
+tcp        0      0 192.168.0.154:57283     tl-in-f188.1e100.n:5228 ESTABLISHED
+tcp        1      0 192.168.0.154:56859     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56714     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56148     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60093     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56639     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56508     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59867     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56543     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59846     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60275     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60214     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60310     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:49572     productsearch.ubu:https CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56624     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56176     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60316     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56824     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56047     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56379     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56609     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59686     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56064     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60188     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59630     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:43369     barbadine.canonica:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59760     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56264     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56357     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56069     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56381     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56597     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60154     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60026     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60266     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59861     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59506     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60268     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59833     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60133     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56869     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60373     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56427     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56415     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56566     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59680     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56162     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56527     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60169     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59436     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60147     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59715     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56775     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56607     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56132     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56765     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56203     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60072     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60049     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60139     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56836     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:55924     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56262     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59989     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56557     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60160     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60292     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56106     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56500     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56313     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56435     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60124     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56776     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56689     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59970     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59733     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56042     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60103     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60274     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59885     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60010     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56052     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56411     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60271     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60128     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56193     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56086     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60267     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56072     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56853     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56605     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56332     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56782     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60213     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56391     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56854     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60042     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56113     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56407     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56534     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60312     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56806     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56755     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56339     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56029     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60370     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59793     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59667     productsearch.ubu:https CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56538     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56843     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56684     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56123     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56337     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60038     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59887     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56406     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56653     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:55930     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59771     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56187     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56498     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56726     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60284     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59794     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59960     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56753     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56559     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60181     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59772     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56299     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56725     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56155     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56705     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60138     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59880     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60075     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60123     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56119     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56722     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59789     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59810     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56269     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60344     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56417     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59684     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59765     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60067     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56118     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59865     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59523     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60233     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56133     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56114     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60106     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56291     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56170     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56331     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56008     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56825     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60319     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60372     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56516     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59515     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56142     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56261     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56062     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56349     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59533     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56421     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59678     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60060     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60331     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59541     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56248     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60345     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56224     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56571     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56858     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60185     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60207     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:55929     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56802     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56419     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56084     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56743     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56115     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56408     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56150     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59790     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56514     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56812     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59604     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56645     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59432     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60083     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59995     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60254     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56048     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59866     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59798     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59543     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59720     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60299     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59633     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59712     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60000     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56365     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56045     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56343     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56682     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:55923     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60101     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56748     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56126     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60371     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59786     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59806     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56627     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60204     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56323     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59722     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56651     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56388     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59881     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56574     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56739     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59856     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56789     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56369     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59830     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60206     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59676     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60024     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59737     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59518     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56631     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59530     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60236     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59580     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56294     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56354     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60099     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59907     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60257     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56144     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60088     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56716     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60044     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59812     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59930     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59735     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56611     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59788     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59927     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56835     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56510     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56564     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59882     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59687     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59521     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59877     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59527     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56707     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56678     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59847     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59598     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59805     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56610     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60321     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56592     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56137     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56214     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59879     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56370     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60342     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56660     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59579     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59520     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59546     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56554     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59999     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60350     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56158     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56809     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59898     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56071     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59964     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60012     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56698     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59892     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59599     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56396     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59718     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56801     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56117     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60061     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56803     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59831     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56334     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56297     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60084     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59741     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60167     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56043     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60163     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60092     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56063     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56059     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56603     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59636     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56657     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56110     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56813     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59654     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56771     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56819     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56686     myapps.developer.u:http CLOSE_WAIT 
+tcp        0      0 192.168.0.154:49262     edge-star-mini-sh:https ESTABLISHED
+tcp        1      0 192.168.0.154:60127     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56153     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56606     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60094     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59869     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59566     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56620     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59731     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56092     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60238     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60200     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56870     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60234     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60113     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56704     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56640     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60249     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60282     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56711     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56721     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56511     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59596     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59525     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56053     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59813     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60239     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56541     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56139     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59544     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59825     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59834     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60285     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59797     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56160     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56317     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56395     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60250     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59721     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59829     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60353     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56070     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56795     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59588     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56394     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56648     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56685     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59889     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59657     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59835     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60047     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59683     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56080     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60288     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59696     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60141     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56057     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56738     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56553     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56007     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59697     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60293     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59937     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59849     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59890     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59944     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60251     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56750     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60055     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60130     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56398     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56667     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60346     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56497     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60366     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60121     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56823     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56034     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56219     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59651     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56690     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60120     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56050     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59590     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56237     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59872     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60081     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56090     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56661     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59845     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56872     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59594     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60134     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56713     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56243     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56242     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56855     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:tfido     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59947     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56278     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56663     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59876     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59629     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59938     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56211     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56271     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59603     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56614     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59614     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59864     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59526     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56767     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56420     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59570     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56298     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56073     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56161     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56647     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56355     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56067     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56314     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56056     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59672     productsearch.ubu:https CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56857     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56206     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56031     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60220     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:58510     backoo.canonical.c:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56751     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60009     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59777     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60157     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60354     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59652     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56040     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56006     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59768     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56245     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56268     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56194     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56087     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59608     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56558     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56066     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56184     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59762     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59931     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59717     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60143     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56626     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56617     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56585     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56127     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59727     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59781     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56196     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59559     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56011     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56760     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59946     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59985     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56430     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56188     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56830     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60333     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56097     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60087     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59573     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56563     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60297     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56412     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60135     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56635     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59764     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59524     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56172     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56736     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56438     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56431     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56593     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56413     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56821     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59993     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59419     backoo.canonical.c:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56399     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56827     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56429     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56244     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59593     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59792     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56790     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56536     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56524     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56044     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59694     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56520     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60031     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60077     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56832     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56254     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60104     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59826     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60367     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60193     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56004     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56531     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59807     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60149     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56166     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56347     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56030     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60151     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60107     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56199     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56569     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:55925     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56157     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59853     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56875     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59751     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56345     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60118     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56423     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59779     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59431     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56319     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59878     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56037     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60240     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60261     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56159     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60302     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60056     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:41190     mulberry.canonical:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56409     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56336     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59621     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56100     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60051     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60235     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56654     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56197     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56434     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59915     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56834     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56621     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56055     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56404     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56195     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59587     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56403     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59601     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56058     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56681     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56600     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56198     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59963     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59757     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56310     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60347     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56796     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56295     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59607     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56758     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59933     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56023     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59609     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59674     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56032     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56282     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60078     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59840     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59945     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56358     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59968     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56140     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56249     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60171     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56687     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56674     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56677     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59656     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56517     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59606     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59770     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60291     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60357     myapps.developer.u:http CLOSE_WAIT 
+tcp        0      0 192.168.0.154:55508     edge-star-shv-01-:https ESTABLISHED
+tcp        1      0 192.168.0.154:56163     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59669     productsearch.ubu:https CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60381     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59640     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56051     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56014     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:60196     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56671     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56810     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56366     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:59634     myapps.developer.u:http CLOSE_WAIT 
+tcp        1      0 192.168.0.154:56793     myapps.developer.u:http CLOSE_WAIT 
+tcp6       0      0 ip6-localhost:ipp       [::]:*                  LISTEN     
+tcp6       0      0 [::]:daap               [::]:*                  LISTEN     
+tcp6       1      0 ip6-localhost:49033     ip6-localhost:ipp       CLOSE_WAIT 
+tcp6       1      0 ip6-localhost:52985     ip6-localhost:ipp       CLOSE_WAIT 
+udp        0      0 *:mdns                  *:*                                
+udp        0      0 *:mdns                  *:*                                
+udp        0      0 *:56100                 *:*                                
+udp        0      0 *:56559                 *:*                                
+udp        0      0 cube-All-Series:domain  *:*                                
+udp        0      0 *:bootpc                *:*                                
+udp        0      0 *:ipp                   *:*                                
+udp6       0      0 [::]:46223              [::]:*                             
+udp6       0      0 [::]:29856              [::]:*                             
+udp6       0      0 [::]:mdns               [::]:*                             
+Active UNIX domain sockets (servers and established)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ACC ]     STREAM     LISTENING     14577    @/tmp/.ICE-unix/1700
+unix  2      [ ACC ]     STREAM     LISTENING     552954   @/dbus-vfs-daemon/socket-4V9F2vhT
+unix  21     [ ]         DGRAM                    8712     /dev/log
+unix  2      [ ACC ]     STREAM     LISTENING     8907     /tmp/.X11-unix/X0
+unix  2      [ ACC ]     STREAM     LISTENING     412797   @cube-com.canonical.Unity.Scope.rhythmbox.T549535501673738
+unix  2      [ ACC ]     STREAM     LISTENING     14578    /tmp/.ICE-unix/1700
+unix  2      [ ACC ]     STREAM     LISTENING     155154   /tmp/.org.chromium.Chromium.1uVZdW/SingletonSocket
+unix  2      [ ACC ]     STREAM     LISTENING     127846   @cube-com.canonical.Unity.Scope.files.T8652488507499
+unix  2      [ ACC ]     STREAM     LISTENING     8906     @/tmp/.X11-unix/X0
+unix  2      [ ACC ]     STREAM     LISTENING     10274    /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     412790   @cube-com.canonical.Unity.Master.Scope.music.T549534996004100
+unix  2      [ ACC ]     STREAM     LISTENING     12576    @/tmp/dbus-IFEGnAA0
+unix  2      [ ACC ]     STREAM     LISTENING     12559    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ACC ]     STREAM     LISTENING     1038618  @/dbus-vfs-daemon/socket-IyLiKc8s
+unix  2      [ ACC ]     STREAM     LISTENING     483156   @/dbus-vfs-daemon/socket-Db6e2V4c
+unix  2      [ ACC ]     STREAM     LISTENING     368104   @/dbus-vfs-daemon/socket-T3xfuWQ4
+unix  2      [ ACC ]     STREAM     LISTENING     1045672  @cube-com.canonical.Unity.Master.Scope.reference.T1240360716183595
+unix  2      [ ACC ]     STREAM     LISTENING     128696   @cube-com.canonical.Unity.Master.Scope.files.T86524105218911
+unix  2      [ ACC ]     STREAM     LISTENING     1045670  @cube-com.canonical.Unity.Master.Scope.moresuggestions.T1240360578823714
+unix  2      [ ACC ]     STREAM     LISTENING     10335    /var/run/sdp
+unix  2      [ ACC ]     STREAM     LISTENING     739169   /var/run/cups/cups.sock
+unix  2      [ ACC ]     STREAM     LISTENING     128695   @cube-com.canonical.Unity.Master.Scope.applications.T86524096702594
+unix  2      [ ACC ]     STREAM     LISTENING     7543     @/com/ubuntu/upstart
+unix  2      [ ACC ]     STREAM     LISTENING     11893    /run/user/1000/pulse/native
+unix  2      [ ACC ]     STREAM     LISTENING     129330   @cube-com.canonical.Unity.Scope.scopes.T86534819254318
+unix  2      [ ACC ]     STREAM     LISTENING     14459    /run/user/1000/keyring-dUyPEB/pkcs11
+unix  2      [ ACC ]     STREAM     LISTENING     1038621  @/dbus-vfs-daemon/socket-8ZmhS9KX
+unix  2      [ ACC ]     STREAM     LISTENING     14464    /run/user/1000/keyring-dUyPEB/gpg
+unix  2      [ ACC ]     STREAM     LISTENING     14466    /run/user/1000/keyring-dUyPEB/ssh
+unix  2      [ ACC ]     STREAM     LISTENING     1045362  @/dbus-vfs-daemon/socket-HC80bjwd
+unix  2      [ ACC ]     STREAM     LISTENING     179626   @/dbus-vfs-daemon/socket-8f0Gy3oZ
+unix  2      [ ACC ]     STREAM     LISTENING     13430    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         SEQPACKET  CONNECTED     156133   @0002d
+unix  2      [ ACC ]     SEQPACKET  LISTENING     1448     /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     1621605  /tmp/CODEBLOCKScube.socket
+unix  2      [ ACC ]     STREAM     LISTENING     13344    @/com/ubuntu/upstart-session/1000/1556
+unix  2      [ ACC ]     STREAM     LISTENING     11717    /run/user/1000/keyring-dUyPEB/control
+unix  2      [ ACC ]     STREAM     LISTENING     198698   @/dbus-vfs-daemon/socket-iNc341LE
+unix  2      [ ACC ]     STREAM     LISTENING     1551125  /tmp/OSL_PIPE_1000_SingleOfficeIPC_9e5b54c327a4e45d216d979381ce1ee0
+unix  2      [ ACC ]     STREAM     LISTENING     10471    /var/run/acpid.socket
+unix  2      [ ACC ]     STREAM     LISTENING     9718     /var/run/avahi-daemon/socket
+unix  2      [ ACC ]     STREAM     LISTENING     129331   @cube-com.canonical.Unity.Scope.applications.T86534825162554
+unix  3      [ ]         STREAM     CONNECTED     1648676  
+unix  3      [ ]         STREAM     CONNECTED     1551126  
+unix  3      [ ]         STREAM     CONNECTED     12255    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     239325   @/dbus-vfs-daemon/socket-kds3pjsn
+unix  3      [ ]         STREAM     CONNECTED     12928    
+unix  3      [ ]         STREAM     CONNECTED     10167    /var/run/dbus/system_bus_socket
+unix  3      [ ]         SEQPACKET  CONNECTED     156192   
+unix  3      [ ]         STREAM     CONNECTED     14563    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14458    
+unix  3      [ ]         STREAM     CONNECTED     1644495  
+unix  2      [ ]         STREAM     CONNECTED     118087   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12276    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     12002    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13355    
+unix  3      [ ]         STREAM     CONNECTED     1626288  @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1400659  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13652    
+unix  3      [ ]         STREAM     CONNECTED     128710   
+unix  2      [ ]         STREAM     CONNECTED     63066    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12836    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     1649779  
+unix  3      [ ]         STREAM     CONNECTED     739164   /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1658266  
+unix  3      [ ]         STREAM     CONNECTED     156470   
+unix  2      [ ]         STREAM     CONNECTED     13857    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12808    
+unix  3      [ ]         STREAM     CONNECTED     13579    
+unix  3      [ ]         STREAM     CONNECTED     11954    
+unix  3      [ ]         STREAM     CONNECTED     11863    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11829    
+unix  3      [ ]         STREAM     CONNECTED     11303    /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     1647694  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     11139    @/tmp/.X11-unix/X0
+unix  3      [ ]         SEQPACKET  CONNECTED     156130   
+unix  3      [ ]         STREAM     CONNECTED     1660823  
+unix  3      [ ]         STREAM     CONNECTED     13618    
+unix  3      [ ]         STREAM     CONNECTED     1657586  
+unix  2      [ ]         STREAM     CONNECTED     1054105  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156326   
+unix  3      [ ]         STREAM     CONNECTED     154171   
+unix  3      [ ]         STREAM     CONNECTED     14641    
+unix  3      [ ]         STREAM     CONNECTED     13481    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13375    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1621607  @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1054308  @/dbus-vfs-daemon/socket-d4hDs2Lc
+unix  3      [ ]         DGRAM                    7671     
+unix  2      [ ]         STREAM     CONNECTED     1545764  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156483   
+unix  3      [ ]         STREAM     CONNECTED     156859   
+unix  3      [ ]         STREAM     CONNECTED     12590    
+unix  2      [ ]         STREAM     CONNECTED     864064   @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     552950   @/dbus-vfs-daemon/socket-KfTqYJgw
+unix  3      [ ]         STREAM     CONNECTED     14542    
+unix  3      [ ]         STREAM     CONNECTED     1667945  
+unix  3      [ ]         STREAM     CONNECTED     157913   
+unix  2      [ ]         STREAM     CONNECTED     1400664  @/dbus-vfs-daemon/socket-OGmxOugj
+unix  3      [ ]         STREAM     CONNECTED     156181   
+unix  3      [ ]         STREAM     CONNECTED     12844    
+unix  3      [ ]         STREAM     CONNECTED     13574    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11955    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14540    
+unix  3      [ ]         STREAM     CONNECTED     156482   
+unix  3      [ ]         STREAM     CONNECTED     11907    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     15214    /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     1037424  @/dbus-vfs-daemon/socket-AeASmIXM
+unix  2      [ ]         STREAM     CONNECTED     864187   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156860   
+unix  3      [ ]         SEQPACKET  CONNECTED     156131   
+unix  3      [ ]         STREAM     CONNECTED     14715    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13573    
+unix  3      [ ]         STREAM     CONNECTED     740928   
+unix  2      [ ]         STREAM     CONNECTED     554771   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156180   
+unix  3      [ ]         STREAM     CONNECTED     12843    
+unix  3      [ ]         STREAM     CONNECTED     14683    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     13462    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14434    @/com/ubuntu/upstart-session/1000/1556
+unix  3      [ ]         STREAM     CONNECTED     157914   
+unix  3      [ ]         STREAM     CONNECTED     127839   
+unix  3      [ ]         STREAM     CONNECTED     13828    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     14684    
+unix  2      [ ]         DGRAM                    10360    
+unix  3      [ ]         STREAM     CONNECTED     13832    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     156474   
+unix  3      [ ]         STREAM     CONNECTED     154169   
+unix  3      [ ]         STREAM     CONNECTED     12322    
+unix  3      [ ]         STREAM     CONNECTED     1660824  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     1625512  @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     1622948  @/tmp/dbus-6kRYJSTrv7
+unix  2      [ ]         STREAM     CONNECTED     13858    @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1389718  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     14821    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1398551  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13345    
+unix  3      [ ]         STREAM     CONNECTED     154167   
+unix  3      [ ]         STREAM     CONNECTED     13821    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     11946    
+unix  3      [ ]         STREAM     CONNECTED     1660058  
+unix  3      [ ]         STREAM     CONNECTED     156479   
+unix  3      [ ]         STREAM     CONNECTED     1045671  @cube-com.canonical.Unity.Master.Scope.moresuggestions.T1240360578823714
+unix  2      [ ]         STREAM     CONNECTED     806134   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156844   @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     14541    
+unix  3      [ ]         STREAM     CONNECTED     10333    
+unix  3      [ ]         STREAM     CONNECTED     125918   @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12932    
+unix  3      [ ]         STREAM     CONNECTED     1554458  @/tmp/.X11-unix/X0
+unix  2      [ ]         STREAM     CONNECTED     369705   @/dbus-vfs-daemon/socket-UI6yUfNb
+unix  3      [ ]         STREAM     CONNECTED     12024    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         DGRAM                    14463    
+unix  3      [ ]         STREAM     CONNECTED     12569    
+unix  3      [ ]         STREAM     CONNECTED     1652483  
+unix  3      [ ]         STREAM     CONNECTED     11869    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     962969   
+unix  3      [ ]         STREAM     CONNECTED     13530    
+unix  3      [ ]         SEQPACKET  CONNECTED     156858   
+unix  3      [ ]         STREAM     CONNECTED     13823    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12612    
+unix  2      [ ]         STREAM     CONNECTED     276461   @/dbus-vfs-daemon/socket-NMEVqCuw
+unix  3      [ ]         STREAM     CONNECTED     129332   @cube-com.canonical.Unity.Scope.scopes.T86534819254318
+unix  3      [ ]         STREAM     CONNECTED     14678    
+unix  2      [ ]         DGRAM                    10338    
+unix  2      [ ]         STREAM     CONNECTED     413743   
+unix  3      [ ]         STREAM     CONNECTED     156481   
+unix  3      [ ]         STREAM     CONNECTED     13580    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     8710     
+unix  3      [ ]         STREAM     CONNECTED     1668149  
+unix  2      [ ]         STREAM     CONNECTED     553608   @/dbus-vfs-daemon/socket-4V9F2vhT
+unix  3      [ ]         STREAM     CONNECTED     157896   
+unix  3      [ ]         STREAM     CONNECTED     12851    
+unix  2      [ ]         STREAM     CONNECTED     784625   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         SEQPACKET  CONNECTED     426322   
+unix  3      [ ]         STREAM     CONNECTED     156328   
+unix  3      [ ]         STREAM     CONNECTED     1622950  
+unix  2      [ ]         STREAM     CONNECTED     1037427  @/dbus-vfs-daemon/socket-9dPTa80G
+unix  2      [ ]         STREAM     CONNECTED     1038622  @/dbus-vfs-daemon/socket-zRclHrv5
+unix  3      [ ]         STREAM     CONNECTED     13393    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11773    
+unix  3      [ ]         STREAM     CONNECTED     13069    
+unix  3      [ ]         STREAM     CONNECTED     12908    
+unix  2      [ ]         STREAM     CONNECTED     1416155  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156476   
+unix  3      [ ]         STREAM     CONNECTED     12812    @/tmp/.ICE-unix/1700
+unix  3      [ ]         STREAM     CONNECTED     1619939  
+unix  3      [ ]         STREAM     CONNECTED     1554457  @/tmp/.X11-unix/X0
+unix  2      [ ]         STREAM     CONNECTED     1071111  @/dbus-vfs-daemon/socket-DTf9b9I1
+unix  3      [ ]         STREAM     CONNECTED     9173     
+unix  2      [ ]         DGRAM                    10400    
+unix  3      [ ]         STREAM     CONNECTED     1624729  
+unix  2      [ ]         STREAM     CONNECTED     1037387  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13619    
+unix  3      [ ]         STREAM     CONNECTED     14435    @/com/ubuntu/upstart-session/1000/1556
+unix  3      [ ]         STREAM     CONNECTED     11119    
+unix  2      [ ]         STREAM     CONNECTED     239980   @/dbus-vfs-daemon/socket-rGePnvXU
+unix  3      [ ]         SEQPACKET  CONNECTED     156330   
+unix  3      [ ]         STREAM     CONNECTED     14575    
+unix  3      [ ]         STREAM     CONNECTED     14437    @/com/ubuntu/upstart-session/1000/1556
+unix  3      [ ]         STREAM     CONNECTED     1044684  
+unix  3      [ ]         STREAM     CONNECTED     13166    
+unix  3      [ ]         STREAM     CONNECTED     11777    
+unix  2      [ ]         DGRAM                    10332    
+unix  3      [ ]         STREAM     CONNECTED     1045695  
+unix  3      [ ]         STREAM     CONNECTED     154166   
+unix  3      [ ]         STREAM     CONNECTED     12729    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     156175   
+unix  3      [ ]         STREAM     CONNECTED     1622951  
+unix  2      [ ]         STREAM     CONNECTED     506169   @/dbus-vfs-daemon/socket-ftByOnox
+unix  3      [ ]         STREAM     CONNECTED     150470   @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     12621    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     11850    @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1068200  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     1036469  
+unix  3      [ ]         STREAM     CONNECTED     156475   
+unix  3      [ ]         STREAM     CONNECTED     13424    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     239939   @/dbus-vfs-daemon/socket-RZzb0HRL
+unix  3      [ ]         STREAM     CONNECTED     13603    
+unix  3      [ ]         STREAM     CONNECTED     13379    
+unix  3      [ ]         STREAM     CONNECTED     7631     @/com/ubuntu/upstart
+unix  2      [ ]         STREAM     CONNECTED     1044195  
+unix  3      [ ]         SEQPACKET  CONNECTED     156857   
+unix  3      [ ]         STREAM     CONNECTED     13620    
+unix  3      [ ]         STREAM     CONNECTED     12708    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     14426    
+unix  3      [ ]         STREAM     CONNECTED     156176   
+unix  3      [ ]         STREAM     CONNECTED     11912    
+unix  3      [ ]         STREAM     CONNECTED     14497    
+unix  3      [ ]         STREAM     CONNECTED     10188    
+unix  3      [ ]         STREAM     CONNECTED     13167    
+unix  3      [ ]         STREAM     CONNECTED     13068    
+unix  3      [ ]         STREAM     CONNECTED     12051    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14596    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     11301    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1653848  
+unix  3      [ ]         STREAM     CONNECTED     125907   
+unix  3      [ ]         STREAM     CONNECTED     1663206  
+unix  2      [ ]         STREAM     CONNECTED     1547548  @/dbus-vfs-daemon/socket-1RGYni65
+unix  3      [ ]         STREAM     CONNECTED     13769    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12114    
+unix  2      [ ]         DGRAM                    11224    
+unix  2      [ ]         STREAM     CONNECTED     1069671  
+unix  3      [ ]         STREAM     CONNECTED     1035552  @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         DGRAM                    12454    
+unix  3      [ ]         STREAM     CONNECTED     1652486  
+unix  3      [ ]         STREAM     CONNECTED     12084    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     14713    
+unix  3      [ ]         STREAM     CONNECTED     12699    
+unix  2      [ ]         STREAM     CONNECTED     637416   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12948    
+unix  3      [ ]         STREAM     CONNECTED     13556    
+unix  3      [ ]         STREAM     CONNECTED     1558494  
+unix  3      [ ]         STREAM     CONNECTED     9714     
+unix  2      [ ]         STREAM     CONNECTED     1551095  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12050    
+unix  3      [ ]         STREAM     CONNECTED     1621553  
+unix  3      [ ]         STREAM     CONNECTED     12018    
+unix  3      [ ]         STREAM     CONNECTED     14951    
+unix  3      [ ]         STREAM     CONNECTED     241838   
+unix  3      [ ]         STREAM     CONNECTED     14834    
+unix  3      [ ]         STREAM     CONNECTED     14706    
+unix  3      [ ]         STREAM     CONNECTED     11953    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1646973  @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     12614    
+unix  3      [ ]         STREAM     CONNECTED     11284    /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     1036640  @/dbus-vfs-daemon/socket-IyLiKc8s
+unix  3      [ ]         STREAM     CONNECTED     11852    
+unix  2      [ ]         STREAM     CONNECTED     1069179  @/dbus-vfs-daemon/socket-dV9SXzAI
+unix  3      [ ]         STREAM     CONNECTED     12085    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1662483  
+unix  3      [ ]         STREAM     CONNECTED     150483   
+unix  3      [ ]         STREAM     CONNECTED     14351    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     157916   
+unix  3      [ ]         STREAM     CONNECTED     12933    
+unix  3      [ ]         STREAM     CONNECTED     13541    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1037428  @/dbus-vfs-daemon/socket-NOnQhAlV
+unix  3      [ ]         STREAM     CONNECTED     156468   
+unix  3      [ ]         STREAM     CONNECTED     13837    
+unix  3      [ ]         STREAM     CONNECTED     1659893  @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     1660062  
+unix  3      [ ]         STREAM     CONNECTED     13668    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     1659674  
+unix  3      [ ]         STREAM     CONNECTED     11853    
+unix  3      [ ]         STREAM     CONNECTED     11746    
+unix  3      [ ]         STREAM     CONNECTED     1647859  
+unix  3      [ ]         STREAM     CONNECTED     1038541  
+unix  3      [ ]         STREAM     CONNECTED     10264    @/com/ubuntu/upstart
+unix  3      [ ]         STREAM     CONNECTED     13653    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     14697    
+unix  3      [ ]         STREAM     CONNECTED     12698    
+unix  3      [ ]         STREAM     CONNECTED     150471   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12128    @/dbus-vfs-daemon/socket-uSs2xeoU
+unix  3      [ ]         STREAM     CONNECTED     14482    
+unix  3      [ ]         STREAM     CONNECTED     11387    
+unix  3      [ ]         STREAM     CONNECTED     14954    @/dbus-vfs-daemon/socket-ZyxJyjpI
+unix  3      [ ]         STREAM     CONNECTED     13672    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     11217    
+unix  2      [ ]         STREAM     CONNECTED     241902   @/dbus-vfs-daemon/socket-MNrZmp1r
+unix  3      [ ]         STREAM     CONNECTED     156469   
+unix  3      [ ]         STREAM     CONNECTED     150472   
+unix  3      [ ]         STREAM     CONNECTED     12115    
+unix  3      [ ]         STREAM     CONNECTED     11904    
+unix  3      [ ]         STREAM     CONNECTED     1644514  @/dbus-vfs-daemon/socket-EeZtljB1
+unix  3      [ ]         STREAM     CONNECTED     412791   @cube-com.canonical.Unity.Master.Scope.music.T549534996004100
+unix  3      [ ]         STREAM     CONNECTED     12165    
+unix  3      [ ]         STREAM     CONNECTED     13459    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     14484    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     1646974  
+unix  3      [ ]         STREAM     CONNECTED     1552911  
+unix  2      [ ]         STREAM     CONNECTED     239840   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     1669223  
+unix  2      [ ]         STREAM     CONNECTED     1036641  @/dbus-vfs-daemon/socket-8ZmhS9KX
+unix  2      [ ]         STREAM     CONNECTED     978021   @/dbus-vfs-daemon/socket-W6RV8DP6
+unix  2      [ ]         DGRAM                    11388    
+unix  3      [ ]         STREAM     CONNECTED     9539     
+unix  3      [ ]         STREAM     CONNECTED     13695    @/dbus-vfs-daemon/socket-MKCBHY7I
+unix  2      [ ]         STREAM     CONNECTED     119942   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12842    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     239355   @/dbus-vfs-daemon/socket-JgZ4KPCK
+unix  3      [ ]         STREAM     CONNECTED     12714    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     128697   @cube-com.canonical.Unity.Master.Scope.applications.T86524096702594
+unix  3      [ ]         STREAM     CONNECTED     12978    @/dbus-vfs-daemon/socket-roU1QuTO
+unix  3      [ ]         STREAM     CONNECTED     14686    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1647886  
+unix  3      [ ]         STREAM     CONNECTED     412798   @cube-com.canonical.Unity.Scope.rhythmbox.T549535501673738
+unix  3      [ ]         STREAM     CONNECTED     13984    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     12127    
+unix  3      [ ]         STREAM     CONNECTED     13645    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13480    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11866    
+unix  3      [ ]         STREAM     CONNECTED     14481    
+unix  2      [ ]         DGRAM                    11323    
+unix  2      [ ]         DGRAM                    9712     
+unix  3      [ ]         STREAM     CONNECTED     411504   
+unix  3      [ ]         STREAM     CONNECTED     13479    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     12023    
+unix  2      [ ]         STREAM     CONNECTED     1397742  @/dbus-vfs-daemon/socket-5Log2xPX
+unix  2      [ ]         STREAM     CONNECTED     974501   @/dbus-vfs-daemon/socket-kC74mfJr
+unix  3      [ ]         STREAM     CONNECTED     125908   
+unix  3      [ ]         STREAM     CONNECTED     13985    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     15136    
+unix  3      [ ]         STREAM     CONNECTED     12101    
+unix  3      [ ]         STREAM     CONNECTED     1663207  @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     12121    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     12776    
+unix  2      [ ]         STREAM     CONNECTED     241840   @/dbus-vfs-daemon/socket-mUvL9g2W
+unix  3      [ ]         STREAM     CONNECTED     128692   /run/user/1000/keyring-dUyPEB/pkcs11
+unix  3      [ ]         STREAM     CONNECTED     14844    
+unix  3      [ ]         STREAM     CONNECTED     14587    /run/user/1000/pulse/native
+unix  2      [ ]         STREAM     CONNECTED     12235    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12969    
+unix  3      [ ]         STREAM     CONNECTED     11841    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     8994     /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     296139   
+unix  3      [ ]         STREAM     CONNECTED     127843   @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12966    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     14594    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     156467   
+unix  3      [ ]         STREAM     CONNECTED     12006    
+unix  2      [ ]         DGRAM                    1595664  
+unix  3      [ ]         STREAM     CONNECTED     1039136  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12007    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13542    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     12624    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1558497  
+unix  3      [ ]         STREAM     CONNECTED     13435    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     10399    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     15528    
+unix  2      [ ]         STREAM     CONNECTED     239905   @/dbus-vfs-daemon/socket-fiJ8bAyi
+unix  3      [ ]         STREAM     CONNECTED     14693    
+unix  3      [ ]         STREAM     CONNECTED     17971    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     14956    @/dbus-vfs-daemon/socket-HmqcEF2w
+unix  3      [ ]         STREAM     CONNECTED     12076    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14714    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     11891    
+unix  2      [ ]         STREAM     CONNECTED     1035584  @/dbus-vfs-daemon/socket-djrW8F5L
+unix  3      [ ]         STREAM     CONNECTED     15059    
+unix  3      [ ]         STREAM     CONNECTED     12722    
+unix  2      [ ]         STREAM     CONNECTED     1010533  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     14826    @/tmp/.X11-unix/X0
+unix  2      [ ]         STREAM     CONNECTED     1401047  @/dbus-vfs-daemon/socket-VFz4T3YA
+unix  2      [ ]         STREAM     CONNECTED     1397738  @/dbus-vfs-daemon/socket-5Al0iglB
+unix  3      [ ]         STREAM     CONNECTED     12947    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     1553638  
+unix  3      [ ]         STREAM     CONNECTED     12610    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     10396    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1038533  
+unix  3      [ ]         STREAM     CONNECTED     14685    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11851    @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1071445  @/dbus-vfs-daemon/socket-rjp1rXId
+unix  3      [ ]         STREAM     CONNECTED     125921   @cube-com.canonical.Unity.Scope.files.T8652488507499
+unix  3      [ ]         STREAM     CONNECTED     12258    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14822    
+unix  3      [ ]         STREAM     CONNECTED     12710    
+unix  2      [ ]         STREAM     CONNECTED     1045364  @/dbus-vfs-daemon/socket-x4olzb6W
+unix  3      [ ]         STREAM     CONNECTED     13502    
+unix  3      [ ]         STREAM     CONNECTED     14486    
+unix  3      [ ]         STREAM     CONNECTED     14477    
+unix  2      [ ]         STREAM     CONNECTED     241869   @/dbus-vfs-daemon/socket-8sWWyRuu
+unix  2      [ ]         STREAM     CONNECTED     178967   @/dbus-vfs-daemon/socket-8f0Gy3oZ
+unix  3      [ ]         STREAM     CONNECTED     14936    
+unix  3      [ ]         STREAM     CONNECTED     12086    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     296140   
+unix  3      [ ]         STREAM     CONNECTED     15215    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     13621    
+unix  3      [ ]         STREAM     CONNECTED     1622952  
+unix  3      [ ]         STREAM     CONNECTED     13616    
+unix  3      [ ]         STREAM     CONNECTED     13374    
+unix  3      [ ]         STREAM     CONNECTED     1620478  @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     14515    
+unix  3      [ ]         STREAM     CONNECTED     8716     
+unix  3      [ ]         STREAM     CONNECTED     12792    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1649780  
+unix  3      [ ]         STREAM     CONNECTED     1043237  /run/user/1000/keyring-dUyPEB/pkcs11
+unix  3      [ ]         STREAM     CONNECTED     13163    
+unix  3      [ ]         STREAM     CONNECTED     11957    
+unix  3      [ ]         STREAM     CONNECTED     13654    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     13584    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11846    
+unix  3      [ ]         STREAM     CONNECTED     10170    
+unix  2      [ ]         STREAM     CONNECTED     1045682  @/dbus-vfs-daemon/socket-CinarU9w
+unix  3      [ ]         STREAM     CONNECTED     156327   
+unix  3      [ ]         STREAM     CONNECTED     155137   /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     12728    @/tmp/.X11-unix/X0
+unix  2      [ ]         STREAM     CONNECTED     1393014  @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1045365  @/dbus-vfs-daemon/socket-HC80bjwd
+unix  3      [ ]         STREAM     CONNECTED     1624728  
+unix  3      [ ]         STREAM     CONNECTED     156842   @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     14721    
+unix  3      [ ]         STREAM     CONNECTED     156477   
+unix  3      [ ]         STREAM     CONNECTED     13676    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1068869  @/dbus-vfs-daemon/socket-GEZWOwkL
+unix  3      [ ]         STREAM     CONNECTED     156177   @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13602    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     11845    
+unix  3      [ ]         STREAM     CONNECTED     12323    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1668150  
+unix  3      [ ]         STREAM     CONNECTED     1652485  
+unix  2      [ ]         STREAM     CONNECTED     1399415  
+unix  3      [ ]         STREAM     CONNECTED     14521    
+unix  3      [ ]         STREAM     CONNECTED     8733     
+unix  3      [ ]         STREAM     CONNECTED     1666255  
+unix  3      [ ]         SEQPACKET  CONNECTED     156191   
+unix  3      [ ]         STREAM     CONNECTED     14573    
+unix  3      [ ]         STREAM     CONNECTED     14560    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     13317    
+unix  3      [ ]         STREAM     CONNECTED     156478   
+unix  3      [ ]         STREAM     CONNECTED     63138    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13581    
+unix  3      [ ]         STREAM     CONNECTED     1648711  
+unix  3      [ ]         STREAM     CONNECTED     413739   
+unix  3      [ ]         STREAM     CONNECTED     13074    
+unix  3      [ ]         STREAM     CONNECTED     11998    
+unix  3      [ ]         STREAM     CONNECTED     10357    
+unix  2      [ ]         DGRAM                    13651    
+unix  3      [ ]         STREAM     CONNECTED     8800     
+unix  2      [ ]         STREAM     CONNECTED     1400998  @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         STREAM     CONNECTED     1006304  
+unix  3      [ ]         STREAM     CONNECTED     13408    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1652484  
+unix  3      [ ]         STREAM     CONNECTED     1620480  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     9677     /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     156329   
+unix  3      [ ]         SEQPACKET  CONNECTED     156134   
+unix  3      [ ]         STREAM     CONNECTED     13604    
+unix  3      [ ]         STREAM     CONNECTED     11419    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1644496  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     1045673  @cube-com.canonical.Unity.Master.Scope.reference.T1240360716183595
+unix  3      [ ]         STREAM     CONNECTED     157893   
+unix  3      [ ]         STREAM     CONNECTED     14710    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1658264  
+unix  3      [ ]         STREAM     CONNECTED     1551128  
+unix  3      [ ]         STREAM     CONNECTED     13610    @/tmp/.ICE-unix/1700
+unix  3      [ ]         STREAM     CONNECTED     13549    
+unix  3      [ ]         STREAM     CONNECTED     14436    @/com/ubuntu/upstart-session/1000/1556
+unix  3      [ ]         STREAM     CONNECTED     1666256  
+unix  3      [ ]         STREAM     CONNECTED     13072    
+unix  3      [ ]         STREAM     CONNECTED     14723    
+unix  3      [ ]         STREAM     CONNECTED     14345    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     129333   @cube-com.canonical.Unity.Scope.applications.T86534825162554
+unix  3      [ ]         STREAM     CONNECTED     11948    
+unix  3      [ ]         STREAM     CONNECTED     1648670  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12575    
+unix  3      [ ]         STREAM     CONNECTED     11764    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     8863     
+unix  3      [ ]         STREAM     CONNECTED     1658265  
+unix  3      [ ]         STREAM     CONNECTED     13609    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13461    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1045686  @/dbus-vfs-daemon/socket-dzrOR4MO
+unix  3      [ ]         STREAM     CONNECTED     157894   
+unix  3      [ ]         STREAM     CONNECTED     156184   
+unix  3      [ ]         STREAM     CONNECTED     12670    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     11887    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     11298    /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     368117   @/dbus-vfs-daemon/socket-T3xfuWQ4
+unix  2      [ ]         STREAM     CONNECTED     121439   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12857    
+unix  3      [ ]         STREAM     CONNECTED     14680    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14490    
+unix  3      [ ]         STREAM     CONNECTED     12574    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     10404    /var/run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM                    10187    
+unix  3      [ ]         STREAM     CONNECTED     156186   
+unix  3      [ ]         STREAM     CONNECTED     14411    /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     485160   @/dbus-vfs-daemon/socket-Db6e2V4c
+unix  3      [ ]         STREAM     CONNECTED     12720    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     128709   
+unix  3      [ ]         STREAM     CONNECTED     2046     
+unix  3      [ ]         STREAM     CONNECTED     412794   @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13071    
+unix  3      [ ]         STREAM     CONNECTED     11947    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     14823    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14695    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     13469    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11768    
+unix  3      [ ]         STREAM     CONNECTED     8709     
+unix  3      [ ]         STREAM     CONNECTED     1660057  
+unix  3      [ ]         STREAM     CONNECTED     1620484  
+unix  3      [ ]         STREAM     CONNECTED     14457    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1666254  
+unix  3      [ ]         STREAM     CONNECTED     1646975  /var/run/dbus/system_bus_socket
+unix  3      [ ]         SEQPACKET  CONNECTED     156188   
+unix  3      [ ]         STREAM     CONNECTED     13608    
+unix  3      [ ]         STREAM     CONNECTED     10481    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1626287  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     7628     
+unix  2      [ ]         STREAM     CONNECTED     506160   @/dbus-vfs-daemon/socket-t1hventA
+unix  3      [ ]         STREAM     CONNECTED     158802   /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     154172   
+unix  3      [ ]         STREAM     CONNECTED     11979    
+unix  3      [ ]         STREAM     CONNECTED     156480   
+unix  3      [ ]         STREAM     CONNECTED     155135   @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     127848   
+unix  3      [ ]         STREAM     CONNECTED     11769    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         SEQPACKET  CONNECTED     426323   
+unix  3      [ ]         SEQPACKET  CONNECTED     156187   
+unix  3      [ ]         STREAM     CONNECTED     1659664  
+unix  3      [ ]         STREAM     CONNECTED     1648710  
+unix  3      [ ]         STREAM     CONNECTED     13946    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12789    /run/user/1000/keyring-dUyPEB/pkcs11
+unix  3      [ ]         STREAM     CONNECTED     11778    
+unix  3      [ ]         STREAM     CONNECTED     8770     
+unix  3      [ ]         STREAM     CONNECTED     156484   
+unix  3      [ ]         STREAM     CONNECTED     154168   
+unix  3      [ ]         STREAM     CONNECTED     13407    
+unix  3      [ ]         STREAM     CONNECTED     154164   @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     13070    
+unix  3      [ ]         STREAM     CONNECTED     11425    
+unix  2      [ ]         STREAM     CONNECTED     1397917  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         SEQPACKET  CONNECTED     156331   
+unix  3      [ ]         STREAM     CONNECTED     11747    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     9912     /var/run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM                    7670     
+unix  2      [ ]         STREAM     CONNECTED     974483   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     14433    
+unix  3      [ ]         STREAM     CONNECTED     1644491  
+unix  3      [ ]         STREAM     CONNECTED     156185   
+unix  3      [ ]         STREAM     CONNECTED     13168    
+unix  3      [ ]         STREAM     CONNECTED     11424    /var/run/acpid.socket
+unix  3      [ ]         STREAM     CONNECTED     8909     
+unix  3      [ ]         STREAM     CONNECTED     156183   
+unix  3      [ ]         STREAM     CONNECTED     154173   
+unix  3      [ ]         STREAM     CONNECTED     12858    
+unix  3      [ ]         STREAM     CONNECTED     13387    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1659663  
+unix  3      [ ]         STREAM     CONNECTED     9153     /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1044683  
+unix  3      [ ]         STREAM     CONNECTED     15211    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     14595    
+unix  3      [ ]         STREAM     CONNECTED     156485   
+unix  3      [ ]         STREAM     CONNECTED     61396    
+unix  3      [ ]         STREAM     CONNECTED     11978    
+unix  3      [ ]         STREAM     CONNECTED     1657587  
+unix  3      [ ]         STREAM     CONNECTED     1622949  
+unix  3      [ ]         STREAM     CONNECTED     1666257  
+unix  2      [ ]         STREAM     CONNECTED     1045685  @/dbus-vfs-daemon/socket-mNqh2WhO
+unix  3      [ ]         STREAM     CONNECTED     11626    /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     1648809  @/dbus-vfs-daemon/socket-TSLlufJ9
+unix  3      [ ]         STREAM     CONNECTED     1558499  
+unix  3      [ ]         STREAM     CONNECTED     1553636  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11999    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1038540  
+unix  3      [ ]         STREAM     CONNECTED     128689   @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     15455    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     14725    
+unix  3      [ ]         STREAM     CONNECTED     12847    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     1660059  
+unix  3      [ ]         STREAM     CONNECTED     1407267  
+unix  2      [ ]         STREAM     CONNECTED     1397740  @/dbus-vfs-daemon/socket-qBONvr92
+unix  3      [ ]         STREAM     CONNECTED     12834    @/tmp/.X11-unix/X0
+unix  2      [ ]         STREAM     CONNECTED     1037426  @/dbus-vfs-daemon/socket-kt9lgS4b
+unix  2      [ ]         STREAM     CONNECTED     368103   @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     150473   
+unix  2      [ ]         DGRAM                    11226    
+unix  2      [ ]         STREAM     CONNECTED     1045681  @/dbus-vfs-daemon/socket-Sz0SuA7d
+unix  3      [ ]         STREAM     CONNECTED     155136   
+unix  3      [ ]         STREAM     CONNECTED     14953    
+unix  3      [ ]         STREAM     CONNECTED     14842    
+unix  3      [ ]         STREAM     CONNECTED     14561    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11071    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     9541     @/com/ubuntu/upstart
+unix  3      [ ]         STREAM     CONNECTED     1669224  
+unix  2      [ ]         STREAM     CONNECTED     1069808  
+unix  3      [ ]         STREAM     CONNECTED     239315   @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1038534  
+unix  3      [ ]         STREAM     CONNECTED     155141   
+unix  3      [ ]         STREAM     CONNECTED     13442    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     11828    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1551138  /run/user/1000/keyring-dUyPEB/pkcs11
+unix  3      [ ]         STREAM     CONNECTED     13648    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1672268  
+unix  2      [ ]         DGRAM                    1386602  
+unix  3      [ ]         STREAM     CONNECTED     150482   
+unix  3      [ ]         STREAM     CONNECTED     13843    
+unix  3      [ ]         STREAM     CONNECTED     14491    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1558498  
+unix  3      [ ]         STREAM     CONNECTED     1036470  /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     12881    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13560    
+unix  3      [ ]         STREAM     CONNECTED     1660060  
+unix  3      [ ]         STREAM     CONNECTED     12959    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1626248  
+unix  3      [ ]         STREAM     CONNECTED     1037380  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     166261   
+unix  3      [ ]         STREAM     CONNECTED     12793    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     1660061  
+unix  2      [ ]         DGRAM                    12078    
+unix  3      [ ]         STREAM     CONNECTED     12022    
+unix  3      [ ]         STREAM     CONNECTED     14487    
+unix  2      [ ]         STREAM     CONNECTED     1397741  @/dbus-vfs-daemon/socket-A2GMFKbO
+unix  2      [ ]         STREAM     CONNECTED     279288   @/dbus-vfs-daemon/socket-GDx7g9Ld
+unix  3      [ ]         STREAM     CONNECTED     1644490  @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     1037378  
+unix  3      [ ]         STREAM     CONNECTED     11911    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     157915   
+unix  3      [ ]         STREAM     CONNECTED     12709    
+unix  3      [ ]         STREAM     CONNECTED     1659662  
+unix  2      [ ]         STREAM     CONNECTED     1406743  
+unix  2      [ ]         DGRAM                    1387813  
+unix  3      [ ]         STREAM     CONNECTED     13682    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13434    
+unix  2      [ ]         DGRAM                    14846    
+unix  3      [ ]         STREAM     CONNECTED     1662484  
+unix  3      [ ]         STREAM     CONNECTED     11903    
+unix  3      [ ]         STREAM     CONNECTED     1647205  /run/user/1000/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     1036467  /var/run/dbus/system_bus_socket
+unix  2      [ ]         STREAM     CONNECTED     1044217  @/dbus-vfs-daemon/socket-crtoIRDf
+unix  3      [ ]         STREAM     CONNECTED     13822    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12613    
+unix  3      [ ]         STREAM     CONNECTED     11745    
+unix  3      [ ]         STREAM     CONNECTED     1552907  
+unix  3      [ ]         STREAM     CONNECTED     13678    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12846    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     9720     
+unix  3      [ ]         STREAM     CONNECTED     1625513  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     129298   
+unix  3      [ ]         STREAM     CONNECTED     13468    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     1558496  
+unix  2      [ ]         STREAM     CONNECTED     1043186  
+unix  3      [ ]         STREAM     CONNECTED     13586    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1398516  @/dbus-vfs-daemon/socket-L33FPGSh
+unix  3      [ ]         STREAM     CONNECTED     15058    
+unix  3      [ ]         STREAM     CONNECTED     11877    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     1672269  
+unix  2      [ ]         STREAM     CONNECTED     1647896  
+unix  3      [ ]         STREAM     CONNECTED     128698   @cube-com.canonical.Unity.Master.Scope.files.T86524105218911
+unix  3      [ ]         STREAM     CONNECTED     15079    
+unix  3      [ ]         STREAM     CONNECTED     14839    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     12773    
+unix  3      [ ]         STREAM     CONNECTED     14643    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     9769     
+unix  3      [ ]         STREAM     CONNECTED     11326    
+unix  3      [ ]         STREAM     CONNECTED     1644492  /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14962    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14827    
+unix  3      [ ]         STREAM     CONNECTED     14696    
+unix  3      [ ]         STREAM     CONNECTED     12671    
+unix  3      [ ]         STREAM     CONNECTED     1659673  
+unix  2      [ ]         STREAM     CONNECTED     197100   @/dbus-vfs-daemon/socket-JSbYuX6Q
+unix  3      [ ]         STREAM     CONNECTED     11963    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     1647858  
+unix  3      [ ]         STREAM     CONNECTED     1037375  @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     13234    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13941    
+unix  3      [ ]         STREAM     CONNECTED     9715     
+unix  3      [ ]         STREAM     CONNECTED     1669226  
+unix  3      [ ]         STREAM     CONNECTED     1653847  
+unix  3      [ ]         STREAM     CONNECTED     1408195  /run/user/1000/keyring-dUyPEB/pkcs11
+unix  3      [ ]         STREAM     CONNECTED     12112    
+unix  3      [ ]         STREAM     CONNECTED     12008    
+unix  3      [ ]         STREAM     CONNECTED     15103    
+unix  3      [ ]         STREAM     CONNECTED     13550    @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12856    @/tmp/dbus-6kRYJSTrv7
+unix  3      [ ]         STREAM     CONNECTED     1658267  
+unix  3      [ ]         STREAM     CONNECTED     14838    
+unix  3      [ ]         STREAM     CONNECTED     14707    /run/user/1000/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     12718    
+unix  3      [ ]         STREAM     CONNECTED     129281   
+unix  3      [ ]         STREAM     CONNECTED     13443    
+unix  3      [ ]         STREAM     CONNECTED     1036468  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     150486   /run/user/1000/pulse/native
+unix  3      [ ]         STREAM     CONNECTED     12936    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11706    
+unix  3      [ ]         STREAM     CONNECTED     1659661  
+unix  2      [ ]         STREAM     CONNECTED     1546696  @/dbus-vfs-daemon/socket-C4ij3YFm
+unix  3      [ ]         STREAM     CONNECTED     12715    
+unix  3      [ ]         STREAM     CONNECTED     11840    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1648798  @/dbus-vfs-daemon/socket-Bjot8TxB
+unix  3      [ ]         STREAM     CONNECTED     13655    
+unix  3      [ ]         STREAM     CONNECTED     12017    
+unix  3      [ ]         STREAM     CONNECTED     13575    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     13569    
+unix  2      [ ]         STREAM     CONNECTED     1545001  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     166260   
+unix  3      [ ]         STREAM     CONNECTED     15529    
+unix  3      [ ]         STREAM     CONNECTED     14841    
+unix  3      [ ]         STREAM     CONNECTED     1669225  
+unix  2      [ ]         STREAM     CONNECTED     179624   @/dbus-vfs-daemon/socket-T6tjnDbx
+unix  3      [ ]         STREAM     CONNECTED     12955    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     14847    
+unix  3      [ ]         STREAM     CONNECTED     12721    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     1036638  @/dbus-vfs-daemon/socket-IKGxGV3j
+unix  2      [ ]         STREAM     CONNECTED     197108   @/dbus-vfs-daemon/socket-iNc341LE
+unix  3      [ ]         STREAM     CONNECTED     125920   
+unix  3      [ ]         STREAM     CONNECTED     13765    @/tmp/.X11-unix/X0
+unix  2      [ ]         DGRAM                    11396    
+unix  2      [ ]         STREAM     CONNECTED     1069177  @/dbus-vfs-daemon/socket-IVvOgr3o
+unix  3      [ ]         STREAM     CONNECTED     1037901  
+unix  3      [ ]         STREAM     CONNECTED     16891    
+unix  3      [ ]         STREAM     CONNECTED     12104    
+unix  3      [ ]         STREAM     CONNECTED     14843    
+unix  3      [ ]         STREAM     CONNECTED     12001    
+unix  3      [ ]         STREAM     CONNECTED     1667946  
+unix  3      [ ]         STREAM     CONNECTED     411510   
+unix  3      [ ]         STREAM     CONNECTED     125890   
+unix  3      [ ]         STREAM     CONNECTED     13940    
+unix  3      [ ]         STREAM     CONNECTED     11844    @/tmp/dbus-6kRYJSTrv7
+unix  2      [ ]         STREAM     CONNECTED     1071446  @/dbus-vfs-daemon/socket-wHZopxOW
+unix  3      [ ]         STREAM     CONNECTED     15221    /var/run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     12106    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13617    @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     11849    
+unix  3      [ ]         STREAM     CONNECTED     1558495  
+unix  3      [ ]         STREAM     CONNECTED     13433    
+unix  3      [ ]         STREAM     CONNECTED     1660822  @/tmp/dbus-IspLoqs2Hm
+unix  3      [ ]         STREAM     CONNECTED     13766    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     13698    @/dbus-vfs-daemon/socket-KpIBtqgY
+unix  3      [ ]         STREAM     CONNECTED     13551    @/tmp/dbus-IFEGnAA0
+unix  2      [ ]         DGRAM                    10468    
+unix  3      [ ]         STREAM     CONNECTED     1649784  
+unix  2      [ ]         STREAM     CONNECTED     1595662  
+unix  2      [ ]         STREAM     CONNECTED     1388955  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12837    @/tmp/dbus-IspLoqs2Hm
+unix  2      [ ]         STREAM     CONNECTED     239950   @/dbus-vfs-daemon/socket-VotM2Nin
+unix  3      [ ]         STREAM     CONNECTED     1551127  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     12277    
+unix  2      [ ]         STREAM     CONNECTED     1105473  @/tmp/dbus-IFEGnAA0
+unix  3      [ ]         STREAM     CONNECTED     13557    
