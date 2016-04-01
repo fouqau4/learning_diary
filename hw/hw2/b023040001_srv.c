@@ -11,7 +11,7 @@ int run_srv()
     //bind()
     struct sockaddr_in srv;
     srv.sin_family = AF_INET;
-    srv.sin_port = htons(80);
+    srv.sin_port = htons(8787);
     srv.sin_addr.s_addr = htonl( INADDR_ANY );
 
 
@@ -24,7 +24,7 @@ int run_srv()
     //select()
 
     fd_set readfds;
-    struct timeval waitCli = {5,10};
+    struct timeval waitCli = {100,0};
 
     FD_ZERO(&readfds);
     FD_SET(fd, &readfds);
@@ -47,6 +47,7 @@ int run_srv()
     //read()
     //close()
     close(newfd);
+    close(fd);
     return 0;
 }
 

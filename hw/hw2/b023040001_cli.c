@@ -17,6 +17,11 @@ int run_cli(char *srvIp, int port ){
 
     if(connect( fd, (struct sockaddr*) &srv, sizeof(srv) ) < 0)
         perror("connect error!!"), exit(1);
+    else
+    {
+        puts("connect success!!");
+        close(fd);
+    }
 
     //write()
 
