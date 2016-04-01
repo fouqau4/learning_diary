@@ -1,8 +1,6 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "myTcp.h"
+#include "b023040001_cli.h"
 
 int run_cli(char *srvIp, int port ){
     //socket()
@@ -24,5 +22,5 @@ int run_cli(char *srvIp, int port ){
     }
 
     //write()
-
+    return 0;
 }

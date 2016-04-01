@@ -1,7 +1,3 @@
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "b023040001_srv.h"
 //IPPROTO_TCP is defined in <netinet/in.h>
 int run_srv()

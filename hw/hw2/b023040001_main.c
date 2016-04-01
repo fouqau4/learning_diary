@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "b023040001_srv.h"
+#include "b023040001_cli.h"
 int main(int argc, char *argv[]){
 
 
@@ -10,7 +12,10 @@ int main(int argc, char *argv[]){
         run_srv();
     }
     else if(argc == 4 && strcmp( argv[1], "connect" ) == 0)
+    {
         puts("client");
+        run_cli( argv[2], atoi(argv[3]) );
+    }
     else
     {
         puts("Fail to execute this program!!");
