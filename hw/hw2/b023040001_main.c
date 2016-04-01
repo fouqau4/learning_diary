@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
         puts("server");
         run_srv();
     }
-    else if(argc == 4 && strcmp( argv[1], "connect" ) == 0)
+    else if(argc == 4 && strcmp( argv[1], "client" ) == 0)
     {
         puts("client");
         run_cli( argv[2], atoi(argv[3]) );
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
     {
         puts("Fail to execute this program!!");
         puts("Run server : ./b023040001_ftp server");
-        puts("Run client : ./b023040001_ftp connect <ip(x.x.x.x)> <port>");
+        puts("Run client : ./b023040001_ftp client <ip(x.x.x.x)> <port>");
         return 1;
     }
 

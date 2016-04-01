@@ -1,4 +1,5 @@
 #include "b023040001_srv.h"
+#define MAX_BUF_SIZE 1024
 //IPPROTO_TCP is defined in <netinet/in.h>
 int run_srv()
 {
@@ -31,11 +32,19 @@ int run_srv()
     int newfd;
     struct sockaddr_in cli;
     int cli_len = (int)sizeof(cli);
+    char buf[MAX_BUF_SIZE];
     if(FD_ISSET( fd, &readfds ))
     {
         puts("fd free!!");
         if((newfd = accept( fd, (struct sockaddr*) &cli, &cli_len))< 0)
             perror("accept error!!\n"), exit(1);
+    //read()
+        else
+        {
+            puts("client sent this :");
+            read( newfd, buf, sizeof(buf) );
+            puts(buf);
+        }
     }
     else
         puts("server is inpatient :(");
