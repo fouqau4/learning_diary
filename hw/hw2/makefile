@@ -5,10 +5,14 @@ cli = b023040001_cli.o
 
 ftp: b023040001_main.c $(srv) $(cli)
 	gcc -o b023040001_ftp  b023040001_main.c $(srv) $(cli)
+testhuf: b023040001_huffman.o
+	gcc -o testhuff b023040001_huffman.c
 
 b023040001_srv.o: b023040001_srv.c
 	gcc -c b023040001_srv.c
 b023040001_cli.o: b023040001_cli.c
 	gcc -c b023040001_cli.c
+b023040001_huffman.o:
+	gcc -c b023040001_huffman.c
 clear:
-	rm -f b023040001_ftp *.o 
+	rm -f b023040001_ftp *.o testhuff *_table *.result
