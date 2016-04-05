@@ -2,7 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
-#define MAX_FILE_SIZE 100000000
+#include"b023040001_huffman.h"
+
 
 unsigned char* decimalToBinary( int dec, int length )
 {
@@ -39,11 +40,14 @@ int binaryToDecimal( char* binary)
     return decimal;
 }
 
-void fixLengthTable(char* fileName)
+int fixLengthTable(char* fileName)
 {
     FILE *target;
     if( (target = fopen( fileName, "r")) == 0 )
-        perror("fixLengthTable() : fopen() : target!!\n"), exit(1);
+    {
+        perror("fixLengthTable() : fopen() : target!!\n");
+        return 1;
+    }
     //finding which character arised,and building an encoding table
     int check[256];
     memset( check, 0, sizeof(check) );
@@ -70,7 +74,10 @@ void fixLengthTable(char* fileName)
 
     FILE *table;
     if( (table = fopen( tableName, "w")) == 0 )
-        perror("fixLengthTable() : fopen() : table!!\n"), exit(1);
+    {
+        perror("fixLengthTable() : fopen() : table!!\n");
+        return 1;
+    }
     int i;
 
     fprintf( table, "%d", kinds );
@@ -90,8 +97,13 @@ void fixLengthTable(char* fileName)
 }
 
 
-void fCompression(char* fileName)
+int fCompression(char* fileName)
 {
+    if( fixLengthTable(fileName) == 1 )
+    {
+        perror("fCompression() : fixLengthTable() : fail to build table!!\n");
+        return 1;
+    }
     //fetching encoding table
     FILE *table;
     int temp_nameLength = strlen(fileName) + 1 + 6;
@@ -101,8 +113,10 @@ void fCompression(char* fileName)
     tableName[temp_nameLength] = '\0';
 //    puts(tableName);
     if( (table = fopen( tableName, "r")) == 0)
-        perror("fCompression() : fopen() : table!!\n"), exit(1);
-
+    {
+        perror("fCompression() : fopen() : table!!\n");
+        return 1;
+    }
     unsigned char* encodingTable[256];
     memset( encodingTable, 0, sizeof(encodingTable) );
     int kinds;
@@ -126,8 +140,10 @@ void fCompression(char* fileName)
     //reading whole target file
     FILE *target;
     if( (target = fopen( fileName, "r" )) == 0 )
-        perror("fCompression() : fopen() : target!!\n"), exit(1);
-
+    {
+        perror("fCompression() : fopen() : target!!\n");
+        return 1;
+    }
     long targetSize;
     fseek( target, 0, SEEK_END );
     targetSize = ftell(target);
@@ -175,8 +191,10 @@ void fCompression(char* fileName)
 //    printf("%d %d\n", temp_nameLength, strlen(resultName));
 
     if( (result = fopen( resultName, "w" )) == 0 )
-        perror("fCompression() : fopen() : result!!\n"), exit(1);
-
+    {
+        perror("fCompression() : fopen() : result!!\n");
+        return 1;
+    }
     fwrite( &paddingNum, sizeof(paddingNum), 1, result );
 
 //    puts(binaryCodeBuf);
@@ -206,10 +224,10 @@ void fCompression(char* fileName)
 
     free(binaryCodeBuf);
     free(writeBuf);
-
+    return 0;
 }
 
-void fUncomperssion(char* fileName)
+int fUncomperssion(char* fileName)
 {
     //fetching encoding table
     FILE *table;
@@ -220,8 +238,10 @@ void fUncomperssion(char* fileName)
     tableName[temp_nameLength] = '\0';
 
     if( (table = fopen( tableName, "r")) == 0)
-        perror("fUncompression : fopen : tableName!!\n"), exit(1);
-
+    {
+        perror("fUncompression : fopen : tableName!!\n");
+        return 1;
+    }
     int temp_i;
 
 //    unsigned char* encodingTable[256];
@@ -251,8 +271,10 @@ void fUncomperssion(char* fileName)
     //reading compressed file
     FILE *target;
     if( (target = fopen( fileName, "r")) == 0 )
-        perror("fUncompression : fopen : target!!\n"), exit(1);
-
+    {
+        perror("fUncompression : fopen : target!!\n");
+        return 1;
+    }
     unsigned char paddingNum;
     unsigned char *readBuf = (unsigned char*)malloc(MAX_FILE_SIZE); memset( readBuf, 0, MAX_FILE_SIZE );
 
@@ -302,25 +324,27 @@ void fUncomperssion(char* fileName)
     resultName[temp_nameLength] = '\0';
 
     if( (result = fopen( resultName, "w" )) == 0 )
-        perror("fUncompress() : fopen : result!!\n"), exit(1);
-
+    {
+        perror("fUncompress() : fopen : result!!\n");
+        return 1;
+    }
     fwrite( writeBuf, resultLength, 1, result );
     fclose(result);
     free(writeBuf);
     free(readBuf);
+    return 0;
 //*/
 }
-int main(int argc, char*argv[])
-{
-    if(argc==2)
-    {
-        fixLengthTable(argv[1]);
-        fCompression(argv[1]);
-    }
-    else
-    {
-        fUncomperssion(argv[1]);
-    }
-    puts("LLL");
-    return 0;
-}
+//int main(int argc, char*argv[])
+//{
+//    if(argc==2)
+//    {
+//        fCompression(argv[1]);
+//    }
+//    else
+//    {
+//        fUncomperssion(argv[1]);
+//    }
+//    puts("LLL");
+//    return 0;
+//}

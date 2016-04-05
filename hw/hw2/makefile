@@ -16,4 +16,4 @@ b023040001_cli.o: b023040001_cli.c
 b023040001_huffman.o:
 	gcc -c b023040001_huffman.c
 clear:
-	rm -f b023040001_ftp *.o testhuff 
+	rm -f b023040001_ftp *.o testhuff testhuff

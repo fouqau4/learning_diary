@@ -1,3 +1,8 @@
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "b023040001_srv.h"
 #define MAX_BUF_SIZE 1024
 //IPPROTO_TCP is defined in <netinet/in.h>
@@ -14,10 +19,18 @@ int run_srv()
 
 
     if(bind( fd, (struct sockaddr*) &srv, sizeof(srv) ) < 0)
-        perror("bind error!!\n");//, exit(1);
+    {
+        perror("bind error!!\n");
+        close(fd);
+        exit(1);
+    }
     //listen()
     if(listen( fd, 5) < 0)
-        perror("listen error!!\n"), exit(1);
+    {
+        perror("listen error!!\n");
+        close(fd);
+        exit(1);
+    }
     //select()
 
     fd_set readfds;
@@ -26,22 +39,33 @@ int run_srv()
     FD_ZERO(&readfds);
     FD_SET(fd, &readfds);
     if(select( fd+1, &readfds, 0, 0, &waitCli ) < 0)
-        perror("select error!!\n"), exit(1);
+    {
+        perror("select error!!\n");
+        close(fd);
+        exit(1);
+    }
 
     //accept()
     int newfd;
     struct sockaddr_in cli;
     int cli_len = (int)sizeof(cli);
-    char buf[MAX_BUF_SIZE];
+    unsigned char buf[MAX_BUF_SIZE]; memset( buf, 0, sizeof(buf) );
+
     if(FD_ISSET( fd, &readfds ))
     {
         puts("fd free!!");
         if((newfd = accept( fd, (struct sockaddr*) &cli, &cli_len))< 0)
-            perror("accept error!!\n"), exit(1);
+        {
+            perror("accept error!!\n");
+            close(fd);
+            exit(1);
+        }
     //read()
         else
         {
             puts("client sent this :");
+            read( newfd, buf, sizeof(buf) );
+            puts(buf);
             read( newfd, buf, sizeof(buf) );
             puts(buf);
         }
@@ -49,7 +73,6 @@ int run_srv()
     else
         puts("server is inpatient :(");
 
-    //read()
     //close()
     close(newfd);
     close(fd);
