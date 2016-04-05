@@ -5,6 +5,7 @@
 #include <string.h>
 #include "b023040001_srv.h"
 #define MAX_BUF_SIZE 1024
+#define MAX_FILENAME_SIZE 1024
 //IPPROTO_TCP is defined in <netinet/in.h>
 int run_srv()
 {
@@ -63,11 +64,54 @@ int run_srv()
     //read()
         else
         {
-            puts("client sent this :");
-            read( newfd, buf, sizeof(buf) );
-            puts(buf);
-            read( newfd, buf, sizeof(buf) );
-            puts(buf);
+            char receivedFile[MAX_FILENAME_SIZE]; memset( receivedFile, 0 , sizeof(receivedFile) );
+            read( newfd, receivedFile, sizeof(receivedFile) );
+            puts("received file :");
+            puts(receivedFile);
+
+            FILE *table;
+            char tableName[strlen(receivedFile) +1 + 6]; memset( tableName, 0, sizeof(tableName) );
+            strcpy( tableName, receivedFile );
+            strcat( tableName, "_table" );
+
+            if( (table = fopen( tableName, "w")) == 0 )
+            {
+                perror("run_srv() : fopen() : table!!\n");
+                close(newfd);
+                close(fd);
+                exit(1);
+            }
+            long int fileSize;
+            read( fd, &fileSize, sizeof(fileSize) );
+
+            unsigned char *readBuf = (unsigned char*)malloc(fileSize); memset( readBuf, 0, fileSize );
+            read( fd, readBuf, fileSize );
+            fwrite( readBuf, fileSize, 1, table );
+            fclose(table);
+
+            FILE *compressed;
+            char compressedName[strlen(receivedFile) + 1 + 7]; memset( compressedName, 0, sizeof(compressedName) );
+            strcpy( compressedName, receivedFile );
+            strcat( compressedName, ".result" );
+            if( (compressed = fopen( compressedName, "w")) == 0 )
+            {
+                perror("run_srv() : fopen() : compressed!!\n");
+                close(newfd);
+                close(fd);
+                exit(1);
+            }
+
+            read( newfd, &fileSize, sizeof(fileSize) );
+            readBuf = (unsigned char*)realloc( readBuf, fileSize ); memset( readBuf, 0, sizeof(readBuf) );
+            read( newfd, readBuf, fileSize );
+            fwrite( readBuf, fileSize, 1, compressed );
+            fclose(compressed);
+
+            if( fUncomperssion(compressedName) == 0 )
+            {
+                puts("succeed in receving and uncompressing file!!");
+            }
+
         }
     }
     else

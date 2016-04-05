@@ -6,6 +6,7 @@
 #include "b023040001_cli.h"
 #include "b023040001_huffman.h"
 #define MAX_BUF_SIZE 1024
+#define MAX_FILENAME_SIZE 1024
 
 int run_cli(char *srvIp, int port ){
     //socket()
@@ -26,29 +27,60 @@ int run_cli(char *srvIp, int port ){
     //write()
     else
     {
+        char sendedFile[MAX_FILENAME_SIZE]; memset( sendedFile, 0, sizeof(sendedFile) );
         puts("connect success!!");
         puts("please enter the file you want to send :");
-        scanf("%s",buf);
-        if( fCompression(buf) == 0 )
+        scanf("%s", sendedFile);
+        write( fd, sendedFile, strlen(sendedFile) );
+
+        if( fCompression(sendedFile) == 0 )
         {
-            write( fd, buf, sizeof(buf) );
-            scanf("%s",buf);
-            write( fd, buf, sizeof(buf) );
-//            FILE *compressed;
-//            if( (compressed = fopen( buf, "r" )) == 0 )
-//            {
-//                perror("run_cli() : fopen() : compressed!!\n");
-//                close(fd);
-//                return 1;
-//            }
-//            fseek( compressed, 0, SEEK_END );
-//            long int compressedSize = ftell(compressed);
-//            rewind(compressed);
-//            unsigned char *writeBuf = (unsigned char*)malloc( compressedSize ); memset( writeBuf, 0, compressedSize );
-//            fread( writeBuf, compressedSize, 1, compressed );
-//            fclose(compressed);
-//            write( fd, writeBuf, compressedSize );
+//            scanf("%s",buf);
+//            write( fd, buf, sizeof(buf) );
+            char tableName[strlen(sendedFile) + 1 + 6]; memset( tableName, 0 ,sizeof(tableName) );
+            strcpy( tableName, sendedFile );
+            strcat( tableName, "_table" );
+            FILE *table;
+            if( (table = fopen( tableName, "r" )) == 0 )
+            {
+                perror("run_cli() : fopen() : table!!\n");
+                close(fd);
+                return 1;
+            }
+
+            fseek( table, 0, SEEK_END );
+            long int fileSize = ftell(table);
+            rewind(table);
+            unsigned char *writeBuf = (unsigned char*)malloc( fileSize ); memset( writeBuf, 0, fileSize );
+            fread( writeBuf, fileSize, 1, table );
+            write( fd, fileSize, sizeof(fileSize) );
+            write( fd, writeBuf, fileSize );
+            puts("succeed in sending table!!");
+
+            char compressedName[strlen(sendedFile) + 1 + 7]; memset( compressedName, 0, sizeof(compressedName) );
+            strcpy( compressedName, sendedFile );
+            strcat( compressedName, ".result" );
+            FILE *compressed;
+            if( (compressed = fopen( compressedName, "r" )) == 0 )
+            {
+                perror("run_cli() : fopen() : compressed!!\n");
+                close(fd);
+                return 1;
+            }
+
+            fseek( compressed, 0, SEEK_END );
+            fileSize = ftell(compressed);
+            rewind(compressed);
+            writeBuf = (unsigned char*)realloc( writeBuf, fileSize ); memset( writeBuf, 0, fileSize );
+            write( fd, &fileSize, sizeof(fileSize) );
+            fread( writeBuf, fileSize, 1, compressed );
+            fclose(compressed);
+            write( fd, writeBuf, fileSize );
+
+            free(writeBuf);
         }
+        else
+            puts("file transmission failed");
         close(fd);
     }
 
