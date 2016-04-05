@@ -2,9 +2,10 @@ all: ftp
 	
 srv = b023040001_srv.o
 cli = b023040001_cli.o
+fhuff = b023040001_huffman.o
 
-ftp: b023040001_main.c $(srv) $(cli)
-	gcc -o b023040001_ftp  b023040001_main.c $(srv) $(cli)
+ftp: b023040001_main.c $(srv) $(cli) $(fhuff)
+	gcc -o b023040001_ftp  b023040001_main.c $(srv) $(cli) $(fhuff) -lm
 testhuf: b023040001_huffman.o
 	gcc -o testhuff b023040001_huffman.c -lm
 
