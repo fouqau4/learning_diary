@@ -42,6 +42,7 @@ int binaryToDecimal( char* binary)
 
 int fixLengthTable(char* fileName)
 {
+    puts("starting to build encoding table\n");
     FILE *target;
     if( (target = fopen( fileName, "r")) == 0 )
     {
@@ -93,18 +94,21 @@ int fixLengthTable(char* fileName)
     fflush(table);
     fclose(table);
 
-    puts("success building table");
+    puts("succeed in building encoding table\n");
 }
 
 
 int fCompression(char* fileName)
 {
+    puts("in fCompression\n");
     if( fixLengthTable(fileName) == 1 )
     {
         perror("fCompression() : fixLengthTable() : fail to build table!!\n");
         return 1;
     }
+
     //fetching encoding table
+    puts("fetching encoding table\n");
     FILE *table;
     int temp_nameLength = strlen(fileName) + 1 + 6;
     char tableName[temp_nameLength]; memset( tableName, 0, sizeof(tableName) );
@@ -138,23 +142,28 @@ int fCompression(char* fileName)
     fclose(table);
 
     //reading whole target file
+    puts("reading whole target file\n");
+
     FILE *target;
     if( (target = fopen( fileName, "r" )) == 0 )
     {
         perror("fCompression() : fopen() : target!!\n");
         return 1;
     }
+
     long targetSize;
     fseek( target, 0, SEEK_END );
     targetSize = ftell(target);
     rewind(target);
-//    printf("targetSize = %ld\n",targetSize);exit(0);
-    unsigned char *readBuf = (unsigned char*)malloc(MAX_FILE_SIZE);
-    memset( readBuf, 0, sizeof(readBuf) );
+
+    unsigned char *readBuf = (unsigned char*)malloc(MAX_FILE_SIZE);  memset( readBuf, 0, MAX_FILE_SIZE );
     fread( readBuf, targetSize, 1, target );
     fclose(target);
-//    puts(readBuf);exit(0);
-    //encoding target file into binary code
+
+
+    //zero padding
+    puts("zero padding\n");
+
     long int binaryCodeLength = codeLength * targetSize;
     unsigned char paddingNum;
     if(binaryCodeLength % 8 != 0)
@@ -162,7 +171,10 @@ int fCompression(char* fileName)
         paddingNum = (unsigned char)( 8 - binaryCodeLength % 8 );
         binaryCodeLength += (int)paddingNum;
     }
-//    printf("binaryCodeLength = %ld\n",binaryCodeLength);exit(0);
+
+    //encoding target file into binary code
+    puts("encoding target file into binary code\n");
+
     unsigned char *binaryCodeBuf = (unsigned char*)malloc( binaryCodeLength + 1 ); memset( binaryCodeBuf, 0 , binaryCodeLength + 1);
     for( temp_i = 0 ; temp_i < targetSize ; temp_i++ )
     {
@@ -175,10 +187,13 @@ int fCompression(char* fileName)
 
     for( temp_i = 0 ; temp_i < (int)paddingNum ; temp_i++ )
             strcat( binaryCodeBuf, "0" );
-//    printf("readBuf : sizeof =  %d, strlen =  %d \n", sizeof(readBuf), strlen(readBuf));
-    free(readBuf);
-    //zero padding
 
+    free(readBuf);
+
+
+
+    //writing encoded contents to result file
+    puts("writing encoded contents to result file\n");
 
     FILE *result;
     temp_nameLength = strlen(fileName) + 1 + 7;
@@ -186,9 +201,7 @@ int fCompression(char* fileName)
     strcpy( resultName, fileName );
     strcat( resultName, ".result");
     resultName[temp_nameLength] = '\0';
-//    puts(resultName);
-//    puts(fileName);
-//    printf("%d %d\n", temp_nameLength, strlen(resultName));
+
 
     if( (result = fopen( resultName, "w" )) == 0 )
     {
@@ -197,11 +210,8 @@ int fCompression(char* fileName)
     }
     fwrite( &paddingNum, sizeof(paddingNum), 1, result );
 
-//    puts(binaryCodeBuf);
     binaryCodeLength = strlen(binaryCodeBuf);
-//    printf("sizeof binaryCodeBuf = %ld\n", strlen(binaryCodeBuf));exit(0);
 
-    //writing encoded contents to result file
     unsigned char* writeBuf = (unsigned char*)malloc(MAX_FILE_SIZE); memset( writeBuf, 0, MAX_FILE_SIZE );
     int temp_j;
     unsigned char temp_c8[8];
@@ -213,17 +223,16 @@ int fCompression(char* fileName)
         writeBuf[temp_i] = (unsigned char)binaryToDecimal(temp_c8);
 //        printf("%d\n", (int)writeBuf[temp_i]);
     }
-//    printf(" temp_i = %d\n",temp_i);
-//    printf("strlen of writeBuf = %ld\n", strlen(writeBuf));
-//    puts(writeBuf);
-    //export compressed file
+
     fwrite( writeBuf, temp_i , 1, result );
     fclose(result);
     for( temp_i= 0; temp_i < 256 ; temp_i++ )
-        free(encodingTable[temp_i]);
+        if( encodingTable[temp_i] != NULL )
+            free(encodingTable[temp_i]);
 
     free(binaryCodeBuf);
     free(writeBuf);
+    puts("succeed in compressing file\n");
     return 0;
 }
 
@@ -244,11 +253,10 @@ int fUncomperssion(char* fileName)
     }
     int temp_i;
 
-//    unsigned char* encodingTable[256];
+
     unsigned char recoverTable[256];
     memset( recoverTable, 0, sizeof(recoverTable) );
-//    for( temp_i = 0 ; temp_i < 256 ; temp_i++ )
-//        memset( encodingTable[temp_i], 0, sizeof(encodingTable[temp_i]) );exit(0);
+
 
     int num;
     unsigned char tempA_c2[2];
@@ -263,8 +271,7 @@ int fUncomperssion(char* fileName)
     {
         fread( tempA_c2, sizeof(tempA_c2), 1, table );
         recoverTable[(int)tempA_c2[1]] = tempA_c2[0];
-//        encodingTable[(int)tempA_c2[0]] = decimalToBinary( (int)tempA_c2[1], codeLength );
-//        puts(encodingTable[(int)tempA_c2[0]]);
+
     }
     fclose(table);
 

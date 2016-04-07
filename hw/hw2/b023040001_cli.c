@@ -51,10 +51,10 @@ int run_cli(char *srvIp, int port ){
             fseek( table, 0, SEEK_END );
             long int fileSize = ftell(table);
             rewind(table);
-            unsigned char *writeBuf = (unsigned char*)malloc( fileSize ); memset( writeBuf, 0, fileSize );
-            fread( writeBuf, fileSize, 1, table );
+            unsigned char *tableBuf = (unsigned char*)malloc( fileSize ); memset( tableBuf, 0, fileSize );
+            fread( tableBuf, fileSize, 1, table );
             write( fd, fileSize, sizeof(fileSize) );
-            write( fd, writeBuf, fileSize );
+            write( fd, tableBuf, fileSize );
             puts("succeed in sending table!!");
 
             char compressedName[strlen(sendedFile) + 1 + 7]; memset( compressedName, 0, sizeof(compressedName) );
@@ -71,7 +71,8 @@ int run_cli(char *srvIp, int port ){
             fseek( compressed, 0, SEEK_END );
             fileSize = ftell(compressed);
             rewind(compressed);
-            writeBuf = (unsigned char*)realloc( writeBuf, fileSize ); memset( writeBuf, 0, fileSize );
+            unsigned char *writeBuf = (unsigned char*)realloc( writeBuf, fileSize ); memset( writeBuf, 0, fileSize );
+
             write( fd, &fileSize, sizeof(fileSize) );
             fread( writeBuf, fileSize, 1, compressed );
             fclose(compressed);

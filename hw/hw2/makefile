@@ -6,8 +6,8 @@ fhuff = b023040001_huffman.o
 
 ftp: b023040001_main.c $(srv) $(cli) $(fhuff)
 	gcc -o b023040001_ftp  b023040001_main.c $(srv) $(cli) $(fhuff) -lm
-testhuf: b023040001_huffman.o
-	gcc -o testhuff b023040001_huffman.c -lm
+test: b023040001_huffman.o
+	gcc -o Test test.c $(fhuff) -lm
 
 b023040001_srv.o: b023040001_srv.c
 	gcc -c b023040001_srv.c

@@ -84,10 +84,12 @@ int run_srv()
             long int fileSize;
             read( fd, &fileSize, sizeof(fileSize) );
 
-            unsigned char *readBuf = (unsigned char*)malloc(fileSize); memset( readBuf, 0, fileSize );
-            read( fd, readBuf, fileSize );
-            fwrite( readBuf, fileSize, 1, table );
+            unsigned char *tableBuf = (unsigned char*)malloc(fileSize); memset( tableBuf, 0, fileSize );
+            read( fd, tableBuf, fileSize );
+            puts("succeed in receving table\n");
+            fwrite( tableBuf, fileSize, 1, table );
             fclose(table);
+            puts("succeed in building tableFile\n");
 
             FILE *compressed;
             char compressedName[strlen(receivedFile) + 1 + 7]; memset( compressedName, 0, sizeof(compressedName) );
@@ -102,10 +104,13 @@ int run_srv()
             }
 
             read( newfd, &fileSize, sizeof(fileSize) );
-            readBuf = (unsigned char*)realloc( readBuf, fileSize ); memset( readBuf, 0, sizeof(readBuf) );
+            unsigned char *readBuf = (unsigned char*)realloc( readBuf, fileSize ); memset( readBuf, 0, sizeof(readBuf) );
             read( newfd, readBuf, fileSize );
             fwrite( readBuf, fileSize, 1, compressed );
             fclose(compressed);
+
+            free(tableBuf);
+            free(readBuf);
 
             if( fUncomperssion(compressedName) == 0 )
             {
