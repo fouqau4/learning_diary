@@ -139,6 +139,7 @@ int fCompression(char* fileName)
         encodingTable[(int)tempA_c2[0]] = decimalToBinary( (int)tempA_c2[1], codeLength );
         puts(encodingTable[(int)tempA_c2[0]]);
     }
+
     fclose(table);
 
     //reading whole target file

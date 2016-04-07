@@ -37,23 +37,30 @@ int run_cli(char *srvIp, int port ){
         {
 //            scanf("%s",buf);
 //            write( fd, buf, sizeof(buf) );
-            char tableName[strlen(sendedFile) + 1 + 6]; memset( tableName, 0 ,sizeof(tableName) );
+            char tableName[strlen(sendedFile) + 1 + 6]; memset( tableName, 0 , sizeof(tableName) );
             strcpy( tableName, sendedFile );
             strcat( tableName, "_table" );
+            puts(tableName);
             FILE *table;
-            if( (table = fopen( tableName, "r" )) == 0 )
+            if( (table = fopen( "myTcp.h_table", "r" )) == 0 )
             {
                 perror("run_cli() : fopen() : table!!\n");
                 close(fd);
                 return 1;
             }
 
+            long fileSize;
+
             fseek( table, 0, SEEK_END );
-            long int fileSize = ftell(table);
+            fileSize = ftell(table);
+            printf("fileSize = %ld\n", fileSize);
             rewind(table);
-            unsigned char *tableBuf = (unsigned char*)malloc( fileSize ); memset( tableBuf, 0, fileSize );
+            unsigned char *tableBuf = (unsigned char*)malloc( 102400 ); memset( tableBuf, 0, 102400 );
             fread( tableBuf, fileSize, 1, table );
-            write( fd, fileSize, sizeof(fileSize) );
+            puts(tableBuf);
+
+            puts(buf);
+            write( fd, buf, strlen(buf) );
             write( fd, tableBuf, fileSize );
             puts("succeed in sending table!!");
 
@@ -71,12 +78,15 @@ int run_cli(char *srvIp, int port ){
             fseek( compressed, 0, SEEK_END );
             fileSize = ftell(compressed);
             rewind(compressed);
-            unsigned char *writeBuf = (unsigned char*)realloc( writeBuf, fileSize ); memset( writeBuf, 0, fileSize );
+            printf("fileSize = %ld\n", fileSize);
+            unsigned char *writeBuf = (unsigned char*)malloc( fileSize ); memset( writeBuf, 0, fileSize );
 
-            write( fd, &fileSize, sizeof(fileSize) );
+            sprintf( buf, "%ld", fileSize );
+            write( fd, &buf, sizeof(buf) );
             fread( writeBuf, fileSize, 1, compressed );
             fclose(compressed);
             write( fd, writeBuf, fileSize );
+            puts("succeed in sending compressed file\n");
 
             free(writeBuf);
         }

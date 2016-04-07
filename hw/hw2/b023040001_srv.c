@@ -82,7 +82,10 @@ int run_srv()
                 exit(1);
             }
             long int fileSize;
-            read( fd, &fileSize, sizeof(fileSize) );
+            puts("receving fileSize!!\n");
+            read( fd, buf, sizeof(buf) );
+            fileSize = atol(buf);
+            printf("fileSize = %ld\n", fileSize);
 
             unsigned char *tableBuf = (unsigned char*)malloc(fileSize); memset( tableBuf, 0, fileSize );
             read( fd, tableBuf, fileSize );
@@ -103,8 +106,10 @@ int run_srv()
                 exit(1);
             }
 
-            read( newfd, &fileSize, sizeof(fileSize) );
-            unsigned char *readBuf = (unsigned char*)realloc( readBuf, fileSize ); memset( readBuf, 0, sizeof(readBuf) );
+            memset( buf, 0, sizeof(buf) );
+            read( newfd, buf, sizeof(buf) );
+            fileSize = atol(buf);
+            unsigned char *readBuf = (unsigned char*)malloc( fileSize ); memset( readBuf, 0, sizeof(readBuf) );
             read( newfd, readBuf, fileSize );
             fwrite( readBuf, fileSize, 1, compressed );
             fclose(compressed);
