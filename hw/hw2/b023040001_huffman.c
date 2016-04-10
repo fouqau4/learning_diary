@@ -3,13 +3,18 @@
 #include<string.h>
 #include<math.h>
 #include"b023040001_huffman.h"
+#define DEBUG
 
 
-unsigned char* decimalToBinary( int dec, int length )
+
+void decimalToBinary( int dec, unsigned char* binary, int length )
 {
-    unsigned char *binary;
-    binary = (char*)malloc( length + 1 ); memset( binary, 0, length + 1 );
-    printf("dec = %d ,length = %d , strlen = %ld, sizeof = %ld\n",dec, length, strlen(binary), sizeof(binary));
+    memset( binary, 0, length + 1 );
+
+#ifdef DEBUG
+    printf("[DBG] %s : dec = %d ,length = %d\n", __FUNCTION__, dec, length );
+#endif // DEBUG
+
     int temp_i;
     for( temp_i = length-1 ; temp_i >= 0; temp_i--)
     {
@@ -22,53 +27,75 @@ unsigned char* decimalToBinary( int dec, int length )
             binary[temp_i] = '0';
     }
     binary[length] = '\0';
-//    puts(binary);
-    return binary;
+
+#ifdef DEBUG
+    printf("[DBG] %s : binary = %s\n\n", __FUNCTION__, binary );
+#endif // DEBUG
 }
 
-int binaryToDecimal( char* binary)
+int binaryToDecimal( unsigned char* binary)
 {
     int length = strlen(binary);
-//    puts(binary);
-//    printf("strlen of binary = %d\n", length);
+
+#ifdef DEBUG
+    printf("[DBG] %s : binary = %s, strlen of binary = %d\n", __FUNCTION__, binary, length );
+#endif // DEBUG
+
     int decimal = 0;
     int temp_i;
     for( temp_i = 0 ; temp_i < length ; temp_i++ )
     {
         decimal += (int)(pow( (double)2, (double)(length - temp_i -1) ) * (binary[temp_i] - '0'));
     }
+
+#ifdef DEBUG
+    printf("[DBG] %s : decimal = %d\n\n", __FUNCTION__, decimal );
+#endif // DEBUG
+
     return decimal;
 }
 
 int fixLengthTable(char* fileName)
 {
-    puts("starting to build encoding table\n");
-    FILE *target;
+    puts("\\(^_ ^)\\ starting to create encoding table");
+    FILE *target; //the file which will be compressed
     if( (target = fopen( fileName, "r")) == 0 )
     {
         perror("fixLengthTable() : fopen() : target!!\n");
         return 1;
     }
-    //finding which character arised,and building an encoding table
-    int check[256];
-    memset( check, 0, sizeof(check) );
-    unsigned char encodingTable[256];
-    memset( encodingTable, 0, sizeof(encodingTable) );
-    int kinds = 0;
-    unsigned char temp;
-    temp = (unsigned char)fgetc(target);
-    while( kinds < 256 && !feof(target))
-    {
-        if( check[temp] == 0 )
-            check[temp] = 1, encodingTable[(int)temp] = (unsigned char)kinds, kinds++;
-        temp = (unsigned char)fgetc(target);
-    }
+    //-------------------------------------------------------------------------------------------------
+    //counting # of code
+    int encodingTable[256];
+    int temp_i;
+    for( temp_i = 0 ; temp_i < 256 ; temp_i++ )
+        encodingTable[temp_i] = -1;
+    int kinds = 0; //kinds of code
+    unsigned char temp_uc; //temp of unsigned char
 
+
+    //finding which character arised, and building an encoding table
+    temp_uc = (unsigned char)fgetc(target);
+    while( !feof(target) )
+    {
+
+#ifdef DEBUG
+        printf("\n[DBG] %s() : line_%d : next char = %d, kinds = %d\n", __FUNCTION__, __LINE__, (int)temp_uc, kinds );
+#endif // DEBUG
+
+        if( encodingTable[temp_uc] == -1 )
+        {
+            encodingTable[(int)temp_uc] = kinds;
+            kinds++;
+        }
+        temp_uc = (unsigned char)fgetc(target);
+    }
     fclose(target);
 
     //exporting table
     int temp_nameLength = strlen(fileName) + 1 + 6 ;
-    char tableName[temp_nameLength]; memset( tableName, 0, sizeof(tableName) );
+    char tableName[temp_nameLength];
+    memset( tableName, 0, sizeof(tableName) );
     strcpy( tableName, fileName);
     strcat( tableName, "_table");
     tableName[temp_nameLength] = '\0';
@@ -79,280 +106,382 @@ int fixLengthTable(char* fileName)
         perror("fixLengthTable() : fopen() : table!!\n");
         return 1;
     }
-    int i;
 
-    fprintf( table, "%d", kinds );
-//    fputc( (unsigned char)kinds, table);
-    for( i=0; i < 256; i++ )
+    char integer[4];
+    *(int*)integer = kinds;
+    fwrite( integer, 4, 1, table );
+    for( temp_i = 0 ; temp_i < 256 ; temp_i++ )
     {
-        if(check[i] == 1)
+        if( encodingTable[temp_i] != -1 )
         {
-            fprintf( table, "%c%c", (unsigned char)i, encodingTable[i] );
-//            printf("encode %d into : %d\n", (unsigned char)i, encodingTable[i] );
+            fprintf( table, "%c%c", temp_i, (unsigned char)encodingTable[temp_i] );
+#ifdef DEBUG
+            printf("[DBG] %s : encode %3d into : %3d\n", __FUNCTION__, temp_i, encodingTable[temp_i] );
+#endif // DEBUG
         }
     }
-    fflush(table);
     fclose(table);
+    fflush(table);
+    //-------------------------------------------------------------------------------------------------
 
-    puts("succeed in building encoding table\n");
+    puts("\\(^_ ^)\\ succeed in building encoding table\n");
 }
 
 
 int fCompression(char* fileName)
 {
-    puts("in fCompression\n");
+    puts("\\(^_ ^)\\ starting to compress file\n");
+    puts("\\(^_ ^)\\ creating encoding table");
     if( fixLengthTable(fileName) == 1 )
     {
         perror("fCompression() : fixLengthTable() : fail to build table!!\n");
         return 1;
     }
-
+    //-------------------------------------------------------------------------------------------------
     //fetching encoding table
-    puts("fetching encoding table\n");
-    FILE *table;
+    puts("\\(^_ ^)\\ fetching encoding table");
+    FILE *table; //encoding table
     int temp_nameLength = strlen(fileName) + 1 + 6;
-    char tableName[temp_nameLength]; memset( tableName, 0, sizeof(tableName) );
+    char tableName[temp_nameLength];
+    memset( tableName, 0, sizeof(tableName) );
     strcpy( tableName, fileName );
     strcat( tableName, "_table");
     tableName[temp_nameLength] = '\0';
-//    puts(tableName);
+
+#ifdef DEBUG
+    printf("[DBG] %s : tableName = %s\n", __FUNCTION__, tableName);
+#endif // DEBUG
+
     if( (table = fopen( tableName, "r")) == 0)
     {
         perror("fCompression() : fopen() : table!!\n");
         return 1;
     }
-    unsigned char* encodingTable[256];
-    memset( encodingTable, 0, sizeof(encodingTable) );
+
+//    unsigned char* encodingTable[256];  memset( encodingTable, 0, sizeof(encodingTable) ); //encodingTable keeping binary code
+    unsigned char encodingTable[256];
+    memset( encodingTable, 0, sizeof(encodingTable) ); //encodingTable keeping binary code
     int kinds;
-    unsigned char tempA_c2[2];
-    int codeLength = 0;
-    int temp_i;
-    fscanf( table, "%d", &kinds);
+    unsigned char tempA_uc_2[2]; //temp array of unsigned char with size 2
+    int codeLength = 0; //length of binary code
+    int temp_i; //temp of integer
+
+    char integer[4];
+    fread( integer, 4, 1, table );
+    kinds = *(int*)integer;
+    //calaulating codeLength
     if( kinds > 1 )
         temp_i = kinds -1;
     while( temp_i > 0 )
         temp_i /= 2, codeLength++;
-//    printf("kinds = %d , codeLength = %d\n",kinds,codeLength);
-    for( temp_i=0; temp_i < kinds; temp_i++ )
+
+#ifdef DEBUG
+    printf("[DBG] %s : kinds = %d , codeLength = %d\n", __FUNCTION__, kinds, codeLength);
+#endif // DEBUG
+
+    //filling encodingTable
+    for( temp_i=0; temp_i < kinds ; temp_i++ )
     {
-        fread( tempA_c2, sizeof(tempA_c2), 1, table );
-        encodingTable[(int)tempA_c2[0]] = decimalToBinary( (int)tempA_c2[1], codeLength );
-        puts(encodingTable[(int)tempA_c2[0]]);
+        fread( tempA_uc_2, 2, 1, table );
+        encodingTable[(int)tempA_uc_2[0]] = tempA_uc_2[1];
+
+#ifdef DEBUG
+        printf("[DBG] %s : encodingTable[%d] = %d\n", __FUNCTION__, (int)tempA_uc_2[0], (int)tempA_uc_2[1] );
+#endif // DEBUG
+
     }
 
     fclose(table);
-
+    //-------------------------------------------------------------------------------------------------
     //reading whole target file
-    puts("reading whole target file\n");
+    puts("\\(^_ ^)\\  reading whole target file\n");
 
-    FILE *target;
+    FILE *target; //the file which will be compressed
     if( (target = fopen( fileName, "r" )) == 0 )
     {
         perror("fCompression() : fopen() : target!!\n");
         return 1;
     }
 
-    long targetSize;
+    long targetSize; //size of target
     fseek( target, 0, SEEK_END );
     targetSize = ftell(target);
     rewind(target);
 
-    unsigned char *readBuf = (unsigned char*)malloc(MAX_FILE_SIZE);  memset( readBuf, 0, MAX_FILE_SIZE );
+#ifdef DEBUG
+    printf("[DBG] %s : targetSize = %ld\n", __FUNCTION__, targetSize );
+#endif // DEBUG
+    //storing target in readBuf
+    unsigned char *readBuf = (unsigned char*)malloc(targetSize);
+    memset( readBuf, 0, targetSize );
     fread( readBuf, targetSize, 1, target );
     fclose(target);
 
-
+    //-------------------------------------------------------------------------------------------------
     //zero padding
-    puts("zero padding\n");
+    puts("\\(^_ ^)\\ zero padding\n");
 
-    long int binaryCodeLength = codeLength * targetSize;
-    unsigned char paddingNum;
+    long int binaryCodeLength = codeLength * targetSize; //length of target after encoding into binary code
+    unsigned char paddingNum = 0;
+    //calculating padding number
     if(binaryCodeLength % 8 != 0)
     {
         paddingNum = (unsigned char)( 8 - binaryCodeLength % 8 );
         binaryCodeLength += (int)paddingNum;
     }
 
+#ifdef DEBUG
+    printf("[DBG] %s : paddingNum = %d\n\n", __FUNCTION__, (int)paddingNum );
+#endif // DEBUG
+    //-------------------------------------------------------------------------------------------------
     //encoding target file into binary code
-    puts("encoding target file into binary code\n");
+    puts("\\(^_ ^)\\ encoding target file into binary code\n");
 
-    unsigned char *binaryCodeBuf = (unsigned char*)malloc( binaryCodeLength + 1 ); memset( binaryCodeBuf, 0 , binaryCodeLength + 1);
+    unsigned char *binaryCodeBuf = (unsigned char*)malloc( binaryCodeLength + 1 );
+    memset( binaryCodeBuf, 0 , binaryCodeLength + 1);
+    puts("\n**********************************************************");
+    puts("*                                                        *");
+    unsigned char tempS_uc_codeLength[codeLength + 1];
     for( temp_i = 0 ; temp_i < targetSize ; temp_i++ )
     {
-//        printf("next : %c = %s \n", readBuf[temp_i], encodingTable[(int)readBuf[temp_i]]);
-//        printf(" %s + ", binaryCodeBuf );
-        strcpy( binaryCodeBuf + temp_i * codeLength, encodingTable[(int)readBuf[temp_i]] );
-//        printf("%s = %s \n %d \n ", encodingTable[(int)readBuf[temp_i]], binaryCodeBuf, temp_i+1);
-        printf("%10d / %10ld \n", temp_i+1, targetSize);
-    }
+        decimalToBinary( (int)encodingTable[(int)readBuf[temp_i]], tempS_uc_codeLength, codeLength );
+#ifdef DEBUG
+        printf("[DBG] %s : next charecter in readBuf : %d = %s \n", __FUNCTION__, (int)readBuf[temp_i], tempS_uc_codeLength );
+#endif // DEBUG
 
+        strcpy( binaryCodeBuf + temp_i * codeLength, tempS_uc_codeLength );
+        printf("*   Compression Progress :  [%10d / %10ld ]   *\n", temp_i+1, targetSize); //showing progress
+    }
+    puts("*                                                        *");
+    puts("**********************************************************\n\n");
+    //filling binaryCode into multiple of byte
     for( temp_i = 0 ; temp_i < (int)paddingNum ; temp_i++ )
-            strcat( binaryCodeBuf, "0" );
+        strcat( binaryCodeBuf, "0" );
 
     free(readBuf);
 
-
-
+    //-------------------------------------------------------------------------------------------------
     //writing encoded contents to result file
-    puts("writing encoded contents to result file\n");
+    puts("\\(^_ ^)\\ writing encoded contents to result file");
 
-    FILE *result;
+    FILE *result; //the file after compressing
     temp_nameLength = strlen(fileName) + 1 + 7;
-    char resultName[temp_nameLength]; memset( resultName, 0, sizeof(resultName) );
+    char resultName[temp_nameLength];
+    memset( resultName, 0, sizeof(resultName) );
     strcpy( resultName, fileName );
     strcat( resultName, ".result");
     resultName[temp_nameLength] = '\0';
 
+#ifdef DEBUG
+    printf("[DBG] %s : resultName = %s\n", __FUNCTION__, resultName );
+#endif // DEBUG
 
     if( (result = fopen( resultName, "w" )) == 0 )
     {
         perror("fCompression() : fopen() : result!!\n");
         return 1;
     }
+    //recording paddingNum in result
     fwrite( &paddingNum, sizeof(paddingNum), 1, result );
 
-    binaryCodeLength = strlen(binaryCodeBuf);
+    binaryCodeLength = strlen(binaryCodeBuf); //updating binaryCodeLength after zero padding
 
-    unsigned char* writeBuf = (unsigned char*)malloc(MAX_FILE_SIZE); memset( writeBuf, 0, MAX_FILE_SIZE );
-    int temp_j;
-    unsigned char temp_c8[8];
+#ifdef DEBUG
+    printf("[DBG] %s : binaryCodeLength = %ld\n\n", __FUNCTION__, binaryCodeLength );
+#endif // DEBUG
+
+    unsigned char* writeBuf = (unsigned char*)malloc( binaryCodeLength / 8 + 1 );
+    memset( writeBuf, 0, binaryCodeLength / 8 + 1 );
+    unsigned char tempS_uc_8[8 + 1]; //temp array of unsigned char with size 8
+    //converting 8 bytes binary code into 1 byte char, and writing into result
     for( temp_i=0; temp_i < binaryCodeLength / 8 ; temp_i++ )
     {
-        strncpy( temp_c8, binaryCodeBuf+(temp_i * 8), 8 );
-//        puts(temp_c8);
-//        printf("next = %d\n",binaryToDecimal(temp_c8));
-        writeBuf[temp_i] = (unsigned char)binaryToDecimal(temp_c8);
-//        printf("%d\n", (int)writeBuf[temp_i]);
+        strncpy( tempS_uc_8, binaryCodeBuf+(temp_i * 8), 8 );
+        tempS_uc_8[8] = '\0';
+#ifdef DEBUG
+        printf("[DBG] %s : next byte : %s = %d, strlen = %zu, position = %d\n", __FUNCTION__, tempS_uc_8, binaryToDecimal(tempS_uc_8), strlen(tempS_uc_8), temp_i * 8 );
+#endif // DEBUG
+
+        writeBuf[temp_i] = (unsigned char)binaryToDecimal(tempS_uc_8);
     }
 
     fwrite( writeBuf, temp_i , 1, result );
     fclose(result);
-    for( temp_i= 0; temp_i < 256 ; temp_i++ )
-        if( encodingTable[temp_i] != NULL )
-            free(encodingTable[temp_i]);
+
+//    for( temp_i= 0; temp_i < 256 ; temp_i++ )
+//        if( encodingTable[temp_i] != NULL )
+//            free(encodingTable[temp_i]);
 
     free(binaryCodeBuf);
     free(writeBuf);
-    puts("succeed in compressing file\n");
+    //-------------------------------------------------------------------------------------------------
+    puts("\\(^_ ^)\\ succeed in compressing file\n");
+
     return 0;
 }
 
-int fUncomperssion(char* fileName)
+int fUncompression(char* fileName)
 {
+    //-------------------------------------------------------------------------------------------------
     //fetching encoding table
-    FILE *table;
+    puts("/( - v-)/ fetching encoding table\n");
+
+    FILE *table; //encoding table
     int temp_nameLength = strlen(fileName) + 1 - 7 + 6;
-    char tableName[temp_nameLength]; memset( tableName, 0, sizeof(tableName) );
+    char tableName[temp_nameLength];
+    memset( tableName, 0, sizeof(tableName) );
     strncpy( tableName, fileName, strlen(fileName) - 7 );
     strcat( tableName, "_table" );
     tableName[temp_nameLength] = '\0';
+
+#ifdef DEBUG
+    printf("[DBG] %s : tableName = %s\n", __FUNCTION__, tableName );
+#endif // DEBUG
 
     if( (table = fopen( tableName, "r")) == 0)
     {
         perror("fUncompression : fopen : tableName!!\n");
         return 1;
     }
-    int temp_i;
-
+    int temp_i; //temp of integer
 
     unsigned char recoverTable[256];
     memset( recoverTable, 0, sizeof(recoverTable) );
 
-
-    int num;
-    unsigned char tempA_c2[2];
+    int kinds; //kinds of code
+    unsigned char tempA_uc_2[2];
     int codeLength = 0;
 
-    fscanf( table, "%d", &num);
-    if( num > 1 )
-        temp_i = num - 1;
+    char integer[4];
+    fread( integer, 4, 1, table );
+    kinds = *(int*)integer;
+    //calculating codeLength
+    if( kinds > 1 )
+        temp_i = kinds - 1;
     while( temp_i > 0 )
         temp_i /= 2, codeLength++;
-    for( temp_i=0; temp_i < num; temp_i++ )
+
+#ifdef DEBUG
+    printf("[DBG] %s : kinds = %d, codeLength = %d\n", __FUNCTION__, kinds, codeLength );
+#endif // DEBUG
+
+    for( temp_i=0; temp_i < kinds ; temp_i++ )
     {
-        fread( tempA_c2, sizeof(tempA_c2), 1, table );
-        recoverTable[(int)tempA_c2[1]] = tempA_c2[0];
+        fread( tempA_uc_2, 2, 1, table );
+        recoverTable[(int)tempA_uc_2[1]] = tempA_uc_2[0];
+
+        #ifdef DEBUG
+        printf("\n[DBG] %s() : line_%d : recoverTable[%d] = %d\n", __FUNCTION__, __LINE__, (int)tempA_uc_2[1], (int)tempA_uc_2[0] );
+        #endif // DEBUG
 
     }
     fclose(table);
-
+    //-------------------------------------------------------------------------------------------------
     //reading compressed file
-    FILE *target;
+    puts("/( - v-)/ reading compressed file\n");
+
+    FILE *target; //the file which will be uncompressed
     if( (target = fopen( fileName, "r")) == 0 )
     {
         perror("fUncompression : fopen : target!!\n");
         return 1;
     }
-    unsigned char paddingNum;
-    unsigned char *readBuf = (unsigned char*)malloc(MAX_FILE_SIZE); memset( readBuf, 0, MAX_FILE_SIZE );
 
+    //fileSize of target
     fseek( target, 0, SEEK_END);
     long targetSize = ftell(target) - 1;
     rewind(target);
 
-    fread( &paddingNum, sizeof(paddingNum), 1, target );
-    fread( readBuf, targetSize, 1, target );
-    fclose(target);
-//    printf("target sige = %ld\n",targetSize);exit(0);
-    //converting code into binary bode
-    int binaryCodeLength = 8 * targetSize + 1;
-    unsigned char *binary = (unsigned char*)malloc( binaryCodeLength ); memset( binary, 0, binaryCodeLength );
+#ifdef DEBUG
+    printf("[DBG] %s : targetSize = %ld\n", __FUNCTION__, targetSize );
+#endif // DEBUG
 
+    unsigned char paddingNum;
+    fread( &paddingNum, sizeof(paddingNum), 1, target );
+
+#ifdef DEBUG
+    printf("[DBG] %s : paddingNum = %d\n", __FUNCTION__, (int)paddingNum );
+#endif // DEBUG
+
+    unsigned char *readBuf = (unsigned char*)malloc( targetSize );
+    memset( readBuf, 0, targetSize );
+    fread( readBuf, targetSize, 1, target );
+
+    fclose(target);
+
+    //-------------------------------------------------------------------------------------------------
+    //converting code into binary code
+    puts("/( - v-)/ converting code into binary code\n");
+
+    int binaryCodeLength = 8 * targetSize + 1;
+
+#ifdef DEBUG
+    printf("[DBG] %s : binaryCodeLength = %d\n", __FUNCTION__, binaryCodeLength );
+#endif // DEBUG
+
+    unsigned char *binary = (unsigned char*)malloc( binaryCodeLength );
+    memset( binary, 0, binaryCodeLength );
+    unsigned char tempS_uc_8[8 + 1];
     for( temp_i = 0; temp_i < targetSize ; temp_i++ )
     {
-//        printf("binary = %s , next byte = %d \n", binary, (int)readBuf[temp_i]);
-        strcat( binary, decimalToBinary( (int)readBuf[temp_i], 8 ) );
-//        printf("new binary = %s \n", binary);
+        decimalToBinary( (int)readBuf[temp_i], tempS_uc_8, 8 ) ;
+#ifdef DEBUG
+        printf("[DBG] %s : next charecter in readBuf : %d = %s\n", __FUNCTION__, (int)readBuf[temp_i], tempS_uc_8 );
+#endif // DEBUG
+
+        strcat( binary, tempS_uc_8 );
     }
-//    printf("binary code = %s \n",binary);
     binary[binaryCodeLength] = '\0';
 
+#ifdef DEBUG
+    printf("[DBG] %s : binary (code) = %s\n", __FUNCTION__, binary );
+#endif // DEBUG
+    //-------------------------------------------------------------------------------------------------
     //uncompressing target file
-    unsigned char *writeBuf = (unsigned char*)malloc(MAX_FILE_SIZE); memset( writeBuf, 0, MAX_FILE_SIZE );
+    puts("/( - v-)/ uncompressing target file\n");
+    int temp_i1 = ( binaryCodeLength - 1 - paddingNum ) / codeLength;
+    unsigned char *writeBuf = (unsigned char*)malloc( temp_i1 );
+    memset( writeBuf, 0, temp_i1 );
 
-    unsigned char tempA_c3[3];
+    unsigned char tempS_uc_codeLength[codeLength + 1];
     int resultLength = 0;
-    for( temp_i=0; temp_i < (binaryCodeLength - paddingNum) / codeLength ; temp_i++ )
+    for( temp_i=0; temp_i < temp_i1 ; temp_i++ )
     {
-        strncpy( tempA_c3, binary + temp_i * codeLength, codeLength );
-//        puts(tempA_c3);
-        writeBuf[temp_i] = recoverTable[binaryToDecimal(tempA_c3)];
-        resultLength++;
-//        printf("%c\n", writeBuf[temp_i]);
+        strncpy( tempS_uc_codeLength, binary + temp_i * codeLength, codeLength );
+        tempS_uc_codeLength[codeLength] = '\0';
+#ifdef DEBUG
+        printf("[DBG] %s : current tempS_uc_codeLength = %s = %d ---> %d\n", __FUNCTION__, tempS_uc_codeLength, binaryToDecimal( tempS_uc_codeLength ), recoverTable[binaryToDecimal( tempS_uc_codeLength )] );
+#endif // DEBUG
+
+        writeBuf[temp_i] = recoverTable[binaryToDecimal( tempS_uc_codeLength )];
     }
-//    puts(writeBuf);
+
     free(binary);
+    //-------------------------------------------------------------------------------------------------
     //export uncompressed file
+    puts("/( - v-)/ export uncompressed file\n");
+
     FILE *result;
     temp_nameLength = (int)strlen(fileName) +1 - 7;
-//    printf("fileName = %ld \n", strlen(fileName));
-//    puts(fileName);
-    char resultName[temp_nameLength]; memset( resultName, 0, sizeof(resultName) );
+    char resultName[temp_nameLength];
+    memset( resultName, 0, sizeof(resultName) );
     strncpy( resultName, fileName, strlen(fileName) - 7 );
     resultName[temp_nameLength] = '\0';
+
+#ifdef DEBUG
+    printf("[DBG] %s : resultName = %s\n", __FUNCTION__, resultName );
+#endif // DEBUG
 
     if( (result = fopen( resultName, "w" )) == 0 )
     {
         perror("fUncompress() : fopen : result!!\n");
         return 1;
     }
-    fwrite( writeBuf, resultLength, 1, result );
+    fwrite( writeBuf, temp_i, 1, result );
     fclose(result);
+    //-------------------------------------------------------------------------------------------------
     free(writeBuf);
     free(readBuf);
+
     return 0;
-//*/
 }
-//int main(int argc, char*argv[])
-//{
-//    if(argc==2)
-//    {
-//        fCompression(argv[1]);
-//    }
-//    else
-//    {
-//        fUncomperssion(argv[1]);
-//    }
-//    puts("LLL");
-//    return 0;
-//}

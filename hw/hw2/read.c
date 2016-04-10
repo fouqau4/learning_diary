@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     c = fgetc(i);
     while(!feof(i))
     {
-        printf("No.%d : %c _ %d \n", count++, c, (int)c);
+        printf("No.%d : %d \n", count++, (int)c );
         c=fgetc(i);
     }
     fclose(i);

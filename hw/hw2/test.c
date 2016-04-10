@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
     if( argc == 2)
         fCompression(argv[1]);
     else
-        fUncomperssion(argv[1]);
+        fUncompression(argv[1]);
 
     return 0;
 }
