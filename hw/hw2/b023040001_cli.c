@@ -6,9 +6,17 @@
 #include <netinet/in.h>
 #include "b023040001_cli.h"
 #include "b023040001_huffman.h"
+#define MAX_BUF_SIZE 1024
 #define MAX_FILENAME_SIZE 1024
 //#define DEBUG
 
+void cli_err( int fd )
+{
+        puts("file transmission failed :( ");
+        char err[29] = "file transmission failed :( ";
+        err[28] = '\0';
+        write( fd, err, sizeof( err ) );
+}
 
 int run_cli(char* srvIp, char* port ){
     //socket()
@@ -62,7 +70,7 @@ int run_cli(char* srvIp, char* port ){
             #endif // DEBUG
 
             FILE *table;
-            if( (table = fopen( "myTcp.h_table", "r" )) == 0 )
+            if( (table = fopen( tableName, "r" )) == 0 )
             {
                 perror("run_cli() : fopen() : table!!\n");
                 shutdown( fd, 2 );
@@ -107,8 +115,10 @@ int run_cli(char* srvIp, char* port ){
             write( fd, tableBuf, fileSize );
             free( tableBuf );
             puts("v");
+
 //--------------------------------------------------------------------------------------------------------------------
-            printf("=>    fetching %s.result    --- ", sendedFile );
+            printf("=>    sending %s.result    --- ", sendedFile );
+
             char compressedName[strlen(sendedFile) + 1 + 7]; memset( compressedName, 0, sizeof(compressedName) );
             strcpy( compressedName, sendedFile );
             strcat( compressedName, ".result" );
@@ -127,42 +137,25 @@ int run_cli(char* srvIp, char* port ){
                 return 1;
             }
 
-            fseek( compressed, 0, SEEK_END );
-            fileSize = ftell(compressed);
-            rewind(compressed);
+            puts("v");
 
-            #ifdef DEBUG
-            printf("\n[DBG] %s() : line_%d : fileSize of compressed = %d\n", __FUNCTION__, __LINE__, fileSize );
-            #endif // DEBUG
+            int len;
+            unsigned char writeBuf[MAX_BUF_SIZE];
+            while( ( len = fread( writeBuf, 1, MAX_BUF_SIZE, compressed ) ) )
+            {
+                send( fd, writeBuf, len, 0 );
+                bzero( writeBuf, MAX_BUF_SIZE );
+            }
 
-
-            *(int*)integer = fileSize;
-
-            #ifdef DEBUG
-            printf("\n[DBG] %s() : line_%d : *(int*)integer = %d\n", __FUNCTION__, __LINE__, *(int*)integer );
-            #endif // DEBUGř
-
-            unsigned char *writeBuf = (unsigned char*)malloc( fileSize ); memset( writeBuf, 0, fileSize );
-            fread( writeBuf, fileSize, 1, compressed );
             fclose(compressed);
-            puts("v");
 //--------------------------------------------------------------------------------------------------------------------
-            printf("=>    sending fileSize of %s.result    --- ", sendedFile );
-            write( fd, integer, sizeof(int) );
-            puts("v");
-//--------------------------------------------------------------------------------------------------------------------
-            printf("=>    sending %s.result    --- ", sendedFile );
-            write( fd, writeBuf, fileSize );
-            puts("v");
-
-            free(writeBuf);
+            puts("\n∥=========================================∥");
+            puts("∥         succeed in sending file!!!      ∥");
+            puts("∥=========================================∥\n");
         }
         else
         {
-            puts("file transmission failed :( ");
-            char err[29] = "file transmission failed :( ";
-            err[28] = '\0';
-            write( fd, err, sizeof( err ) );
+            cli_err( fd );
         }
         shutdown( fd, 2 );
         close(fd);

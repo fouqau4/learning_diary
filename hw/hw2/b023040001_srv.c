@@ -1,10 +1,12 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <netdb.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "b023040001_srv.h"
 #define MAX_FILENAME_SIZE 1024
+#define MAX_BUF_SIZE 1024
 //#define DEBUG
 
 //IPPROTO_TCP is defined in <netinet/in.h>
@@ -61,7 +63,7 @@ int run_srv( char* port )
             close(fd);
             exit(1);
         }
-        puts("isset");
+
         if(FD_ISSET( fd, &readfds ))
         {
             //accept()
@@ -75,8 +77,16 @@ int run_srv( char* port )
             //read()
             else
             {
+                int temp_i;
+                char cliName[16]; char cliPort[7];
+                getnameinfo( (struct sockaddr*) &cli, cli_len, cliName, sizeof(cliName), cliPort, sizeof(cliPort), NI_NUMERICHOST | NI_NUMERICSERV );
                 puts("\n∥=========================================∥");
                 puts("∥   succeed in connecting with client!!!  ∥");
+                printf("∥\t    client information :    \t  ∥\n");
+                printf("∥   ip = %s , port = ", cliName );
+                for( temp_i = 0 ; temp_i < 7 ; temp_i++ )
+                    printf("%c", cliPort[temp_i] );
+                puts("   ∥");
                 puts("∥=========================================∥\n");
                 char receivedFile[MAX_FILENAME_SIZE];
                 memset( receivedFile, 0 , MAX_FILENAME_SIZE );
@@ -134,16 +144,6 @@ int run_srv( char* port )
                 puts("v");
 
 //--------------------------------------------------------------------------------------------------------------------
-                printf("=>    receving fileSize of %s.result    --- ", receivedFile );
-
-                read( newfd, integer, sizeof(int) );
-                fileSize = *(int*)integer;
-                puts("v");
-
-#ifdef DEBUG
-                printf("\n[DBG] %s() : line_%d : fileSize of compressed = %d\n", __FUNCTION__, __LINE__, fileSize );
-#endif // DEBUG
-//--------------------------------------------------------------------------------------------------------------------
                 printf("=>    creating %s.result    --- ", receivedFile );
                 char compressedName[strlen(receivedFile) + 1 + 7];
                 memset( compressedName, 0, sizeof(compressedName) );
@@ -165,12 +165,15 @@ int run_srv( char* port )
                     exit(1);
                 }
 
-                unsigned char *readBuf = (unsigned char*)malloc( fileSize );
-                memset( readBuf, 0, fileSize );
-                read( newfd, readBuf, fileSize );
-                fwrite( readBuf, fileSize, 1, compressed );
+                int len;
+                unsigned char readBuf[MAX_BUF_SIZE];
+                while( ( len = recv( newfd, readBuf, MAX_BUF_SIZE, 0 ) ) )
+                {
+                    fwrite( readBuf, 1, len, compressed );
+                    bzero( readBuf, MAX_BUF_SIZE );
+                }
+
                 fclose(compressed);
-                free(readBuf);
                 puts("v");
 //--------------------------------------------------------------------------------------------------------------------
                 puts("\n+++++++++++++++++++++++++++++++++++++++++++");

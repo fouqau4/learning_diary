@@ -3,7 +3,7 @@
 #include<string.h>
 #include<math.h>
 #include"b023040001_huffman.h"
-#define DEBUG
+//#define DEBUG
 
 
 
