@@ -1,0 +1,15 @@
+all: server client
+
+srv = b023040001_srv.c
+cli = b023040001_cli.c
+server: srv.o
+	gcc -o server $(srv)
+client: cli.o
+	gcc -o client $(cli)
+srv.o: $(srv)
+	gcc -c $(srv)
+cli.o: $(cli)
+	gcc -c $(cli)
+
+clear:
+	rm -f *.o
