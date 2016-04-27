@@ -2,14 +2,15 @@ all: server client
 
 srv = b023040001_srv.c
 cli = b023040001_cli.c
+
 server: srv.o
-	gcc -o server $(srv)
+	gcc -o server $(srv) -lpthread
 client: cli.o
-	gcc -o client $(cli)
+	gcc -o client $(cli) -lpthread
 srv.o: $(srv)
-	gcc -c $(srv)
+	gcc -c $(srv) -lpthread
 cli.o: $(cli)
-	gcc -c $(cli)
+	gcc -c $(cli) -lpthread
 
 clear:
 	rm -f *.o

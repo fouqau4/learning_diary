@@ -3,9 +3,27 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <pthread.h>
+#define BUF_SIZE 1024
 
-int run_cli( char* srv_ip, char* connect_port, char* user_name )
+void receive_from_srv( void* fd )
 {
+    char receive_buf[BUF_SIZE];
+    int srv_fd = *(int*)fd;
+    memset( receive_buf, 0, BUF_SIZE );
+    while( recv( srv_fd, receive_buf, BUF_SIZE, 0 ) )
+    {
+        puts("---------------------------------------------------------------------------");
+        printf("%s\n", receive_buf );
+
+    }
+}
+
+int run_cli( char* srv_ip, char* connect_port,  char* user_name )
+{
+    //--------------------------------------------------------------------------------------------------------------------
+    //create socket
+    puts("create sockte");
     int fd;
     if( ( fd = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP ) ) == -1 )
     {
@@ -24,13 +42,24 @@ int run_cli( char* srv_ip, char* connect_port, char* user_name )
         perror("");
         exit( 1 );
     }
+    //--------------------------------------------------------------------------------------------------------------------
+    //create a thread taking responsibility for receiving message from server process
+    puts("create a thread taking responsibility for receiving message from server process");
+    pthread_t cli_receiver;
+    pthread_create( &cli_receiver, NULL, (void*)receive_from_srv, (void*) &fd );
+    //--------------------------------------------------------------------------------------------------------------------
     send( fd, user_name, strlen( user_name ), 0 );
-
     puts("\n----------log in successfully!!----------\n");
 
+    char operation;
 
+    while( scanf(" %c", &operation ) )
+    {
+        if( operation == 'q' )
+            break;
+    }
 
-
+    close( fd );
 
     return 0;
 }
