@@ -3,14 +3,16 @@ all: server client
 srv = b023040001_srv.c
 cli = b023040001_cli.c
 
-server: srv.o
-	gcc -o server $(srv) -lpthread
+server: srv.o mylib.o
+	gcc -o server $(srv) cubelib.c -lpthread -lm
 client: cli.o
 	gcc -o client $(cli) -lpthread
-srv.o: $(srv)
+srv.o: $(srv) mylib.o
 	gcc -c $(srv) -lpthread
-cli.o: $(cli)
+cli.o: $(cli) mylib.o
 	gcc -c $(cli) -lpthread
+mylib.o:
+	gcc -c cubelib.c -lm
 
 clear:
-	rm -f *.o
+	rm -f *.o server client
