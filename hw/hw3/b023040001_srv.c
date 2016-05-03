@@ -5,17 +5,28 @@
 #include <pthread.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <time.h>
 #include <signal.h>
+#include <sys/select.h>
 #include "cubelib.h"
 #define CLI_NUM 4
+#define USER_NUM 20
 #define BUF_SIZE 1024
 #define USERNAME_LENGTH 20+1
-char buf[BUF_SIZE];
-char receive_buf[BUF_SIZE];
+
+struct user_state
+{
+    char* user;
+    int online;
+};
+
 int listen_fd;
-int pipe_fd[CLI_NUM * 2];
+int connect_fd[CLI_NUM];
 char* online_list[CLI_NUM];
-pthread_mutex_t mutex;
+struct user_state user_list[CLI_NUM];
+
+pthread_mutex_t lock_offline_msg;
+pthread_mutex_t lock_user_list;
 
 void signal_handler(int sig)
 {
@@ -23,71 +34,242 @@ void signal_handler(int sig)
     switch( sig )
     {
     case SIGINT:
-        for( temp_i = 0 ; temp_i < CLI_NUM * 2; temp_i += 2 )
-        {
-            write_all( pipe_fd[temp_i + 1], &temp_i1, 4 );
-            close( pipe_fd[temp_i] );
-            close( pipe_fd[temp_i + 1] );
-        }
         close( listen_fd );
         exit( 0 );
     }
 }
 
-void *transmission( void *ptr )
+void *Slave_thread( void *ptr )
 {
-    int fd = *(int*)ptr;
-    printf("\ntransmissition : fd_num = %d\n", fd );
+    char sender[USERNAME_LENGTH];
+    strcpy( sender, (char*)ptr );
+    char buf[BUF_SIZE], receive_buf[BUF_SIZE];
+    int local;
     int msg_len;
     int temp_i, temp_i1;
-    int fd_list[CLI_NUM];
-    int cli_count = 0;
-    char trans_buf[BUF_SIZE];
-    while( read( fd, &msg_len, 4 ) )
-    {
-        memset( trans_buf, 0, BUF_SIZE );
-        while( msg_len > 0 && ( temp_i = read( pipe_fd[fd], trans_buf, msg_len ) ) )
-        {
-            printf("\n Master Process Transmission : receive message from Middle_UP\n -- %s\n", trans_buf );
-            msg_len -= temp_i;
-            if( trans_buf[0] != '"' )
-            {
-                pthread_mutex_lock( &mutex );
-                for( temp_i = 0 ; temp_i < CLI_NUM ; temp_i++ )
-                {
-                    if( strcmp( trans_buf, online_list[temp_i] ) == 0 )
-                    {
-                        fd_list[cli_count++] = pipe_fd[2 * temp_i + 1];
-                    }
+//--------------------------------------------------------------------------------------------------------------------
+//Thread : broadcast that this client is online
+    printf("\n[%s] : broadcast that : %s is online!!\n", sender, sender );
 
-                }
-                pthread_mutex_unlock( &mutex );
-            }
-            else
+    memset( buf, 0, BUF_SIZE );
+    strcat( buf, sender );
+    strcat( buf, " is online!!");
+    msg_len = strlen( buf );
+    buf[msg_len] = '\0';
+    printf("\n[%s] : broadcast --%s-- to all client, strlen = %d !!\n", sender, buf, msg_len );
+    for( temp_i = 0 ; temp_i < CLI_NUM ; temp_i++ )
+    {
+        if( user_list[temp_i].user != NULL && user_list[temp_i].online )
+        {
+            sendall( connect_fd[temp_i], buf, &msg_len );
+            if( strcmp( user_list[temp_i].user, sender ) == 0 )
             {
-                for( temp_i1 = 0 ; temp_i1 < cli_count ; temp_i1++ )
-                {
-                    write_all( fd_list[temp_i1], buf, temp_i );
-                }
+                local = temp_i;
             }
         }
     }
+//--------------------------------------------------------------------------------------------------------------------
+//Thread : check offline message
+    printf("\n[%s] : check offline message\n", sender );
+    memset( buf, 0, BUF_SIZE );
+    strcat( buf, sender );
+    strcat( buf, ".offline" );
+    pthread_mutex_lock( &lock_offline_msg );
+    FILE* offline_msg;
+    offline_msg = fopen( buf, "r" );
+    if( offline_msg < 0 )
+    {
+        fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
+        perror("");
+        exit( 1 );
+    }
+    if( offline_msg > 0 )
+    {
+        while( !feof( offline_msg ) )
+        {
+            memset( buf, 0, BUF_SIZE );
+            fgets( buf, BUF_SIZE, offline_msg );
+            printf("\n[%s] : get offline msg --%s--\n", sender, buf );
+            msg_len = strlen( buf );
+            sendall( connect_fd[local], buf, &msg_len );
+        }
+        fclose( offline_msg );
+    }
+    pthread_mutex_unlock( &lock_offline_msg );
+//--------------------------------------------------------------------------------------------------------------------
+//Message transmission
+    printf("\n[%s] : [Trans] \n", sender );
+    int online_target[CLI_NUM], offline_target[CLI_NUM];
+    int online_num, offline_num;
+    char *tok, *target_tok, *msg_time;
+    char target[USERNAME_LENGTH + 8];
+    time_t t;
+    while( 1 )
+    {
+        memset( receive_buf, 0, BUF_SIZE );
+        temp_i = recv( connect_fd[local], receive_buf, BUF_SIZE, 0 );
+        puts(receive_buf);
+
+
+        printf("[%s] : [UP] : receving message from client\n--%s--\n ", sender, receive_buf );
+        if( strcmp( receive_buf, "bye" ) == 0 )
+        {
+            break;
+        }
+        if( strcmp( receive_buf, "chat" ) == 0 )
+        {
+            puts("chat!!");
+            pthread_mutex_lock( &lock_user_list );
+            online_num = 0, offline_num = 0;
+            puts("wait!!");
+            temp_i = recv( connect_fd[local], receive_buf, BUF_SIZE, 0 );
+            puts(receive_buf);
+            printf("[%s] : receive --%s--\n", sender, receive_buf );
+            tok = strtok( receive_buf, "\"" );
+            strcpy( buf, tok );
+            tok = strtok( NULL, "\"" );
+            if( ( msg_time = strtok( NULL, "\"" ) ) == NULL )
+            {
+                memset( buf, 0, BUF_SIZE );
+                strcpy( buf, "unexpected command !! type \"help\" to get hints" );
+                temp_i = strlen( buf );
+                sendall( connect_fd[local], buf, &temp_i );
+                continue;
+            }
+
+            puts(tok);
+            target_tok = strtok( buf, " " );
+            while( target_tok != NULL )
+            {
+                for( temp_i1 = 0 ; temp_i1 < CLI_NUM ; temp_i1++ )
+                {
+                    if( user_list[temp_i1].user == NULL )
+                    {
+                        memset( buf, 0, BUF_SIZE );
+                        strcpy( buf, "non-existed user!!" );
+                        temp_i = strlen( buf );
+                        sendall( connect_fd[local], buf, &temp_i );
+                        break;
+                    }
+                    if( strcmp( user_list[temp_i1].user, target_tok ) == 0 )
+                    {
+                        if( user_list[temp_i1].online )
+                        {
+                            printf("[%s] : find online target %s\n", sender, target_tok );
+                            online_target[online_num++] = temp_i1;
+
+                        }
+                        else
+                        {
+                            printf("[%s] : find offline target %s\n", sender, target_tok );
+                            offline_target[offline_num++] = temp_i1;
+                        }
+                        break;
+                    }
+                }
+                target_tok = strtok( NULL, " " );
+            }
+            memset( buf, 0, BUF_SIZE );
+            strcat( buf, "[");
+            strcat( buf, sender );
+            strcat( buf, "] : <" );
+            strcat( buf, tok );
+            strcat( buf, "> " );
+            msg_len = strlen( buf );
+            for( temp_i1 = 0 ; temp_i1 < online_num ; temp_i1++ )
+            {
+                sendall( connect_fd[online_target[temp_i1]], buf, &msg_len );
+            }
+            pthread_mutex_lock( &lock_offline_msg );
+            for( temp_i1 = 0 ; temp_i1 < offline_num ; temp_i1++ )
+            {
+                memset( target, 0, sizeof( target ) );
+                strcat( target, user_list[offline_target[temp_i1]].user );
+                strcat( target, ".offline" );
+                if( ( offline_msg = fopen( target, "a+" ) ) == 0 )
+                {
+                    fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
+                    perror("");
+                    exit( 1 );
+                }
+                strcat( buf, ", " );
+                strcat( buf, msg_time );
+                puts(buf);
+                fprintf( offline_msg, "%s\n", buf );
+                fclose( offline_msg );
+            }
+            pthread_mutex_unlock( &lock_offline_msg );
+            pthread_mutex_unlock( &lock_user_list );
+        }
+        printf("[%s] : [Down] : sending message to Target client\n--%s--\n ", sender, buf );
+    }
+//--------------------------------------------------------------------------------------------------------------------
+//Thread  end
+    printf("\n[%s] : User : %s's thread end\n", sender, sender );
+    pthread_mutex_lock( &lock_user_list );
+    user_list[local].online = 0;
+    pthread_mutex_unlock( &lock_user_list );
+    close( connect_fd[local] );
+//--------------------------------------------------------------------------------------------------------------------
+//Thread : broadcast that this client is going to be offline
+    printf("\n[%s] : broadcast that : %s is going to be offline!!\n", sender, sender );
+
+    memset( buf, 0, BUF_SIZE );
+    strcat( buf, sender );
+    strcat( buf, " is offline!!");
+    msg_len = strlen( buf );
+    buf[msg_len] = '\0';
+    printf("\n[%s] : broadcast --%s-- to all client, strlen = %d !!\n", sender, buf, msg_len );
+    for( temp_i = 0 ; temp_i < CLI_NUM ; temp_i++ )
+    {
+        if( user_list[temp_i].user != NULL && user_list[temp_i].online )
+        {
+            sendall( connect_fd[temp_i], buf, &msg_len );
+        }
+    }
+    pthread_exit( NULL );
 }
-
-
 
 
 int run_srv( char* srv_port )
 {
-    pthread_mutex_init( &mutex, PTHREAD_MUTEX_TIMED_NP );
-    int msg_len = 0;
-    int temp_i, temp_i1;
+    pthread_mutex_init( &lock_offline_msg, PTHREAD_MUTEX_TIMED_NP );
+    pthread_mutex_init( &lock_user_list, PTHREAD_MUTEX_TIMED_NP );
+    int temp_i, temp_i1, temp_i2, temp_i3;
+    int user_counter = 0;
+    char buf[BUF_SIZE];
     for( temp_i = 0 ; temp_i < CLI_NUM ; temp_i++ )
-        online_list[temp_i] = NULL;
+    {
+        user_list[temp_i].user = NULL;
+        user_list[temp_i].online = 0;
+    }
     signal( SIGINT, signal_handler );
-    char integer[4];
-    int r, w;
-    pthread_t trans[CLI_NUM];
+    int fd_list[CLI_NUM];
+    pthread_t slave[CLI_NUM];
+    //--------------------------------------------------------------------------------------------------------------------
+    FILE* u_list;
+    u_list = fopen( "user_list", "r" );
+    if( u_list < 0 )
+    {
+        fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
+        perror("");
+        exit( 1 );
+    }
+    if( u_list > 0 )
+    {
+        memset( buf, 0, BUF_SIZE );
+        for( temp_i = 0 ; !feof( u_list ) ; temp_i++ )
+        {
+            fscanf( u_list, "%s\n", buf );
+            user_list[temp_i].user = (char*)malloc( strlen( buf ) + 1 );
+            memset( user_list[temp_i].user, 0, strlen( buf ) + 1 );
+            strcpy( user_list[temp_i].user, buf );
+            user_list[temp_i].online = 0;
+            user_counter++;
+            printf("old user : %s\n", buf );
+        }
+        fclose( u_list );
+    }
 //--------------------------------------------------------------------------------------------------------------------
 //creating listenning socket
     puts("creating listenning socket");
@@ -109,6 +291,8 @@ int run_srv( char* srv_port )
         perror("");
         exit( 1 );
     }
+//--------------------------------------------------------------------------------------------------------------------
+//waiting for connection
     puts("listen");
     if( listen( listen_fd, 5 ) == -1 )
     {
@@ -116,172 +300,75 @@ int run_srv( char* srv_port )
         perror("");
         exit( 1 );
     }
+//--------------------------------------------------------------------------------------------------------------------
 
-    int process_id[CLI_NUM], pid;
-    int connect_fd;
-    int cli_counter = 0;
+    int position;
     char sender[USERNAME_LENGTH];
     char temp_c;
+    int temp_fd;
+
     while( 1 )
     {
 //--------------------------------------------------------------------------------------------------------------------
-//Main process waits for new connection
-        if( ( connect_fd = accept( listen_fd, (struct sockaddr*) &cli, &cli_len ) ) == -1 )
+//confirm that the connection is successful
+        if( ( temp_fd = accept( listen_fd, (struct sockaddr*) &cli, &cli_len ) ) == -1 )
         {
             fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
             perror("");
             exit( 1 );
         }
-//--------------------------------------------------------------------------------------------------------------------
-//confirm that the connection is success
-        printf("\nMaster Process : confirm that the connection is success\n");
         memset( sender, 0, USERNAME_LENGTH );
-        if( recv( connect_fd, sender, USERNAME_LENGTH, 0 ) == -1 )
+        if( recv( temp_fd, sender, USERNAME_LENGTH, 0 ) < 0 )
         {
             fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
             perror("");
             exit( 1 );
         }
-        printf("\nMaster Process : connect successfully!!\nUser == %s == logs in!!\n", sender );
+        printf("\nMain thread : User == %s == logs in!!\n", sender );
 //--------------------------------------------------------------------------------------------------------------------
-//adding this client to online list
-        pthread_mutex_lock( &mutex );
-        for( temp_i = 0 ; temp_i < CLI_NUM ; temp_i++ )
+//find position
+        for( temp_i = 0, position = -1 ; temp_i < user_counter ; temp_i++ )
         {
-            if( online_list[temp_i] == NULL )
+            if( strcmp( user_list[temp_i].user, sender ) == 0 )
             {
-                temp_i1 = strlen( sender ) + 1;
-                online_list[temp_i] = (char*)malloc( temp_i1 );
-                memset( online_list[temp_i], 0, temp_i1 );
-                strcpy( online_list[temp_i], sender );
-                pipe( pipe_fd + ( temp_i * 2 ) ) ;
-                r = temp_i * 2;
-                w = r + 1;
+                position = temp_i;
+                user_list[temp_i].online = 1;
+                printf("old user : %s log in\n", user_list[temp_i].user );
                 break;
             }
         }
-        pthread_mutex_unlock( &mutex );
-        printf("\nfd_num = %d\n", r );
-        pthread_create( &trans[cli_counter], NULL, (void*)transmission, (void*)&r );
+
 //--------------------------------------------------------------------------------------------------------------------
-//fork a process taking responsibility for connect with client
-        if( ( pid = fork() ) == 0 )
+//adding this client to user list
+        if( position == -1 && user_counter < CLI_NUM )
         {
-            close( listen_fd );
-//--------------------------------------------------------------------------------------------------------------------
-//fork another process taking responsibility for receving message from main process and sending these message to client
-//            printf("\n %s : Middle_Down process : fork another process taking responsibility for receiving message from main process and sending these message to client\n", sender );
-
-            if( fork() == 0 )
+            pthread_mutex_lock( &lock_user_list );
+            position = temp_i;
+            if( ( u_list = fopen( "user_list", "a+" ) ) == 0 )
             {
-                while( 1 )
-                {
-                    read( pipe_fd[r], &msg_len, 4 );
-                    printf("\n %s : Middle_Down process : msg_len : %d", sender, msg_len );
-                    if( msg_len == -1 )
-                    {
-                        close( pipe_fd[r] );
-                        close( pipe_fd[w] );
-                        close( connect_fd );
-                        printf("\n %s : Middle_Down process : process end\n", sender );
-                        exit( 0 );
-                    }
-                    memset( buf, 0, BUF_SIZE );
-                    while( msg_len > 0 && ( temp_i = read( pipe_fd[r], buf, msg_len ) ) )
-                    {
-                        if( temp_i < 0 )
-                        {
-                            fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
-                            perror("");
-                            exit( 1 );
-                        }
-                        printf("\n %s : Middle_Down process : receive --%s-- from server, strlen = %d \n", sender, buf, temp_i );
-                        sendall( connect_fd, buf, &temp_i );
-                        printf("\n %s : Middle_Down process : \nsend message : --%s-- to client\n", sender, buf );
-                        memset( buf, 0, BUF_SIZE );
-                        msg_len -= temp_i;
-                    }
-                }
+                fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
+                perror("");
+                exit( 1 );
             }
-//--------------------------------------------------------------------------------------------------------------------
-//Middle_UP process : check offline message
-            printf("\n%s : Middle_Up process : check offline message\n", sender );
-            char username_temp[USERNAME_LENGTH];
+            fprintf( u_list, "%s\n", sender );
+            fclose( u_list );
 
-            int msg_len;
-            FILE* offline_msg;
-            if( ( offline_msg = fopen( "offline_message", "r" ) ) != 0 )
-            {
-                while( !feof( offline_msg ) )
-                {
-                    fscanf( offline_msg, "%s", username_temp );
-                    if( strcmp( sender, username_temp ) == 0 )
-                    {
-                        fscanf( offline_msg, "%d", &msg_len );
-
-                        while(  msg_len > 0 && ( temp_i = fscanf( offline_msg, "%s", buf ) ) )
-                        {
-                            msg_len -= temp_i;
-                            send( connect_fd, buf, temp_i, 0 );
-                        }
-                    }
-                }
-            }
-//--------------------------------------------------------------------------------------------------------------------
-//Middle_UP process : receving message from client, and sending to Master Process
-            while( recv( connect_fd, &msg_len, 4, 0 ) )
-            {
-                write( pipe_fd[w], &msg_len, 4 );
-                memset( buf, 0, BUF_SIZE );
-                while( msg_len > 0 && ( temp_i = recv( connect_fd, buf, msg_len, 0 ) ) )
-                {
-                    printf("\n Middle_UP process : receive message from ~%s~\n--%s--\n ", sender, buf );
-                    write( pipe_fd[w], buf, temp_i );
-                    msg_len -= temp_i;
-                }
-
-            }
-//--------------------------------------------------------------------------------------------------------------------
-//Middle_Up process : process end
-            printf("\n%s : Middle_Up process : User : %s's process end\n", sender, sender );
-            for( temp_i = 0 ; temp_i < CLI_NUM ; temp_i++ )
-            {
-                if( online_list[temp_i] == NULL )
-                    free( online_list[temp_i] );
-            }
-            close( pipe_fd[r] );
-            close( pipe_fd[w] );
-            close( connect_fd );
-            exit( 0 );
+            temp_i = strlen( sender ) + 1;
+            user_list[position].user = (char*)malloc( temp_i );
+            memset( user_list[position].user, 0, temp_i );
+            strcpy( user_list[position].user, sender );
+            user_list[position].online = 1;
+            user_counter++;
+            printf("\nMain Thread : %s is added in online list!!\n", sender );
+            pthread_mutex_unlock( &lock_user_list );
         }
-        else if( pid < 0 )
-        {
-            fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
-            perror("");
-//            scanf(" %c", &temp_c );
-        }
-        else
-        {
-//--------------------------------------------------------------------------------------------------------------------
-//Master Process : broadcast that this client is online
-            puts("Master Process : broadcast that this client is online");
+        puts("create thread!!");
+        connect_fd[position] = temp_fd;
+        pthread_create( &slave[position], NULL, (void*)Slave_thread, (void*)sender);
 
-            memset( buf, 0, BUF_SIZE );
-            strcat( buf, sender );
-            strcat( buf, " is online!!");
-            msg_len = strlen( buf );
-            buf[msg_len] = '\0';
-            printf("\nMaster Process : broadcast --%s-- to all client, strlen = %d !!\n", buf, msg_len );
-            for( temp_i = 0 ; temp_i < cli_counter ; temp_i++ )
-            {
-                write_all( pipe_fd[2 * temp_i + 1], &msg_len, 4 );
-                write_all( pipe_fd[2 * temp_i + 1], buf, msg_len );
-            }
-        }
-        process_id[cli_counter++] = pid;
-        close( connect_fd );
+        puts("NEXT");
     }
-
+//--------------------------------------------------------------------------------------------------------------------
     close( listen_fd );
     return 0;
 }
@@ -291,6 +378,6 @@ int main( int argc, char* argv[])
 {
     if( argc == 2 )
         run_srv( argv[1] );
-
+    puts("WTF");
     return 0;
 }

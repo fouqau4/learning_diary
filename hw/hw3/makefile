@@ -15,4 +15,4 @@ mylib.o:
 	gcc -c cubelib.c -lm
 
 clear:
-	rm -f *.o server client
+	rm -f *.o server client *.offline user_list
