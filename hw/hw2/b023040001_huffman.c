@@ -3,7 +3,7 @@
 #include<string.h>
 #include<math.h>
 #include"b023040001_huffman.h"
-//#define DEBUG
+#define DEBUG
 
 
 
@@ -386,14 +386,14 @@ int fUncompression(char* fileName)
         perror("fUncompression : fopen : target!!\n");
         return 1;
     }
-
+    puts(fileName);
     //fileSize of target
     fseek( target, 0, SEEK_END);
-    long targetSize = ftell(target) - 1;
+    unsigned int targetSize = ftell(target) - 1;
     rewind(target);
 
 #ifdef DEBUG
-    printf("[DBG] %s : targetSize = %ld\n", __FUNCTION__, targetSize );
+    printf("[DBG] %s : targetSize = %d\n", __FUNCTION__, targetSize );
 #endif // DEBUG
 
     unsigned char paddingNum;

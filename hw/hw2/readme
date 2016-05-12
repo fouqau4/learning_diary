@@ -1,0 +1,18 @@
+netprog hw2
+學號：b023040001
+姓名：李書緯
+------------------
+1. 要傳送檔案時,先開啟server端,並選擇welcome port,接著就等待client 連線
+
+2. client 連線成功之後,輸入欲傳送的檔案名稱後,檔案傳送即開始
+
+3. 檔案會先在 client端進行壓縮,壓縮完畢後會生成兩個檔案 : <filename>_table , <filename>.result
+
+   (i)  <filename>_table 為編碼表, 開頭為一個 integer,紀錄編碼的種類數量,接著就是編碼表主體,以兩個char
+        為一組 ==> C1C1'C2C2'C3C3'...... , Cn 為編碼前的char, Cn'為編碼後的結果,由於是使用fixlength 
+        huffman,最多只會有8 bits的編碼,所以直接用一個char來表示編碼結果,節省編碼表空間
+   (ii) <filename>.result為壓縮過後的檔案
+
+4. 完成壓縮之後,會先傳送編碼表給server,再將壓縮後的檔案分批傳送給server,檔案傳送完畢client關閉連線,client程式結束
+
+5. server收到編碼表以及壓縮檔之後,便進行解碼,解碼完畢後可選擇是否繼續執行server程式

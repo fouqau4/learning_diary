@@ -195,7 +195,7 @@ fail:
         do
         {
             printf("wanna shutdown server ? (y/n) : ");
-            scanf(" %c", &ctrl );
+            scanf("%c", &ctrl );
         }
         while( ctrl != 'y' && ctrl != 'n');
     }
