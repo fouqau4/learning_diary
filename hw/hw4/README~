@@ -1,0 +1,13 @@
+hw4
+學號 ：B023040001
+姓名 ：李書緯
+----------------------------------------------------------------
+1. reliable file transfer
+
+2. server can intentially drop datagram
+   with probability of 0.1
+
+3. doing fragmentation before sending the file.
+   The size of each fragment is set to 1024 bytes
+
+4. cumulative ACK
