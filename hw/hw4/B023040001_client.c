@@ -20,7 +20,7 @@ uint16_t cumulate_checksum( char* pseudo_header, char* tcp_header, char* payload
 //      1. pseudo header
     for( temp_i = 0 ; temp_i < PSEUDO_HEADER_LENGTH ; temp_i += 2 )
     {
-        checksum_temp += ( uint32_t )( *( uint16_t* )( pseudo_header + temp_i ) );
+        checksum_temp += ( uint32_t )ntohs( *( uint16_t* )( pseudo_header + temp_i ) );
         while( checksum_temp > 0xffff )
         {
             temp_ui32t = checksum_temp / 0xffff;
@@ -30,7 +30,7 @@ uint16_t cumulate_checksum( char* pseudo_header, char* tcp_header, char* payload
 //      2. tcp header
     for( temp_i = 0 ; temp_i < HEADER_LENGTH ; temp_i += 2 )
     {
-        checksum_temp += ( uint32_t )( *( uint16_t* )( tcp_header + temp_i ) );
+        checksum_temp += ( uint32_t )ntohs( *( uint16_t* )( tcp_header + temp_i ) );
         while( checksum_temp > 0xffff )
         {
             temp_ui32t = checksum_temp / 0xffff;
@@ -40,14 +40,22 @@ uint16_t cumulate_checksum( char* pseudo_header, char* tcp_header, char* payload
 //      3. tcp payload
     for( temp_i = 0 ; temp_i < payload_len ; temp_i += 2 )
     {
-        checksum_temp += ( uint32_t )( *( uint16_t* )( payload + temp_i ) );
+        checksum_temp += ( uint32_t )ntohs( *( uint16_t* )( payload + temp_i ) );
         while( checksum_temp > 0xffff )
         {
             temp_ui32t = checksum_temp / 0xffff;
             checksum_temp = checksum_temp % 0x10000 + temp_ui32t;
         }
     }
-    return ( uint16_t )checksum_temp;
+    return ( uint16_t )( ~checksum_temp );
+}
+
+void build_segment( char* segment, char* pseudo_header, char* tcp_header, char* payload )
+{
+    memset( segment, 0, sizeof( segment ) );
+    strcat( segment, pseudo_header );
+    strcat( segment, tcp_header );
+    strcat( segment, payload );
 }
 
 void run_cli( char* dest_ip, char* dest_port, char* src_port )
@@ -95,9 +103,11 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     *( uint16_t* )( tcp_header + 14 ) = htons( win_size );
 //      set Checksum
     uint16_t checksum = 0;
+    *( uint16_t* )( tcp_header + 16 ) = htons( 0 );
 //      set Urgent pointer
     uint16_t ugn_ptr = 0;
     *( uint16_t* )( tcp_header + 18 ) = htons( ugn_ptr );
+//  ---------------------
 //  2. pseudo header
     char pseudo_header[PSEUDO_HEADER_LENGTH];
     /*
@@ -155,6 +165,12 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     memset( payload, 0, PAYLOAD_SIZE );
     checksum = cumulate_checksum( pseudo_header, tcp_header, payload, payload_len );
     printf("checksum = %x\n", checksum );
+    *( uint16_t* )( tcp_header + 16 ) = checksum;
+
+    build_segment( segment, pseudo_header, tcp_header, payload );
+//  send SYN
+    sendto( dest_socket, segment, PSEUDO_HEADER_LENGTH + HEADER_LENGTH + payload_len, 0, ( struct sockaddr* ) &dest, sizeof( dest ) );
+
 
 //--------------------------------------------------------------------------------------------------------------------
 //choose the file
@@ -184,6 +200,15 @@ int main( int argc, char* argv[] )
 {
     if( argc == 4 )
         run_cli( argv[1], argv[2], argv[3] );
+
+//    char a[4];
+//    strcpy( a, "aabd" );
+//    char b[8], c[2];
+//    memset( c, 0, 2 );
+//    memset( b, 0, 8 );
+//    strcat( b, a );
+//    strcat( b, c );
+//    puts(b);
 
 //    uint16_t a = 0xffff;uint32_t b = a + 0xffff;
 //    if( b % 0x10000 == 0xffff - 0x1 )
