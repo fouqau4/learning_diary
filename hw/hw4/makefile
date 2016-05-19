@@ -1,18 +1,18 @@
 all : server client
 
-server : srv.o mylib.o
-	gcc -o server B023040001_server.c cubelib.c
+server : B023040001_server.o cubelib.o
+	gcc -o server B023040001_server.o cubelib.o
 
-client : cli.o mylib.o
-	gcc -o client B023040001_client.c cubelib.c
+client : B023040001_client.o cubelib.o
+	gcc -o client B023040001_client.o cubelib.o
 
-srv.o : B023040001_server.c mylib.o
-	gcc -c B023040001_server.c
+B023040001_server.o : B023040001_server.c cubelib.o
+	gcc -c B023040001_server.c 
 
-cli.o : B023040001_client.c mylib.o
-	gcc -c B023040001_client.c
+B023040001_client.o : B023040001_client.c cubelib.o
+	gcc -c B023040001_client.c 
 
-mylib.o : cubelib.c
-	gcc -c cubelib.c
+cubelib.o : cubelib.c cubelib.h
+	gcc -c cubelib.c 
 clear : 
 	rm -f *.o server

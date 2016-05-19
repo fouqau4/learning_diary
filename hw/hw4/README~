@@ -3,6 +3,8 @@ hw4
 姓名 ：李書緯
 ----------------------------------------------------------------
 1. reliable file transfer
+  (i)	cumulative ACK
+  (ii)	seq number
 
 2. server can intentially drop datagram
    with probability of 0.1
@@ -10,4 +12,12 @@ hw4
 3. doing fragmentation before sending the file.
    The size of each fragment is set to 1024 bytes
 
-4. cumulative ACK
+4. 
+
+
+
+reference :
+1. tcp sequence & ack number : 
+	http://packetlife.net/blog/2010/jun/7/understanding-tcp-sequence-acknowledgment-numbers/
+2. tcp checksum :
+	
