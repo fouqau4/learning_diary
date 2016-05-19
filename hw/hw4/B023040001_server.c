@@ -9,18 +9,23 @@
 
 char buf[BUF_SIZE];
 
-REG window[WINDOW_SIZE];
+char* window[WINDOW_SIZE];
 
 void run_srv( char* src_port )
 {
     int temp_i;
+    int segment_len = 0;
     uint16_t flags_type;
     uint32_t temp_ui32t;
     uint16_t payload_len = 0;
     char payload[PAYLOAD_SIZE];
     char segment[PSEUDO_HEADER_LENGTH + HEADER_LENGTH + PAYLOAD_SIZE];
-    struct sockaddr_in cli;
+    struct sockaddr_in cli, temp_sockaddr;
     int cli_len = sizeof( cli );
+
+    int win_iterator = 0;
+    for( temp_i = 0 ; temp_i < WINDOW_SIZE ; temp_i++ )
+        window[temp_i] = NULL;
 //--------------------------------------------------------------------------------------------------------------------
 //Header
 //  1. Tcp header
@@ -89,14 +94,22 @@ void run_srv( char* src_port )
 //--------------------------------------------------------------------------------------------------------------------
 //3-way handshack -- SYN
 //  wait for SYN
-    recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
-    disassemble_segment( segment, pseudo_header, tcp_header, payload, &payload_len, &flags_type );
+    segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
+    if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, window[win_iterator], &temp_sockaddr, &flags_type ) == 0 )
+    {
+        win_iterator++;
+    }
     puts("=====Start the three-way handshake=====");
-    printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), ntohs( cli.sin_port ) );
+    printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), temp_sockaddr.sin_port );
     seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
 //  reply SYN, ACK
+    memset( pseudo_header, 0, PSEUDO_HEADER_LENGTH );
+    source_addr = *( uint32_t* )( window[win_iterator - 1] + 4 );
+    destination_addr = cli.sin_addr.s_addr;
+    zeros_protocol = 6;
 
-//    printf(" payload = \"%s\", length = %hu\n", payload, payload_len );
+    memset( tcp_header, 0, HEADER_LENGTH );
+
 //--------------------------------------------------------------------------------------------------------------------
 
     recvfrom( connect_socket, buf, BUF_SIZE, 0, ( struct sockaddr* ) &cli, &cli_len );

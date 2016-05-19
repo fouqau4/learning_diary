@@ -74,7 +74,6 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     uint32_t destination_addr = 0;
 //      set Zeros + Protocol
     uint16_t zeros_protocol = 6;
-    *( uint8_t* )( pseudo_header + 8 ) = zeros_protocol;
 //      set Tcp length
     uint16_t tcp_len = 0;
 //--------------------------------------------------------------------------------------------------------------------
@@ -114,16 +113,17 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     flags = 2;
     *( uint16_t* )( tcp_header + 12 ) = header_len + flags;
     memset( payload, 0, PAYLOAD_SIZE );
-//    strcpy( payload, "HI motherfucker" );
-//    payload_len = strlen( payload );
+    strcpy( payload, "HI motherfucker" );
+    payload_len = strlen( payload );
     tcp_len = HEADER_LENGTH + payload_len;
-    *( uint16_t* )( pseudo_header + 10 ) = tcp_len;
+    set_pseudo_header( pseudo_header, source_addr, destination_addr, zeros_protocol, tcp_len );
 
-    checksum = cumulate_checksum( pseudo_header, tcp_header, payload, payload_len );
+    build_segment( segment, pseudo_header, tcp_header, payload, payload_len );
+    checksum = cumulate_checksum( segment, tcp_len + 12 );
+    *( uint16_t* )( segment + PSEUDO_HEADER_LENGTH + 16 ) = checksum;
     printf("checksum = %x\n", checksum );
     *( uint16_t* )( tcp_header + 16 ) = checksum;
 
-    build_segment( segment, pseudo_header, tcp_header, payload, payload_len );
 
 //  send SYN
     sendto( dest_socket, segment, PSEUDO_HEADER_LENGTH + HEADER_LENGTH + payload_len, 0, ( struct sockaddr* ) &dest, sizeof( dest ) );
