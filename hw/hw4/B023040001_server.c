@@ -4,12 +4,14 @@
 #include "cubelib.h"
 #include <netinet/in.h>
 #include <arpa/inet.h> //inet_ntoa
+#include <time.h>
 
 #define BUF_SIZE 1500
 
 char buf[BUF_SIZE];
 
-char* window[WINDOW_SIZE];
+char* receive_window[WINDOW_SIZE];
+char* send_window[WINDOW_SIZE];
 
 void run_srv( char* src_port )
 {
@@ -22,10 +24,11 @@ void run_srv( char* src_port )
     char segment[PSEUDO_HEADER_LENGTH + HEADER_LENGTH + PAYLOAD_SIZE];
     struct sockaddr_in cli, temp_sockaddr;
     int cli_len = sizeof( cli );
+    srand( time( NULL ) );
 
-    int win_iterator = 0;
+    int receive_win_iterator = 0;
     for( temp_i = 0 ; temp_i < WINDOW_SIZE ; temp_i++ )
-        window[temp_i] = NULL;
+        receive_window[temp_i] = NULL, send_window[temp_i] = NULL;
 //--------------------------------------------------------------------------------------------------------------------
 //Header
 //  1. Tcp header
@@ -43,31 +46,22 @@ void run_srv( char* src_port )
     18~19 (16 bits) : Urgent pointer
     */
 //      set Source port
-    uint16_t source_port = ( uint16_t )atoi( src_port );
-    *( uint16_t* )tcp_header = source_port;
+    uint16_t source_port = 0;
 //      set Destination port
     uint16_t destination_port = 0;
-//    *( uint16_t* )( tcp_header + 2 ) =  destination_port;
 //      set Sequence number
     uint32_t seq_num = 0;
-    *( uint32_t* )( tcp_header + 4 ) = seq_num;
 //      set Ack number
     uint32_t ack_num = 0;
-    *( uint32_t* )( tcp_header + 8 ) = ack_num;
-//      set Data offset
-    uint16_t header_len = HEADER_LENGTH;
-    header_len = header_len << 16;
-//      set Flags
-    uint16_t flags = 0;
+//      set Data offset + Flags
+    uint16_t data_offset_flags = 0;
 //      set Window size
     uint16_t win_size = 0;
-    *( uint16_t* )( tcp_header + 14 ) = win_size;
 //      set Checksum
     uint16_t checksum = 0;
-    *( uint16_t* )( tcp_header + 16 ) = 0;
 //      set Urgent pointer
     uint16_t ugn_ptr = 0;
-    *( uint16_t* )( tcp_header + 18 ) = ugn_ptr;
+
 //  ---------------------
 //  2. pseudo header
     char pseudo_header[PSEUDO_HEADER_LENGTH];
@@ -95,21 +89,56 @@ void run_srv( char* src_port )
 //3-way handshack -- SYN
 //  wait for SYN
     segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
-    if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, window[win_iterator], &temp_sockaddr, &flags_type ) == 0 )
+    if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[receive_win_iterator], &temp_sockaddr, &flags_type ) == 0 )
     {
-        win_iterator++;
+        receive_win_iterator++;
     }
     puts("=====Start the three-way handshake=====");
     printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), temp_sockaddr.sin_port );
     seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
+
 //  reply SYN, ACK
-    memset( pseudo_header, 0, PSEUDO_HEADER_LENGTH );
-    source_addr = *( uint32_t* )( window[win_iterator - 1] + 4 );
+//      1.set pseudo header
+    source_addr = *( uint32_t* )( receive_window[receive_win_iterator - 1] + 4 );
     destination_addr = cli.sin_addr.s_addr;
     zeros_protocol = 6;
+    payload_len = 0;
+    tcp_len = HEADER_LENGTH + payload_len;
 
-    memset( tcp_header, 0, HEADER_LENGTH );
+    set_pseudo_header( pseudo_header, source_addr, destination_addr, zeros_protocol, tcp_len );
 
+//      2. set tcp header
+    source_port = ( uint16_t )atoi( src_port );
+    destination_port = temp_sockaddr.sin_port;
+    seq_num = rand() % 10000 + 1;
+    ack_num = *( uint32_t* )( receive_window[receive_win_iterator - 1] + PSEUDO_HEADER_LENGTH + 4 ) + 1;
+    data_offset_flags = HEADER_LENGTH;
+    data_offset_flags = ( data_offset_flags << 16 ) + 0x0012;
+    win_size = WINDOW_SIZE;
+    checksum = 0;
+    ugn_ptr = 0;
+
+    set_tcp_header( tcp_header, source_port, destination_port, seq_num, ack_num, data_offset_flags, win_size, checksum, ugn_ptr );
+//      3. set payload
+    memset( payload, 0, PAYLOAD_SIZE );
+//      4. build segment
+    build_segment( segment, pseudo_header, tcp_header, payload, payload_len );
+    segment_len = PSEUDO_HEADER_LENGTH + HEADER_LENGTH + payload_len;
+    *( uint16_t* )( segment + PSEUDO_HEADER_LENGTH + 16 ) = cumulate_checksum( segment, segment_len );
+//      5. send
+    sendto( connect_socket, segment, segment_len, 0, ( struct sockaddr* ) &cli, cli_len );
+
+    printf("Send a packet(%s) to %s : %hu\n", identify_flags( 0x0003 ), inet_ntoa( cli.sin_addr ), ntohs( cli.sin_port ) );
+
+//  wait ACK
+    segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
+    if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[receive_win_iterator], &temp_sockaddr, &flags_type ) == 0 )
+    {
+        receive_win_iterator++;
+    }
+    printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), temp_sockaddr.sin_port );
+    seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
+    puts("=====Complete the three-way handshake=====");
 //--------------------------------------------------------------------------------------------------------------------
 
     recvfrom( connect_socket, buf, BUF_SIZE, 0, ( struct sockaddr* ) &cli, &cli_len );
