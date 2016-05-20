@@ -18,6 +18,7 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     int temp_i;
     int segment_len = 0;
     int receive_win_iterator = 0;
+    int send_win_iterator = 0;
     uint16_t payload_len = 0;
     uint16_t flags_type;
     uint32_t temp_ui32t;
@@ -142,14 +143,32 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     checksum = cumulate_checksum( segment, tcp_len + 12 );
     *( uint16_t* )( segment + PSEUDO_HEADER_LENGTH + 16 ) = checksum;
 //      5. send
-    sendto( dest_socket, segment, PSEUDO_HEADER_LENGTH + HEADER_LENGTH + payload_len, 0, ( struct sockaddr* ) &dest, dest_len );
-    printf("Send a packet(%s) to %s : %hu\n", identify_flags( 0x0002 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
+    if( send_window[send_win_iterator] == NULL )
+    {
+        send_window[send_win_iterator] = ( char* )malloc( segment_len );
+        memcpy( send_window[send_win_iterator], segment, segment_len );
+    }
+    sendto( dest_socket, send_window[( send_win_iterator++ ) % 20], segment_len, 0, ( struct sockaddr* ) &dest, dest_len );
+    printf("Send a packet(%s) to %s : %hu\t-----  ", identify_flags( 0x0002 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
+
 //  wait SYN/ACK
+
     memset( segment, 0, SEGMENT_SIZE );
     segment_len = recvfrom( dest_socket, segment, SEGMENT_SIZE, 0, ( struct sockaddr* ) &dest, &dest_len );
     if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[receive_win_iterator], &temp_sockaddr, &flags_type ) == 0 )
     {
         receive_win_iterator++;
+    }
+    for( temp_i = 0; temp_i < WINDOW_SIZE ; temp_i++ )
+    {
+        if( send_window[temp_i] != NULL )
+        {
+            if( *( uint32_t* )( send_window[temp_i] + PSEUDO_HEADER_LENGTH + 4 ) == ( *( uint32_t* )( segment + PSEUDO_HEADER_LENGTH + 8 ) -1 ) )
+            {
+                puts("ACKED");
+                free( send_window[temp_i] );
+            }
+        }
     }
     printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( dest.sin_addr ), temp_sockaddr.sin_port );
     seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
@@ -186,7 +205,12 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     *( uint16_t* )( segment + PSEUDO_HEADER_LENGTH + 16 ) = cumulate_checksum( segment, segment_len );
 
 //      5. send
-    sendto( dest_socket, segment, segment_len, 0, ( struct sockaddr* ) &dest, dest_len );
+    if( send_window[send_win_iterator] == NULL )
+    {
+        send_window[send_win_iterator] = ( char* )malloc( segment_len );
+        memcpy( send_window[send_win_iterator], segment, segment_len );
+    }
+    sendto( dest_socket, send_window[( send_win_iterator++ ) % 20], segment_len, 0, ( struct sockaddr* ) &dest, dest_len );
 
     printf("Send a packet(%s) to %s : %hu\n", identify_flags( 0x0010 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
     puts("=====Complete the three-way handshake=====");
