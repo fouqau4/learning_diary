@@ -18,20 +18,27 @@ uint32_t nextacknum = 0;
 
 void run_srv( char* src_port )
 {
+    struct sockaddr_in cli, temp_sockaddr;
+    struct timeval delay_ack = { 2, 0 };
+    int cli_len = sizeof( cli );
     int temp_i;
     int segment_len = 0;
     int base = 0, next_receive = 0;
+    int receive_win_iterator = 0;
+    int send_win_iterator = 0;
+    int nfds;
     uint16_t flags_type;
     uint32_t temp_ui32t;
     uint16_t payload_len = 0;
     char payload[PAYLOAD_SIZE];
     char segment[PSEUDO_HEADER_LENGTH + HEADER_LENGTH + PAYLOAD_SIZE];
-    struct sockaddr_in cli, temp_sockaddr;
-    int cli_len = sizeof( cli );
+    fd_set rfds;
+    fd_set afds;
+
     srand( time( NULL ) );
 
-    int receive_win_iterator = 0;
-    int send_win_iterator = 0;
+    nextseqnum = rand() % 10000 + 1;
+
     for( temp_i = 0 ; temp_i < WINDOW_SIZE ; temp_i++ )
         receive_window[temp_i] = NULL, send_window[temp_i] = NULL;
 //--------------------------------------------------------------------------------------------------------------------
@@ -90,11 +97,11 @@ void run_srv( char* src_port )
 //create socket
     puts("Listening for client...");
     int connect_socket = passiveUDP( src_port );
+    puts("=====Start the three-way handshake=====");
 //--------------------------------------------------------------------------------------------------------------------
 //3-way handshack -- SYN
 //  wait for SYN
     segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
-    puts("=====Start the three-way handshake=====");
     if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, NULL, &temp_sockaddr, &flags_type ) == 0 )
     {
         nextacknum = *( uint32_t* )( tcp_header + 4 ) + 1;
@@ -103,10 +110,11 @@ void run_srv( char* src_port )
     }
 
 //  reply SYN, ACK
+    sleep( 1 );
 //      1. set tcp header
     source_port = ( uint16_t )atoi( src_port );
     destination_port = temp_sockaddr.sin_port;
-    seq_num = rand() % 10000 + 1;
+    seq_num = nextseqnum;
     ack_num = nextacknum;
     data_offset_flags = HEADER_LENGTH;
     data_offset_flags = ( data_offset_flags << 16 ) + 0x0012;
@@ -136,14 +144,15 @@ void run_srv( char* src_port )
 //      5. send
 
     sendto( connect_socket, segment, segment_len, 0, ( struct sockaddr* ) &cli, cli_len );
-    printf("Send a packet(%s) to %s : %hu\t-----  ", identify_flags( 0x0012 ), inet_ntoa( cli.sin_addr ), ntohs( cli.sin_port ) );
+    printf("Send a packet(%s) to %s : %hu\t\n", identify_flags( 0x0012 ), inet_ntoa( cli.sin_addr ), ntohs( cli.sin_port ) );
+    seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 1 );
 
 //  wait ACK ( carry with file name )
     segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
-    if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[next_receive % 20], &temp_sockaddr, &flags_type ) == 0 )
+    if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, NULL, &temp_sockaddr, &flags_type ) == 0 )
     {
+        nextseqnum = *( uint32_t* )( tcp_header + 8 );
         nextacknum = *( uint32_t* )( tcp_header + 4 ) + payload_len;
-        next_receive++;
         printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), temp_sockaddr.sin_port );
         seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
     }
@@ -158,7 +167,7 @@ void run_srv( char* src_port )
     strcpy( buf, "rcv_" );
     strcat( buf, payload );
     FILE *file;
-    if( ( file = fopen( buf, "w" ) ) == 0 )
+    if( ( file = fopen( buf, "wb" ) ) == 0 )
     {
         fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
         perror("");
@@ -167,24 +176,91 @@ void run_srv( char* src_port )
 
     while( 1 )
     {
-        segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
-        if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[next_receive % 20], &temp_sockaddr, &flags_type ) == 0 )
+        nfds = getdtablesize();
+        FD_ZERO( &afds );
+        FD_SET( connect_socket, &afds );
+        memcpy( &rfds, &afds, sizeof( rfds ) );
+        if( select( nfds, &rfds, ( fd_set* ) 0, ( fd_set* ) 0, &delay_ack ) < 0 )
         {
-            nextacknum = *( uint32_t* )( tcp_header + 4 ) + payload_len;
-            next_receive++;
-            printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), temp_sockaddr.sin_port );
-            seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
+            fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
+            perror("");
+            exit( 1 );
+        }
+        if( FD_ISSET( connect_socket, &rfds ) )
+        {
+            segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
+            if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[next_receive % WINDOW_SIZE], &temp_sockaddr, &flags_type ) == 0 )
+            {
+                nextseqnum = *( uint32_t* )( tcp_header + 8 );
+                nextacknum = *( uint32_t* )( tcp_header + 4 ) + payload_len;
+                next_receive++;
+                printf("Receive a packet(%s) from %s : %hu\n", identify_flags( flags_type ), inet_ntoa( cli.sin_addr ), temp_sockaddr.sin_port );
+                seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 0 );
+                if( flags_type == 0x0001 )
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+//            puts("write");
+            for( temp_i = base; temp_i < next_receive ; temp_i++ )
+            {
+                payload_len = *( uint16_t* )( receive_window[base % WINDOW_SIZE] + 10 ) - HEADER_LENGTH;
+                fwrite( receive_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + HEADER_LENGTH, 1, payload_len, file );
+                free( receive_window[temp_i % WINDOW_SIZE] );
+            }
+            base = next_receive;
+
+            //  reply SYN, ACK
+//      1. set tcp header
+            source_port = ( uint16_t )atoi( src_port );
+            destination_port = temp_sockaddr.sin_port;
+            seq_num = nextseqnum;
+            ack_num = nextacknum;
+            data_offset_flags = HEADER_LENGTH;
+            data_offset_flags = ( data_offset_flags << 16 ) + 0x0010;
+            win_size = WINDOW_SIZE;
+            checksum = 0;
+            ugn_ptr = 0;
+
+            set_tcp_header( tcp_header, source_port, destination_port, seq_num, ack_num, data_offset_flags, win_size, checksum, ugn_ptr );
+
+//      2. set payload
+            memset( payload, 0, PAYLOAD_SIZE );
+
+//      3.set pseudo header
+            source_addr = *( uint32_t* )( pseudo_header + 4 );
+            destination_addr = cli.sin_addr.s_addr;
+            zeros_protocol = 6;
+            payload_len = 0;
+            tcp_len = HEADER_LENGTH + payload_len;
+
+            set_pseudo_header( pseudo_header, source_addr, destination_addr, zeros_protocol, tcp_len );
+
+//      4. build segment
+            build_segment( segment, pseudo_header, tcp_header, payload, payload_len );
+            segment_len = PSEUDO_HEADER_LENGTH + HEADER_LENGTH + payload_len;
+            *( uint16_t* )( segment + PSEUDO_HEADER_LENGTH + 16 ) = cumulate_checksum( segment, segment_len );
+
+//      5. send
+
+            sendto( connect_socket, segment, segment_len, 0, ( struct sockaddr* ) &cli, cli_len );
+            printf("Send a packet(%s) to %s : %hu\t\n", identify_flags( 0x0010 ), inet_ntoa( cli.sin_addr ), ntohs( cli.sin_port ) );
+            seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 1 );
+            sleep( 6 );
         }
     }
+    for( temp_i = base; temp_i < next_receive - 1 ; temp_i++ )
+    {
+        payload_len = *( uint16_t* )( receive_window[temp_i % WINDOW_SIZE] + 10 ) - HEADER_LENGTH;
+        printf(" write %hu byte\n", payload_len);
+        fwrite( receive_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + HEADER_LENGTH, 1, payload_len, file );
+        free( receive_window[temp_i % WINDOW_SIZE] );
+    }
+    free( receive_window[temp_i % WINDOW_SIZE] );
 
-
-    recvfrom( connect_socket, buf, BUF_SIZE, 0, ( struct sockaddr* ) &cli, &cli_len );
-    printf("ip : %s, port : %d\n", inet_ntoa( cli.sin_addr ) , ntohs( cli.sin_port ) );
-    puts(buf);
-    recvfrom( connect_socket, buf, BUF_SIZE, 0, ( struct sockaddr* ) &cli, &cli_len );
-    printf("ip : %s, port : %d\n", inet_ntoa( cli.sin_addr ) , ntohs( cli.sin_port ) );
-    puts(buf);
-    puts("RECEIVE!!");
     close( connect_socket );
 }
 

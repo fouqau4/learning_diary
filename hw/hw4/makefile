@@ -15,4 +15,4 @@ B023040001_client.o : B023040001_client.c cubelib.o
 cubelib.o : cubelib.c cubelib.h
 	gcc -c cubelib.c 
 clear : 
-	rm -f *.o server client
+	rm -f *.o server client rcv_*

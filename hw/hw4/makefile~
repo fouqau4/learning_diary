@@ -10,7 +10,7 @@ B023040001_server.o : B023040001_server.c cubelib.o
 	gcc -c B023040001_server.c 
 
 B023040001_client.o : B023040001_client.c cubelib.o
-	gcc -c B023040001_client.c -l pthread
+	gcc -c B023040001_client.c 
 
 cubelib.o : cubelib.c cubelib.h
 	gcc -c cubelib.c 
