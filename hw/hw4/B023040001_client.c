@@ -53,18 +53,23 @@ void receive_segment()
     while( 1 )
     {
         memset( rcv_segment, 0, SEGMENT_SIZE );
-
         rcv_segment_len = recvfrom( dest_socket, rcv_segment, SEGMENT_SIZE, 0, ( struct sockaddr* ) &rcv_dest, &rcv_dest_len );
         //------critical section-------
         pthread_mutex_lock( &lock_nextseqacknum );
+        if( is_rcv == -1 )
+        {
+            puts("THREAD EXIT");
+            pthread_exit( NULL );
+        }
         if( disassemble_segment( rcv_segment, rcv_segment_len, rcv_pseudo_header, rcv_tcp_header, rcv_payload, &rcv_payload_len, NULL, &rcv_temp_sockaddr, &rcv_flags_type ) == 0 )
         {
             is_rcv = 1;
             seq_ack_num_info( *( uint32_t* )( rcv_tcp_header + 4 ), *( uint32_t* )( rcv_tcp_header + 8 ), 0 );
         }
-            pthread_mutex_unlock( &lock_nextseqacknum );
-            //------------------------------
-            printf("Receive a packet(%s) from %s : %hu\n", identify_flags( rcv_flags_type ), inet_ntoa( dest.sin_addr ), rcv_temp_sockaddr.sin_port );
+        pthread_mutex_unlock( &lock_nextseqacknum );
+        //------------------------------
+        printf("Receive a packet(%s) from %s : %hu\n", identify_flags( rcv_flags_type ), inet_ntoa( dest.sin_addr ), rcv_temp_sockaddr.sin_port );
+        seq_ack_num_info( *( uint32_t* )( rcv_tcp_header + 4 ), *( uint32_t* )( rcv_tcp_header + 8 ), 0 );
 
     }
 }
@@ -298,7 +303,7 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
     puts("=====Complete the three-way handshake=====");
 //--------------------------------------------------------------------------------------------------------------------
 
-//  send file name
+
     if( ( file = fopen( buf, "rb" ) ) == 0 )
     {
         fprintf( stderr, "\n[ERR] %s() : line_%d : ", __FUNCTION__, __LINE__ - 2 );
@@ -306,7 +311,7 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
         exit( 1 );
     }
 
-//  send SYN
+//  send file
     while( !feof( file ) )
     {
         //------critical section-------
@@ -318,11 +323,20 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
             {
                 if( send_window[temp_i % WINDOW_SIZE] != NULL )
                 {
-                    if( *( uint32_t* )( rcv_tcp_header + 8 ) > *( uint32_t* )( send_window[temp_i % WINDOW_SIZE]) )
+                    if( *( uint32_t* )( rcv_tcp_header + 8 ) > *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ) )
                     {
+                        printf("free : %d, seqnum = %u\n", temp_i, *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ) );
                         free( send_window[temp_i % WINDOW_SIZE] );
                         send_window[temp_i % WINDOW_SIZE] = NULL;
                         last_acked = temp_i + 1;
+                    }
+                    else if( *( uint32_t* )( rcv_tcp_header + 8 ) == *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ) )
+                    {
+//      5. send
+                        sendto( dest_socket, send_window[temp_i % WINDOW_SIZE], segment_len, 0, ( struct sockaddr* ) &dest, dest_len );
+
+                        printf("\n!!! Resend a packet(%s) to %s : %hu\t\n\n", identify_flags( 0x0010 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
+                        seq_ack_num_info( *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ), *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 8 ), 1 );
                     }
                 }
             }
@@ -330,7 +344,7 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
         pthread_mutex_unlock( &lock_nextseqacknum );
         //------------------------------
 
-        printf("last acked : %hu, next send : %d, next seq num : %u\n", last_acked, next_send, nextseqnum );
+//        printf("last acked : %hu, next send : %d, next seq num : %u\n", last_acked, next_send, nextseqnum );
         if( next_send < last_acked + WINDOW_SIZE )
         {
             if( send_window[next_send % WINDOW_SIZE] == NULL )
@@ -343,7 +357,6 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
 //      2. set tcp header
                 source_port = ( uint16_t )atoi( src_port );
                 destination_port = ( uint16_t )atoi( dest_port );
-                printf(" %u, %u \n", nextseqnum, nextacknum );
                 seq_num = nextseqnum;
                 ack_num = nextacknum;
                 data_offset_flags = HEADER_LENGTH;
@@ -374,7 +387,7 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
                 next_send++;
                 nextseqnum += payload_len;
 
-                printf("Send a packet(%s) to %s : %hu\t\n", identify_flags( 0x0002 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
+                printf("Send a packet(%s) to %s : %hu\t\n", identify_flags( 0x0010 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
                 seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 1 );
             }
         }
@@ -386,7 +399,52 @@ void run_cli( char* dest_ip, char* dest_port, char* src_port )
 
         usleep( 500000 );
     }
+    puts("EXIT");
     sleep( 3 );
+    while( 1 )
+    {
+        pthread_mutex_lock( &lock_nextseqacknum );
+        if( is_rcv )
+        {
+            puts("is receive\n");
+            is_rcv = 0;
+//            printf("last acked : %hu, next send : %d, next seq num : %u\n", last_acked, next_send, nextseqnum );
+            for( temp_i = last_acked ; temp_i < next_send ; temp_i++ )
+            {
+                if( send_window[temp_i % WINDOW_SIZE] != NULL )
+                {
+                    if( *( uint32_t* )( rcv_tcp_header + 8 ) > *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ) )
+                    {
+                        printf("free : %d, seqnum = %u\n", temp_i, *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ) );
+                        free( send_window[temp_i % WINDOW_SIZE] );
+                        send_window[temp_i % WINDOW_SIZE] = NULL;
+                        last_acked = temp_i + 1;
+                    }
+                    else if( *( uint32_t* )( rcv_tcp_header + 8 ) == *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ) )
+                    {
+//      5. send
+//                        *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 8 ) = *( uint32_t* )( rcv_tcp_header + 4 );
+                        sendto( dest_socket, send_window[temp_i % WINDOW_SIZE], PSEUDO_HEADER_LENGTH + *( uint16_t* )( send_window[ temp_i % WINDOW_SIZE] + 10), 0, ( struct sockaddr* ) &dest, dest_len );
+
+                        printf("\n!!! Resend a packet(%s) to %s : %hu\t\n\n", identify_flags( 0x0010 ), inet_ntoa( dest.sin_addr ), ntohs( dest.sin_port ) );
+                        seq_ack_num_info( *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 4 ), *( uint32_t* )( send_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + 8 ), 1 );
+                    }
+
+                }
+            }
+        }
+        if( last_acked == next_send )
+        {
+            is_rcv = -1;
+            puts("\nLets FIN!!!\n");
+            pthread_mutex_unlock( &lock_nextseqacknum );
+            break;
+        }
+        pthread_mutex_unlock( &lock_nextseqacknum );
+        sleep( 2 );
+    }
+    puts("PREPARE FIN");
+
     pthread_join( receive_ack, NULL );
 //  send FIN
 //      1. set payload

@@ -19,14 +19,15 @@ uint32_t nextacknum = 0;
 void run_srv( char* src_port )
 {
     struct sockaddr_in cli, temp_sockaddr;
-    struct timeval delay_ack = { 2, 0 };
+    struct timeval delay_ack = { 3, 500000 };
     int cli_len = sizeof( cli );
     int temp_i;
     int segment_len = 0;
-    int base = 0, next_receive = 0;
+    int base = 0, next_receive = 0, out_of_seq = 0;
     int receive_win_iterator = 0;
     int send_win_iterator = 0;
     int nfds;
+    float drop = 0;
     uint16_t flags_type;
     uint32_t temp_ui32t;
     uint16_t payload_len = 0;
@@ -189,8 +190,35 @@ void run_srv( char* src_port )
         if( FD_ISSET( connect_socket, &rfds ) )
         {
             segment_len = recvfrom( connect_socket, segment, sizeof( segment ), 0, ( struct sockaddr* ) &cli, &cli_len );
-            if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, &receive_window[next_receive % WINDOW_SIZE], &temp_sockaddr, &flags_type ) == 0 )
+
+            if( ( drop = ( float )( rand() % 100 ) / 100 ) < 0.1 )
             {
+                memset( segment, 0, SEGMENT_SIZE );
+                puts("\nI drop this segment !! haha mother fucker\n");
+                continue;
+            }
+            if( disassemble_segment( segment, segment_len, pseudo_header, tcp_header, payload, &payload_len, NULL, &temp_sockaddr, &flags_type ) == 0 )
+            {
+                if( *( uint32_t* )( tcp_header + 4 ) > nextacknum )
+                {
+                    for( out_of_seq = 0, temp_i = *( uint32_t* )( tcp_header + 4 ) - nextacknum ; temp_i > 0 ; temp_i -= PAYLOAD_SIZE )
+                    {
+                        out_of_seq++;
+                    }
+                    if( next_receive + out_of_seq - base < WINDOW_SIZE)
+                    {
+                        if( receive_window[( next_receive + out_of_seq ) % WINDOW_SIZE] == NULL )
+                        {
+                            receive_window[( next_receive + out_of_seq ) % WINDOW_SIZE] = ( char* )malloc( segment_len );
+                            memcpy( receive_window[( next_receive + out_of_seq ) % WINDOW_SIZE], segment, segment_len );
+                            nextseqnum++;
+                            goto outofseq;
+                        }
+                    }
+
+                }
+                receive_window[next_receive % WINDOW_SIZE] = ( char* )malloc( segment_len );
+                memcpy( receive_window[next_receive % WINDOW_SIZE], segment, segment_len );
                 nextseqnum = *( uint32_t* )( tcp_header + 8 );
                 nextacknum = *( uint32_t* )( tcp_header + 4 ) + payload_len;
                 next_receive++;
@@ -204,16 +232,19 @@ void run_srv( char* src_port )
         }
         else
         {
-//            puts("write");
+            printf("base = %d, next_receive = %d\n", base, next_receive);
             for( temp_i = base; temp_i < next_receive ; temp_i++ )
             {
-                payload_len = *( uint16_t* )( receive_window[base % WINDOW_SIZE] + 10 ) - HEADER_LENGTH;
+                payload_len = *( uint16_t* )( receive_window[temp_i % WINDOW_SIZE] + 10 ) - HEADER_LENGTH;
                 fwrite( receive_window[temp_i % WINDOW_SIZE] + PSEUDO_HEADER_LENGTH + HEADER_LENGTH, 1, payload_len, file );
+                printf("write %u, next_receive = %u\n", temp_i,next_receive);
                 free( receive_window[temp_i % WINDOW_SIZE] );
+                receive_window[temp_i % WINDOW_SIZE] = NULL;
             }
             base = next_receive;
-
-            //  reply SYN, ACK
+            printf("base =  %u, next_receive = %u\n", base,next_receive);
+            outofseq:
+            //  reply ACK
 //      1. set tcp header
             source_port = ( uint16_t )atoi( src_port );
             destination_port = temp_sockaddr.sin_port;
@@ -249,7 +280,7 @@ void run_srv( char* src_port )
             sendto( connect_socket, segment, segment_len, 0, ( struct sockaddr* ) &cli, cli_len );
             printf("Send a packet(%s) to %s : %hu\t\n", identify_flags( 0x0010 ), inet_ntoa( cli.sin_addr ), ntohs( cli.sin_port ) );
             seq_ack_num_info( *( uint32_t* )( tcp_header + 4 ), *( uint32_t* )( tcp_header + 8 ), 1 );
-            sleep( 6 );
+            sleep( 3 );
         }
     }
     for( temp_i = base; temp_i < next_receive - 1 ; temp_i++ )
