@@ -1,0 +1,13 @@
+hw3
+學號：b023040001
+姓名：李書緯
+-----------------------------------------------
+1. 在作業中，concurrency 的部份原本打算採用multi processes 來實作，
+   在IPC的部份，使用pipe，但在傳遞訊息時有問題，所以只好改用multi threads
+2. server程式啟動後，會等待client的連線，連線完成後，建立slave thread來處理client的對話，
+   master thread繼續等候其他client連線
+3. server端會紀錄有連線過的user name，如果client向未知的user 傳送訊息，會顯示 non-existed user
+4. 離線訊息是採用檔案的方式來實作，若目標user不在線上，會建立離線訊息檔案，等該user上線時，會確認
+   是否有離線訊息
+5. user上線以及離線時，都會向其他user廣播
+6. client程式非常簡化，在指令的處理方面，幾乎全部都交由server來進行字串處理
