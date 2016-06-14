@@ -1,3 +1,23 @@
+hw5
+學號：B023040001
+姓名：李書緯
+_________________________________________________________________
+1.先執行server program, server program 會等待client 的連線
+
+2.執行client program,client 啟動後會自動連線到server
+
+3.執行client program後，會出現登入畫面，輸入玩家名稱後按start就會進入waiting room
+
+4.在waiting room中，可以選擇建立房間或是加如別人的房間
+
+5.若選擇建立房間，會出現等待的過場動畫，讓玩家知道程式還在執行，沒有當掉
+
+6.配對成功後就會進入對戰，由建立房間的玩家先攻
+
+7.遊戲結束後，下方會紀錄積分
+
+8.若選擇加入新的房間，會優先選擇還沒對戰過的對手
+_________________________________________________________________
 1.int to string
 http://stackoverflow.com/questions/5071040/java-convert-integer-to-string
 2.install jdk 8 on ubuntu
