@@ -1,4 +1,11 @@
-add remote inventory :
+Add remote inventory :
 	# go to github and create a new repository
 	$ git init
 	$ git remote add learning https://github.com/fouqau4/learning_diary.git	
+@-----
+Update github's data :
+	$ git add --all .
+	$ git commit -m "update"
+	$ git push learning master
+	# enter username and password
+
