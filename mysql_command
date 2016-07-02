@@ -1,0 +1,4 @@
+reset id num : 
+	ALTER TABLE tablename AUTO_INCREMENT = 1;
+delete multi data :
+	DELETE from tablename WHERE id BETWEEN 1 AND 254;
