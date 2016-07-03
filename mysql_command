@@ -1,4 +1,44 @@
+*********
+* TABLE *
+*********
+show tables :
+	show tables;
+list all data in table :
+	select * from tablename;
 reset id num : 
 	ALTER TABLE tablename AUTO_INCREMENT = 1;
-delete multi data :
+delete multi data in table :
 	DELETE from tablename WHERE id BETWEEN 1 AND 254;
+create table :
+	mysql> create table top(
+	    -> id INT NOT NULL AUTO_INCREMENT,
+	    -> shorder FLOAT NULL,
+	    -> chest FLOAT NULL,
+	    -> sleeve FLOAT NULL,
+	    -> cuff FLOAT NULL,
+	    -> length FLOAT NULL,
+	    -> lap FLOAT NULL,
+	    -> neck FLOAT NULL,
+	    -> hips FLOAT NULL,
+	    -> color1 INT NULL,
+	    -> color2 INT NULL,
+	    -> color3 INT NULL,
+	    -> pattern INT NULL,
+	    -> material INT NULL,
+	    -> thick FLOAT NULL,
+	    -> size INT NULL,
+	    -> select_times INT NULL,
+	    -> PRIMARY KEY ( id )
+	    -> );
+
+******
+* DB *
+******
+select db :
+	use dbname;
+create db :
+	create database dbname;
+show db :
+	show databases;
+delete db :
+	drop database dbname;
