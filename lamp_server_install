@@ -1,0 +1,19 @@
+    1  sudo apt-get update
+    2  ifconfig eth0 | grep inet | awk '{ print $2 }'
+    3  sudo apt-get install apache2
+    4  sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+    5  sudo /usr/bin/mysql_secure_installation 
+    6  sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+    7  sudo nano /etc/apache2/mods-enabled/dir.conf 
+    8  apt-cache search php5-
+    9  sudo get-apt install php5-*
+   10  sudo apt-get install php5-*
+   11  sudo nano /var/www/info.php
+   12  sudo service apache2 restart 
+   13  cat /var/www/info.php
+   14  mysql
+   15  mysql -u root -p
+   16  sudo apt-get install phpmyadmin apache2-utils 
+   17  sudo nano /etc/apache2/apache2.conf 
+   18  sudo service apache2 restart 
+   19  history > x
