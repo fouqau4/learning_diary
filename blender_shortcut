@@ -1,0 +1,10 @@
+T : 左側欄位
+ctrl + U : 界面配置儲存
+header 上 right click : 調整header的位置(top or button)
+tab : object mode & edit mode 切換
+shift + A : 新增物件
+m + 點選圖層 : 移動物件到該圖層
+A : 全選/取消全選 場景中的物件
+按住 B : 可框選多個物件
+按住 ctrl : 可套索多個物件
+N : transform 欄位
