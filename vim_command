@@ -1,0 +1,11 @@
+enter edit mode , insert at current position :
+	i
+delete next N line :
+	N
+	dd
+save file :
+	:w
+exit :
+	:q
+find :
+	/pattern
