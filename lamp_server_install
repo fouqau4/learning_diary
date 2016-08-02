@@ -1,5 +1,4 @@
     1  sudo apt-get update
-    2  ifconfig eth0 | grep inet | awk '{ print $2 }'
     3  sudo apt-get install apache2
     4  sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
     5  sudo /usr/bin/mysql_secure_installation 

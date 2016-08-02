@@ -1,0 +1,13 @@
+load a file :
+	load('filename');
+check all exicted variables :
+	who
+return element number of vector, or row or colomn number of matrix ( depends on which is greater ) :
+	length(variable)
+elements operation between matrix :
+	bsxfun(@fun, op1, op2 );
+	// reference : http://www.mathworks.com/help/matlab/ref/bsxfun.html
+fminunc is an optimization solver that finds the minimum of an unconstrained function :
+	fminunc(@fun, initial_theta, option,...);
+	* set the GradObj option to on, which tells fminunc that our function returns both the cost and the gradient
+	reference : http://octave.sourceforge.net/octave/function/fminunc.html
