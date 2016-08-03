@@ -30,7 +30,13 @@ create table :
 	    -> select_times INT NULL,
 	    -> PRIMARY KEY ( id )
 	    -> );
-
+show table column type :
+	show columns from tablename;
+insert data :
+	insert into tablename value(id,'ABC','234',0.2);
+copy table :
+	create table newtable like oldtable;
+	insert newtable select * from oldtable;
 ******
 * DB *
 ******
@@ -42,3 +48,31 @@ show db :
 	show databases;
 delete db :
 	drop database dbname;
+***********
+*PROCEDURE*
+***********
+create procedure :
+	mysql> delimiter //
+
+	mysql> CREATE PROCEDURE simpleproc (OUT param1 INT)
+	    -> BEGIN
+	    ->   SELECT COUNT(*) INTO param1 FROM t;
+	    -> END//
+	Query OK, 0 rows affected (0.00 sec)
+
+	mysql> delimiter ;
+call procedure :
+	mysql> CALL simpleproc(@a);
+concat two rows :
+	mysql> delimiter //
+	mysql> create procedure concat_two_rows(first INT, second INT)
+	    -> begin
+	    ->    select group_concat( concat_ws( ',', id, a, b, c ) ) from t2 where id = first or id = second;
+	    -> end//
+	mysql> delimiter ;
+******
+*file*
+******
+write result to file :
+	select group_concat( concat_ws( ',',id,a,b,c ) ) from t2 where id = 1 or id = 3 into outfile 'filename';
+	//the file will be located at /var/lib/mysql/databasename/
