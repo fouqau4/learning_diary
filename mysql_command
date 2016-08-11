@@ -9,6 +9,8 @@ reset id num :
 	ALTER TABLE tablename AUTO_INCREMENT = 1;
 delete multi data in table :
 	DELETE from tablename WHERE id BETWEEN 1 AND 254;
+show columns :
+	show columns from tablename;
 create table :
 	mysql> create table top(
 	    -> id INT NOT NULL AUTO_INCREMENT,
@@ -76,3 +78,53 @@ concat two rows :
 write result to file :
 	select group_concat( concat_ws( ',',id,a,b,c ) ) from t2 where id = 1 or id = 3 into outfile 'filename';
 	//the file will be located at /var/lib/mysql/databasename/
+store file into system variable :
+	set @variable = load_file('absPath/filename');
+	select @variable;
+	// http://stackoverflow.com/questions/24191591/how-to-read-a-text-file-into-a-variable
+********
+*string*
+********
+split a string :
+	select substring_index(substring_index( @txt, '\n', 3 ),'\n',-1);
+concat two rows :
+	concat( (select concat_ws(', ',id,a,b,c) from t2 where id = 1), (select concat_ws(', ',id,a,b,c) from t2 where id = 2));
+
+
+create procedure p1( f text )
+begin
+declare input text;
+declare size int;
+declare temp_i int;
+declare current_line text;
+declare result text;
+set input = load_file(f);
+set size = length(input);
+set temp_i = 1;
+set result = '';
+label1 : loop
+set current_line = which_line( input, temp_i );
+set size = size - length( current_line ) - 1;
+set result = concat( result, concat_two_rows( substring_index( current_line, '_', 1 ), substring_index( current_line, '_', -1 ) ), '\n');
+if size = 0 then
+ leave label1;
+else 
+ if size < 0 then
+ select 'error';
+ leave label1;
+ end if;
+end if;
+set temp_i = temp_i + 1;
+iterate label1;
+end loop label1;
+select result into outfile 'result';
+end;//
+
+create function which_line( t text, n int )
+returns text
+return substring_index( substring_index( t, '\n', n ), '\n', -1 );//
+
+create function concat_two_rows( first int, second int )
+returns text
+return concat( ( select concat_ws( ',', id, type, style1, style2, thickness, shoulder_waist, chest_hips, length_thigh, sleeve_pants, cuff_crotch, hem_length, color1_r, color1_g, color1_b, color2_r, color2_g, color2_b, color3_r, color3_g, color3_b, pattern ) from objects where id = first ), ',', ( select concat_ws( ',', id, type, style1, style2, thickness, shoulder_waist, chest_hips, length_thigh, sleeve_pants, cuff_crotch, hem_length, color1_r, color1_g, color1_b, color2_r, color2_g, color2_b, color3_r, color3_g, color3_b, pattern ) from objects where id = second ) );//
+
