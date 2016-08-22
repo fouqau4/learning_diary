@@ -9,3 +9,6 @@ exit :
 	:q
 find :
 	/pattern
+change tab size :
+	vim ~/.vimrc
+	:set tabstop=4
