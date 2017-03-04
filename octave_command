@@ -1,12 +1,42 @@
+identity matrix:
+	eye(2) => 2x2
+
+zero vector/matrix:
+	zeros( 3, 4 ) =>  3x4
+
+one vector/matrix:
+	ones( 1, 2 ) =>  1x2
+
+size of vector/matrix:
+	size( A, 1 ) =>  # of row of A
+	size( A, 2 ) =>  # of column of A
+
+installation:
+	sudo apt-get install octave
+
+for loop :
+	for i = 1 : 5
+	end
+
+if condition :
+	if a < 5
+	elseif a > 10
+	else
+	end
+
 load a file :
 	load('filename');
+
 check all exicted variables :
 	who
+
 return element number of vector, or row or colomn number of matrix ( depends on which is greater ) :
 	length(variable)
+
 elements operation between matrix :
 	bsxfun(@fun, op1, op2 );
 	// reference : http://www.mathworks.com/help/matlab/ref/bsxfun.html
+
 fminunc is an optimization solver that finds the minimum of an unconstrained function :
 	fminunc(@fun, initial_theta, option,...);
 	* set the GradObj option to on, which tells fminunc that our function returns both the cost and the gradient
