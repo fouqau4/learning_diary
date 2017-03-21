@@ -11,6 +11,33 @@ size of vector/matrix:
 	size( A, 1 ) =>  # of row of A
 	size( A, 2 ) =>  # of column of A
 
+number of function input argument :
+	function f( a, b )	
+		nargin
+	end
+
+	> f(1,2)
+	2
+	> f(3)
+	1
+
+execute MATLAB expression in text :
+	> a = [1 2 3];
+	> str = 'size(a)';
+	> eval(str)
+	ans = 
+	  1   3
+
+evaluate function :
+	> function c = func( a, b )
+	> 	 c = a + b;
+	> end
+	> F = 'func'
+	> feval( F, 10, 5 )
+	15
+random permutation :
+	randperm(5) => [ 3 4 1 5 2]
+
 installation:
 	sudo apt-get install octave
 
@@ -29,6 +56,18 @@ load a file :
 
 check all exicted variables :
 	who
+
+create figure window :
+	figure( 'Name', 'figureName' );
+
+plot lines :
+	plot( 1 : i, arrayName );
+
+draw points :
+	scatter( X, Y );
+
+grid line :
+	grid on/off;	
 
 return element number of vector, or row or colomn number of matrix ( depends on which is greater ) :
 	length(variable)
