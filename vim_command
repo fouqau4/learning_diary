@@ -7,6 +7,10 @@ save file :
 	:w
 exit :
 	:q
+undo :
+	u
+redo :
+	ctrl+r
 find :
 	/pattern
 change tab size :
