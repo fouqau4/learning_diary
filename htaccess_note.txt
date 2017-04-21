@@ -1,0 +1,6 @@
++ set default page :
+	take a file list as an argument list, if the first
+	file does not exist, set the second file as the 
+	default page, and so on.
+
+DirectoryIndex test1.php test2.php test.html
