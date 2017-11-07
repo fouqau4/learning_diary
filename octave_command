@@ -1,0 +1,82 @@
+identity matrix:
+	eye(2) => 2x2
+
+zero vector/matrix:
+	zeros( 3, 4 ) =>  3x4
+
+one vector/matrix:
+	ones( 1, 2 ) =>  1x2
+
+size of vector/matrix:
+	size( A, 1 ) =>  # of row of A
+	size( A, 2 ) =>  # of column of A
+
+number of function input argument :
+	function f( a, b )	
+		nargin
+	end
+
+	> f(1,2)
+	2
+	> f(3)
+	1
+
+execute MATLAB expression in text :
+	> a = [1 2 3];
+	> str = 'size(a)';
+	> eval(str)
+	ans = 
+	  1   3
+
+evaluate function :
+	> function c = func( a, b )
+	> 	 c = a + b;
+	> end
+	> F = 'func'
+	> feval( F, 10, 5 )
+	15
+random permutation :
+	randperm(5) => [ 3 4 1 5 2]
+
+installation:
+	sudo apt-get install octave
+
+for loop :
+	for i = 1 : 5
+	end
+
+if condition :
+	if a < 5
+	elseif a > 10
+	else
+	end
+
+load a file :
+	load('filename');
+
+check all exicted variables :
+	who
+
+create figure window :
+	figure( 'Name', 'figureName' );
+
+plot lines :
+	plot( 1 : i, arrayName );
+
+draw points :
+	scatter( X, Y );
+
+grid line :
+	grid on/off;	
+
+return element number of vector, or row or colomn number of matrix ( depends on which is greater ) :
+	length(variable)
+
+elements operation between matrix :
+	bsxfun(@fun, op1, op2 );
+	// reference : http://www.mathworks.com/help/matlab/ref/bsxfun.html
+
+fminunc is an optimization solver that finds the minimum of an unconstrained function :
+	fminunc(@fun, initial_theta, option,...);
+	* set the GradObj option to on, which tells fminunc that our function returns both the cost and the gradient
+	reference : http://octave.sourceforge.net/octave/function/fminunc.html
